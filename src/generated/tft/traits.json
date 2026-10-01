@@ -1,0 +1,865 @@
+[
+  {
+    "id": "adaptor",
+    "apiName": "DA_18_Adaptor",
+    "name": "Adaptor",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_adaptor.png",
+    "description": "Innate: Adaptor abilities change depending on if their Attack Damage or Ability Power is higher. Adaptors gain Ability Power or Attack Damage, depending on which is higher. % OR % OR % OR",
+    "breakpoints": [
+      {
+        "minUnits": 2,
+        "maxUnits": 2,
+        "style": "bronze",
+        "description": "2 Units"
+      },
+      {
+        "minUnits": 3,
+        "maxUnits": 3,
+        "style": "gold",
+        "description": "3 Units"
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 25000,
+        "style": "bronze",
+        "description": "4 Units"
+      }
+    ]
+  },
+  {
+    "id": "apexpredator",
+    "apiName": "DA_18_ApexPredator",
+    "name": "Apex Predator",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_apexpredator.png",
+    "description": "Elder Dragon takes up 2 team slots and grants +2 to the Riftbeast trait.",
+    "breakpoints": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": "prismatic",
+        "description": "1 Units"
+      }
+    ]
+  },
+  {
+    "id": "attuned",
+    "apiName": "DA_AluneUniqueTrait18",
+    "name": "Attuned",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_attuned.png",
+    "description": "Your strongest Alune cycles to a new phase of the moon after each cast. While the moon is at or below half full, your team gains % Durabilty. While above, your team gains % Damage Amp.",
+    "breakpoints": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": "prismatic",
+        "description": "1 Units"
+      }
+    ]
+  },
+  {
+    "id": "avatar",
+    "apiName": "DA_18_LuxUniqueTrait",
+    "name": "Avatar",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_avatar.png",
+    "description": "Having an Avatar on your bench or board transforms all other Avatars in your shop to the Trait of that Avatar. An Avatar's chosen Trait is counted twice for Trait bonuses.",
+    "breakpoints": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": "prismatic",
+        "description": "1 Units"
+      }
+    ]
+  },
+  {
+    "id": "blackthorn",
+    "apiName": "DA_18_Blackthorn",
+    "name": "Blackthorn",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_oldgod.png",
+    "description": "The ally on the Blackthorn hex is sacrificed before combat, granting your champions Health. Blackthorn champions gain additional stats based on the sacrifice's Role, Star Level, and Cost.; Bonus is % stronger; Bonus is % stronger",
+    "breakpoints": [
+      {
+        "minUnits": 2,
+        "maxUnits": 3,
+        "style": "bronze",
+        "description": "2 Units"
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 5,
+        "style": "gold",
+        "description": "4 Units"
+      },
+      {
+        "minUnits": 6,
+        "maxUnits": 25000,
+        "style": "bronze",
+        "description": "6 Units"
+      }
+    ]
+  },
+  {
+    "id": "blossom",
+    "apiName": "DA_18_Blossom",
+    "name": "Blossom",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_blossom.png",
+    "description": "After combat, your Wisps are empowered. Blossom champions gain Attack Damage, Ability Power, and % max Health. Wisps are upgraded, % Wisps are in every shop, % Gain gold after buying a Wisp, % You can buy 2 Wisps per round, % Wisps overflow with power, %",
+    "breakpoints": [
+      {
+        "minUnits": 3,
+        "maxUnits": 4,
+        "style": "bronze",
+        "description": "3 Units"
+      },
+      {
+        "minUnits": 5,
+        "maxUnits": 6,
+        "style": "gold",
+        "description": "5 Units"
+      },
+      {
+        "minUnits": 7,
+        "maxUnits": 8,
+        "style": "bronze",
+        "description": "7 Units"
+      },
+      {
+        "minUnits": 9,
+        "maxUnits": 10,
+        "style": "bronze",
+        "description": "9 Units"
+      },
+      {
+        "minUnits": 11,
+        "maxUnits": 25000,
+        "style": "bronze",
+        "description": "11 Units"
+      }
+    ]
+  },
+  {
+    "id": "bountyseeker",
+    "apiName": "DA_DravenUniqueTrait18",
+    "name": "Bounty Seeker",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_bountyseeker.png",
+    "description": "Choose a bounty. Your strongest Draven can progress on the bounty to earn its reward. Upon completing a bounty, choose another.",
+    "breakpoints": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": "prismatic",
+        "description": "1 Units"
+      }
+    ]
+  },
+  {
+    "id": "brawler",
+    "apiName": "DA_18_Brawler",
+    "name": "Brawler",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_brawler.png",
+    "description": "Your team gains max Health. Brawlers gain more. % % %",
+    "breakpoints": [
+      {
+        "minUnits": 2,
+        "maxUnits": 3,
+        "style": "bronze",
+        "description": "2 Units"
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 5,
+        "style": "gold",
+        "description": "4 Units"
+      },
+      {
+        "minUnits": 6,
+        "maxUnits": 25000,
+        "style": "bronze",
+        "description": "6 Units"
+      }
+    ]
+  },
+  {
+    "id": "caustic",
+    "apiName": "DA_18_Caustic",
+    "name": "Caustic",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_caustic.png",
+    "description": "Caustic damage % Shreds and Sunders enemies for seconds. Shred: Reduce Magic Resist Sunder: Reduce Armor",
+    "breakpoints": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": "prismatic",
+        "description": "1 Units"
+      }
+    ]
+  },
+  {
+    "id": "coven",
+    "apiName": "DA_18_Coven",
+    "name": "Coven",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_coven.png",
+    "description": "Gather Essence by killing champions, plus more by losing player combat. Beginning at Essence, choose to convert Essence to rewards or continue gathering Essence. Each reward requires increasing amounts of Essence. Essence per kill, Essence per loss per kill, per loss per kill, per loss per kill, per loss",
+    "breakpoints": [
+      {
+        "minUnits": 3,
+        "maxUnits": 3,
+        "style": "bronze",
+        "description": "3 Units"
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 4,
+        "style": "gold",
+        "description": "4 Units"
+      },
+      {
+        "minUnits": 5,
+        "maxUnits": 6,
+        "style": "gold",
+        "description": "5 Units"
+      },
+      {
+        "minUnits": 7,
+        "maxUnits": 25000,
+        "style": "bronze",
+        "description": "7 Units"
+      }
+    ]
+  },
+  {
+    "id": "defender",
+    "apiName": "DA_18_Defender",
+    "name": "Defender",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_defender.png",
+    "description": "Your team gains Armor and Magic Resist. Defenders gain more.",
+    "breakpoints": [
+      {
+        "minUnits": 2,
+        "maxUnits": 3,
+        "style": "bronze",
+        "description": "2 Units"
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 5,
+        "style": "gold",
+        "description": "4 Units"
+      },
+      {
+        "minUnits": 6,
+        "maxUnits": 25000,
+        "style": "bronze",
+        "description": "6 Units"
+      }
+    ]
+  },
+  {
+    "id": "eclipse",
+    "apiName": "DA_18_Eclipse",
+    "name": "Eclipse",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_eclipse.png",
+    "description": "After seconds of combat, the Eclipse kills the lowest Health enemy, repeating every seconds.",
+    "breakpoints": []
+  },
+  {
+    "id": "elderwood",
+    "apiName": "DA_18_Elderwood",
+    "name": "Elderwood",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_elderwood.png",
+    "description": "Gain placeable Elderwood plants. A Stonebark Tree and a Lifebloom A second Stonebark Tree and Stonebark Trees gain Health and the Deepwood Protector Plants star up to 2-star Plants star up to 3-star and the forest comes to life",
+    "breakpoints": [
+      {
+        "minUnits": 3,
+        "maxUnits": 4,
+        "style": "bronze",
+        "description": "3 Units"
+      },
+      {
+        "minUnits": 5,
+        "maxUnits": 6,
+        "style": "gold",
+        "description": "5 Units"
+      },
+      {
+        "minUnits": 7,
+        "maxUnits": 8,
+        "style": "bronze",
+        "description": "7 Units"
+      },
+      {
+        "minUnits": 9,
+        "maxUnits": 10,
+        "style": "bronze",
+        "description": "9 Units"
+      },
+      {
+        "minUnits": 11,
+        "maxUnits": 25000,
+        "style": "bronze",
+        "description": "11 Units"
+      }
+    ]
+  },
+  {
+    "id": "emeraldaspect",
+    "apiName": "DA_Emerald18",
+    "name": "Emerald Aspect",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_emeraldaspect.png",
+    "description": "Drag an ally onto your strongest Taric to pair them, granting the ally powerful bonuses from Taric's Ability.",
+    "breakpoints": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": "prismatic",
+        "description": "1 Units"
+      }
+    ]
+  },
+  {
+    "id": "executioner",
+    "apiName": "DA_18_Executioner",
+    "name": "Executioner",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_executioner.png",
+    "description": "Executioners gain Precision and % Critical Strike Chance. Additionally, enemies bleed for % bonus true damage over seconds. Bleed damage increased to %.",
+    "breakpoints": [
+      {
+        "minUnits": 2,
+        "maxUnits": 2,
+        "style": "bronze",
+        "description": "2 Units"
+      },
+      {
+        "minUnits": 3,
+        "maxUnits": 3,
+        "style": "gold",
+        "description": "3 Units"
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 25000,
+        "style": "bronze",
+        "description": "4 Units"
+      }
+    ]
+  },
+  {
+    "id": "fae",
+    "apiName": "DA_18_Fae",
+    "name": "Fae",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_fae.png",
+    "description": "Your team's damage, healing, and shielding attracts Pixies. Each Pixie grants Fae champions Attack Damage and Ability Power, and after they fall below % Health, they heal for each Pixie. % and % Heal. % and % Heal. After attracting 7 Pixies, start attracting Golden Pixies instead which grant gold.",
+    "breakpoints": [
+      {
+        "minUnits": 2,
+        "maxUnits": 3,
+        "style": "bronze",
+        "description": "2 Units"
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 25000,
+        "style": "bronze",
+        "description": "4 Units"
+      }
+    ]
+  },
+  {
+    "id": "florafatalis",
+    "apiName": "DA_FloraFatalis18",
+    "name": "Flora Fatalis",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_florafatalis.png",
+    "description": "Flora Fatalis champions harvest enemies on takedown, gaining: Mana and grant a % max Health heal to the lowest Health ally.",
+    "breakpoints": [
+      {
+        "minUnits": 1,
+        "maxUnits": 1,
+        "style": "bronze",
+        "description": "1 Units"
+      },
+      {
+        "minUnits": 2,
+        "maxUnits": 25000,
+        "style": "bronze",
+        "description": "2 Units"
+      }
+    ]
+  },
+  {
+    "id": "greenfather",
+    "apiName": "DA_18_Greenfather",
+    "name": "Greenfather",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_greenfather.png",
+    "description": "Gain seed when your strongest Ivern casts, plus every combat. Ivern uses seeds to grow a hex on your board that grants a bonus to its occupant. Seeds: 0 / Current Biome:",
+    "breakpoints": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": "prismatic",
+        "description": "1 Units"
+      }
+    ]
+  },
+  {
+    "id": "hunter",
+    "apiName": "DA_18_Hunter",
+    "name": "Hunter",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_hunter.png",
+    "description": "Hunters gain Attack Damage. If a Hunter hasn't swapped targets for seconds, they gain % Damage Amp. % % % %",
+    "breakpoints": [
+      {
+        "minUnits": 2,
+        "maxUnits": 2,
+        "style": "bronze",
+        "description": "2 Units"
+      },
+      {
+        "minUnits": 3,
+        "maxUnits": 3,
+        "style": "gold",
+        "description": "3 Units"
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 4,
+        "style": "gold",
+        "description": "4 Units"
+      },
+      {
+        "minUnits": 5,
+        "maxUnits": 25000,
+        "style": "bronze",
+        "description": "5 Units"
+      }
+    ]
+  },
+  {
+    "id": "inferno",
+    "apiName": "DA_18_Inferno",
+    "name": "Inferno",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_inferno.png",
+    "description": "Inferno damage Burns and Wounds enemies for seconds. Inferno Burns stack with other Burns. % Burn, % Wound After combat, of your shop slots without an Inferno champion ignites, rolling a champion one tier higher Ignite shop slots, % Burn Ignite shop slots, % Burn",
+    "breakpoints": [
+      {
+        "minUnits": 2,
+        "maxUnits": 2,
+        "style": "bronze",
+        "description": "2 Units"
+      },
+      {
+        "minUnits": 3,
+        "maxUnits": 4,
+        "style": "gold",
+        "description": "3 Units"
+      },
+      {
+        "minUnits": 5,
+        "maxUnits": 6,
+        "style": "bronze",
+        "description": "5 Units"
+      },
+      {
+        "minUnits": 7,
+        "maxUnits": 25000,
+        "style": "bronze",
+        "description": "7 Units"
+      }
+    ]
+  },
+  {
+    "id": "invoker",
+    "apiName": "DA_18_Invoker",
+    "name": "Invoker",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_invoker.png",
+    "description": "Your team gains Mana Regen, increased for Invokers. | | | |",
+    "breakpoints": [
+      {
+        "minUnits": 2,
+        "maxUnits": 2,
+        "style": "bronze",
+        "description": "2 Units"
+      },
+      {
+        "minUnits": 3,
+        "maxUnits": 3,
+        "style": "gold",
+        "description": "3 Units"
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 4,
+        "style": "gold",
+        "description": "4 Units"
+      },
+      {
+        "minUnits": 5,
+        "maxUnits": 25000,
+        "style": "bronze",
+        "description": "5 Units"
+      }
+    ]
+  },
+  {
+    "id": "juggernaut",
+    "apiName": "DA_Juggernaut18",
+    "name": "Juggernaut",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_juggernaut.png",
+    "description": "Your team gains Durability. Juggernauts gain more. % or % % or % % or %",
+    "breakpoints": [
+      {
+        "minUnits": 2,
+        "maxUnits": 3,
+        "style": "bronze",
+        "description": "2 Units"
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 5,
+        "style": "gold",
+        "description": "4 Units"
+      },
+      {
+        "minUnits": 6,
+        "maxUnits": 25000,
+        "style": "bronze",
+        "description": "6 Units"
+      }
+    ]
+  },
+  {
+    "id": "lunar",
+    "apiName": "DA_18_Lunar",
+    "name": "Lunar",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_lunar.png",
+    "description": "Lunar champions and adjacent allies gain Attack Speed and Ability Power. Lunar champions gain % more. %, % %, % %, % %, %",
+    "breakpoints": [
+      {
+        "minUnits": 2,
+        "maxUnits": 2,
+        "style": "bronze",
+        "description": "2 Units"
+      },
+      {
+        "minUnits": 3,
+        "maxUnits": 3,
+        "style": "gold",
+        "description": "3 Units"
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 4,
+        "style": "gold",
+        "description": "4 Units"
+      },
+      {
+        "minUnits": 5,
+        "maxUnits": 25000,
+        "style": "bronze",
+        "description": "5 Units"
+      }
+    ]
+  },
+  {
+    "id": "monolith",
+    "apiName": "DA_18_Battlemage",
+    "name": "Monolith",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_monolith.png",
+    "description": "Monoliths gain Armor and Magic Resist for each enemy targeting them.",
+    "breakpoints": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": "prismatic",
+        "description": "1 Units"
+      }
+    ]
+  },
+  {
+    "id": "oldgrowth",
+    "apiName": "DA_18_Maokai_UniqueTrait",
+    "name": "Old Growth",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_oldgrowth.png",
+    "description": "Whenever an enemy within hexes dies, your strongest Old Growth champion gains permanent max Health. Current: 0",
+    "breakpoints": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": "prismatic",
+        "description": "1 Units"
+      }
+    ]
+  },
+  {
+    "id": "primal",
+    "apiName": "DA_Primal18",
+    "name": "Primal",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_primal.png",
+    "description": "Choose one of four Primal Blessings.",
+    "breakpoints": [
+      {
+        "minUnits": 2,
+        "maxUnits": 3,
+        "style": "bronze",
+        "description": "2 Units"
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 25000,
+        "style": "bronze",
+        "description": "4 Units"
+      }
+    ]
+  },
+  {
+    "id": "rapidfire",
+    "apiName": "DA_18_Rapidfire",
+    "name": "Rapidfire",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_rapidfire.png",
+    "description": "Your team gains % Attack Speed. Rapidfire champions gain more on every attack, up to stacks. +% per Attack +% per Attack +% per Attack +% per Attack",
+    "breakpoints": [
+      {
+        "minUnits": 2,
+        "maxUnits": 2,
+        "style": "bronze",
+        "description": "2 Units"
+      },
+      {
+        "minUnits": 3,
+        "maxUnits": 3,
+        "style": "gold",
+        "description": "3 Units"
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 4,
+        "style": "gold",
+        "description": "4 Units"
+      },
+      {
+        "minUnits": 5,
+        "maxUnits": 25000,
+        "style": "bronze",
+        "description": "5 Units"
+      }
+    ]
+  },
+  {
+    "id": "ravager",
+    "apiName": "DA_18_Slayer",
+    "name": "Ravager",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_ravager.png",
+    "description": "Ravagers gain % Omnivamp. Additionally, Ravagers deal bonus damage, doubled against units below % Health. % Bonus Damage % Bonus Damage % Bonus Damage",
+    "breakpoints": [
+      {
+        "minUnits": 2,
+        "maxUnits": 3,
+        "style": "bronze",
+        "description": "2 Units"
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 5,
+        "style": "gold",
+        "description": "4 Units"
+      },
+      {
+        "minUnits": 6,
+        "maxUnits": 25000,
+        "style": "bronze",
+        "description": "6 Units"
+      }
+    ]
+  },
+  {
+    "id": "riftbeast",
+    "apiName": "DA_Riftbeast18",
+    "name": "Riftbeast",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_riftbeast.png",
+    "description": "Use the Alpha Mark to grant a Riftbeast their unique Buff Every combats, your next shop is overrun with Riftbeasts. On combat start and every 5 seconds Riftbeasts grow gaining % % % + + + + + maximum team size",
+    "breakpoints": [
+      {
+        "minUnits": 3,
+        "maxUnits": 4,
+        "style": "bronze",
+        "description": "3 Units"
+      },
+      {
+        "minUnits": 5,
+        "maxUnits": 6,
+        "style": "gold",
+        "description": "5 Units"
+      },
+      {
+        "minUnits": 7,
+        "maxUnits": 9,
+        "style": "bronze",
+        "description": "7 Units"
+      },
+      {
+        "minUnits": 10,
+        "maxUnits": 25000,
+        "style": "bronze",
+        "description": "10 Units"
+      }
+    ]
+  },
+  {
+    "id": "rival",
+    "apiName": "DA_18_Rival",
+    "name": "Rival",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_rival.png",
+    "description": "Only active while fielding 1 Rival. Rivals collect takedowns, gaining 3 if they takedown another Rival. Rivals collect takedowns, gaining 3 if they takedown another Rival. Takedowns evolve Kha'Zix, permanently granting him your choice of Executioner, Rapidfire, Ravager, or Spellweaver. Rengar grants // gold every takedowns. After takedowns, your team gains % Attack Damage plus % per additional takedown. Kha'Zix Takedowns: 0 / 0 Rengar Takedowns: 0 Gold Earned: 0 Rivals can be fielded together, and their abilities grant each other bonuses.",
+    "breakpoints": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": "bronze",
+        "description": "1 Units"
+      },
+      {
+        "minUnits": 1,
+        "maxUnits": 1,
+        "style": "bronze",
+        "description": "1 Units"
+      },
+      {
+        "minUnits": 2,
+        "maxUnits": 25000,
+        "style": "bronze",
+        "description": "2 Units"
+      }
+    ]
+  },
+  {
+    "id": "solar",
+    "apiName": "DA_18_Solar",
+    "name": "Solar",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_solar.png",
+    "description": "Your champions gain a % max Health shield and deal % bonus magic damage. Gain additional bonuses for each unique 3-star champion: 1: Increase shield and magic damage by % for each 3-star.: % and: Convert % of the bonus magic damage to true damage.: Every seconds of combat, a 3-star champion ascends to 4-star.",
+    "breakpoints": [
+      {
+        "minUnits": 3,
+        "maxUnits": 25000,
+        "style": "bronze",
+        "description": "3 Units"
+      }
+    ]
+  },
+  {
+    "id": "spellweaver",
+    "apiName": "DA_18_Spellweaver",
+    "name": "Spellweaver",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_spellweaver.png",
+    "description": "Your team gains % Ability Power. Spellweavers gain more, plus extra Ability Power whenever a Spellweaver casts an Ability. %, +% per cast %, +% per cast %, +% per cast",
+    "breakpoints": [
+      {
+        "minUnits": 2,
+        "maxUnits": 3,
+        "style": "bronze",
+        "description": "2 Units"
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 5,
+        "style": "gold",
+        "description": "4 Units"
+      },
+      {
+        "minUnits": 6,
+        "maxUnits": 25000,
+        "style": "bronze",
+        "description": "6 Units"
+      }
+    ]
+  },
+  {
+    "id": "sprykin",
+    "apiName": "DA_18_Sprykin",
+    "name": "Sprykin",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_sprykin.png",
+    "description": "Gain the Big Furry Friend. Drop a Sprykin on the BFF to pick its Rider. The Rider gains % and % % %, and % of the BFF's Ability applies to your Sprykin champions. % %, and % of the BFF's Ability applies to your Sprykin champions.",
+    "breakpoints": [
+      {
+        "minUnits": 3,
+        "maxUnits": 4,
+        "style": "bronze",
+        "description": "3 Units"
+      },
+      {
+        "minUnits": 5,
+        "maxUnits": 6,
+        "style": "gold",
+        "description": "5 Units"
+      },
+      {
+        "minUnits": 7,
+        "maxUnits": 25000,
+        "style": "bronze",
+        "description": "7 Units"
+      }
+    ]
+  },
+  {
+    "id": "summoner",
+    "apiName": "DA_18_Summoner",
+    "name": "Summoner",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_summoner.png",
+    "description": "Summoners empower their summons in different ways. Yorick: +% Health Azir: +% Damage Mama Beak: +% Damage Zyra: + Plant Attacks Empower Summons Improve each effect by 50%",
+    "breakpoints": [
+      {
+        "minUnits": 2,
+        "maxUnits": 2,
+        "style": "bronze",
+        "description": "2 Units"
+      },
+      {
+        "minUnits": 3,
+        "maxUnits": 25000,
+        "style": "bronze",
+        "description": "3 Units"
+      }
+    ]
+  },
+  {
+    "id": "thornmaiden",
+    "apiName": "DA_18_ZyraUniqueTrait",
+    "name": "Thornmaiden",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_zyraorigin.png",
+    "description": "Your team gains % Durability, increased to % if or more Zyra plants are alive.",
+    "breakpoints": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": "prismatic",
+        "description": "1 Units"
+      }
+    ]
+  },
+  {
+    "id": "vanguard",
+    "apiName": "DA_18_Vanguard",
+    "name": "Vanguard",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/ux/traiticons/trait_icon_18_vanguard.png",
+    "description": "At Combat Start and after dropping below % Health, Vanguards gain a max Health Shield for seconds. % max Health % max Health % max Health. Gain % Durability while Shielded.",
+    "breakpoints": [
+      {
+        "minUnits": 2,
+        "maxUnits": 3,
+        "style": "bronze",
+        "description": "2 Units"
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 5,
+        "style": "gold",
+        "description": "4 Units"
+      },
+      {
+        "minUnits": 6,
+        "maxUnits": 25000,
+        "style": "bronze",
+        "description": "6 Units"
+      }
+    ]
+  }
+]

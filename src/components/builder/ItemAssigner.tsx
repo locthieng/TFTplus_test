@@ -1,12 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useState, useMemo } from "react";
 import Image from "next/image";
 import { useBuilderStore } from "@/stores/useBuilderStore";
-import { MOCK_CHAMPIONS, MOCK_ITEMS } from "@/data/mockTftData";
+import { useBuilderData } from "@/features/builder/context/BuilderDataContext";
 import { COST_COLORS } from "@/constants/tft";
+import { ItemType } from "@/types/tft";
 import { X, Trash2, Star } from "lucide-react";
 import { cn } from "@/utils/cn";
+import { BUILDER_EQUIPPABLE_TABS } from "@/features/builder/rules/builderItemRules";
 
 export function ItemAssigner() {
   const {
@@ -19,18 +21,32 @@ export function ItemAssigner() {
     removeChampion,
   } = useBuilderStore();
 
-  if (!selectedHex) return null;
+  const { championsById, itemsById, items } = useBuilderData();
+  const [activeTab, setActiveTab] = useState<ItemType>("completed");
 
-  const champOnHex = board.find(
-    (c) => c.x === selectedHex.x && c.y === selectedHex.y
-  );
+  const champOnHex = useMemo(() => {
+    if (!selectedHex) return null;
+    return (
+      board.find((c) => c.x === selectedHex.x && c.y === selectedHex.y) || null
+    );
+  }, [board, selectedHex]);
 
-  if (!champOnHex) return null;
+  const champData = useMemo(() => {
+    if (!champOnHex) return null;
+    return (
+      championsById.get(champOnHex.championId) ||
+      championsById.get(champOnHex.championId.toLowerCase()) ||
+      null
+    );
+  }, [champOnHex, championsById]);
 
-  const champData = MOCK_CHAMPIONS.find((c) => c.id === champOnHex.championId);
-  if (!champData) return null;
+  const filteredItems = useMemo(() => {
+    return items.filter((item) => item.type === activeTab);
+  }, [items, activeTab]);
 
-  const costStyle = COST_COLORS[champData.cost];
+  if (!selectedHex || !champOnHex || !champData) return null;
+
+  const costStyle = COST_COLORS[champData.cost] || COST_COLORS[1];
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in-0">
@@ -40,7 +56,7 @@ export function ItemAssigner() {
           <div className="flex items-center gap-3">
             <div
               className={cn(
-                "w-12 h-12 rounded-lg border-2 overflow-hidden bg-slate-900",
+                "w-12 h-12 rounded-lg border-2 overflow-hidden bg-slate-900 flex-shrink-0",
                 costStyle.border
               )}
             >
@@ -71,7 +87,7 @@ export function ItemAssigner() {
           <button
             type="button"
             onClick={clearSelection}
-            className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -87,7 +103,7 @@ export function ItemAssigner() {
                 type="button"
                 onClick={() => setStarLevel(selectedHex.x, selectedHex.y, lvl)}
                 className={cn(
-                  "flex items-center gap-1 px-3 py-1 rounded-lg text-xs font-bold transition-all border",
+                  "flex items-center gap-1 px-3 py-1 rounded-lg text-xs font-bold transition-all border cursor-pointer",
                   champOnHex.starLevel === lvl
                     ? "bg-amber-500 text-slate-950 border-amber-400 shadow-md shadow-amber-500/20"
                     : "bg-[#101520] border-slate-700/80 text-slate-400 hover:text-white"
@@ -115,7 +131,7 @@ export function ItemAssigner() {
             {Array.from({ length: 3 }).map((_, slotIdx) => {
               const itemId = champOnHex.items[slotIdx];
               const itemData = itemId
-                ? MOCK_ITEMS.find((it) => it.id === itemId)
+                ? itemsById.get(itemId) || itemsById.get(itemId.toLowerCase())
                 : null;
 
               return (
@@ -127,12 +143,14 @@ export function ItemAssigner() {
                     }
                   }}
                   className={cn(
-                    "w-12 h-12 rounded-lg border flex items-center justify-center transition-all select-none",
+                    "w-12 h-12 rounded-lg border flex items-center justify-center transition-all select-none p-1",
                     itemData
                       ? "border-amber-400/60 bg-slate-900 cursor-pointer hover:border-rose-500 hover:scale-105"
                       : "border-dashed border-slate-700 bg-[#0d121a] text-slate-600"
                   )}
-                  title={itemData ? `Click to remove ${itemData.name}` : "Empty Item Slot"}
+                  title={
+                    itemData ? `Click to remove ${itemData.name}` : "Empty Item Slot"
+                  }
                 >
                   {itemData ? (
                     <Image
@@ -140,7 +158,7 @@ export function ItemAssigner() {
                       alt={itemData.name}
                       width={44}
                       height={44}
-                      className="w-full h-full object-cover rounded-md"
+                      className="w-full h-full object-contain rounded-md"
                       unoptimized
                     />
                   ) : (
@@ -152,13 +170,29 @@ export function ItemAssigner() {
           </div>
         </div>
 
-        {/* Available Items to add */}
+        {/* Category Tabs for Equippable Items */}
         <div className="space-y-2 pt-2 border-t border-[#232f42]">
-          <span className="text-xs font-semibold text-slate-300">
-            Add Completed Item
-          </span>
-          <div className="grid grid-cols-5 sm:grid-cols-7 gap-2 max-h-40 overflow-y-auto pr-1">
-            {MOCK_ITEMS.map((item) => {
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-1">
+            {BUILDER_EQUIPPABLE_TABS.map((tab) => (
+              <button
+                key={tab.type}
+                type="button"
+                onClick={() => setActiveTab(tab.type)}
+                className={cn(
+                  "px-2.5 py-1 rounded-lg text-xs font-semibold border transition-colors select-none cursor-pointer whitespace-nowrap",
+                  activeTab === tab.type
+                    ? "bg-amber-500 text-slate-950 font-bold border-amber-400"
+                    : "bg-[#141b27] border-[#222c3d] text-slate-400 hover:text-slate-200"
+                )}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Items Palette */}
+          <div className="grid grid-cols-6 sm:grid-cols-8 gap-2 max-h-44 overflow-y-auto pr-1">
+            {filteredItems.map((item) => {
               const canAdd = champOnHex.items.length < 3;
               return (
                 <button
@@ -171,7 +205,7 @@ export function ItemAssigner() {
                     }
                   }}
                   className={cn(
-                    "w-10 h-10 rounded-lg border overflow-hidden transition-all",
+                    "w-10 h-10 rounded-lg border overflow-hidden transition-all p-0.5",
                     canAdd
                       ? "border-[#2b394e] hover:border-amber-400 hover:scale-105 bg-slate-900 cursor-pointer"
                       : "opacity-40 border-slate-800 cursor-not-allowed"
@@ -183,7 +217,7 @@ export function ItemAssigner() {
                     alt={item.name}
                     width={40}
                     height={40}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                     unoptimized
                   />
                 </button>

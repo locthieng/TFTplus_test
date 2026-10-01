@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Trophy, Globe } from "lucide-react";
+import { PlatformRegion } from "@/types/region";
 import { SearchInput } from "@/components/common/SearchInput";
 import { cn } from "@/utils/cn";
 
@@ -10,6 +11,7 @@ interface LeaderboardEntry {
   rank: number;
   gameName: string;
   tagLine: string;
+  region: PlatformRegion;
   tier: "Challenger" | "Grandmaster" | "Master";
   lp: number;
   winRate: number;
@@ -18,23 +20,36 @@ interface LeaderboardEntry {
 }
 
 const MOCK_LEADERBOARD: LeaderboardEntry[] = [
-  { rank: 1, gameName: "YBY1", tagLine: "VN2", tier: "Challenger", lp: 1650, winRate: 24.5, top4Rate: 68.2, games: 320 },
-  { rank: 2, gameName: "Em Chè", tagLine: "DDT", tier: "Challenger", lp: 1520, winRate: 22.1, top4Rate: 64.8, games: 410 },
-  { rank: 3, gameName: "GD Feed", tagLine: "VN1", tier: "Challenger", lp: 1480, winRate: 21.0, top4Rate: 62.5, games: 290 },
-  { rank: 4, gameName: "DVG Midfeed", tagLine: "6868", tier: "Challenger", lp: 1410, winRate: 20.4, top4Rate: 61.0, games: 380 },
-  { rank: 5, gameName: "K3soju", tagLine: "NA1", tier: "Challenger", lp: 1395, winRate: 19.8, top4Rate: 59.5, games: 540 },
-  { rank: 6, gameName: "Dishsoap", tagLine: "NA1", tier: "Challenger", lp: 1350, winRate: 23.0, top4Rate: 65.0, games: 310 },
-  { rank: 7, gameName: "Setsuko", tagLine: "NA1", tier: "Challenger", lp: 1310, winRate: 21.5, top4Rate: 60.2, games: 490 },
-  { rank: 8, gameName: "Bebe872", tagLine: "KR1", tier: "Challenger", lp: 1285, winRate: 22.8, top4Rate: 63.4, games: 340 },
+  // Vietnam
+  { rank: 1, gameName: "YBY1", tagLine: "VN2", region: "vn", tier: "Challenger", lp: 1650, winRate: 24.5, top4Rate: 68.2, games: 320 },
+  { rank: 2, gameName: "Em Chè", tagLine: "DDT", region: "vn", tier: "Challenger", lp: 1520, winRate: 22.1, top4Rate: 64.8, games: 410 },
+  { rank: 3, gameName: "GD Feed", tagLine: "VN1", region: "vn", tier: "Challenger", lp: 1480, winRate: 21.0, top4Rate: 62.5, games: 290 },
+  { rank: 4, gameName: "DVG Midfeed", tagLine: "6868", region: "vn", tier: "Challenger", lp: 1410, winRate: 20.4, top4Rate: 61.0, games: 380 },
+  // North America
+  { rank: 1, gameName: "Dishsoap", tagLine: "NA1", region: "na", tier: "Challenger", lp: 1680, winRate: 25.1, top4Rate: 69.4, games: 340 },
+  { rank: 2, gameName: "Setsuko", tagLine: "NA1", region: "na", tier: "Challenger", lp: 1610, winRate: 22.5, top4Rate: 63.8, games: 520 },
+  { rank: 3, gameName: "K3soju", tagLine: "NA1", region: "na", tier: "Challenger", lp: 1540, winRate: 20.8, top4Rate: 60.5, games: 580 },
+  // Korea
+  { rank: 1, gameName: "Bebe872", tagLine: "KR1", region: "kr", tier: "Challenger", lp: 1720, winRate: 26.2, top4Rate: 70.1, games: 360 },
+  { rank: 2, gameName: "DduDdu", tagLine: "KR1", region: "kr", tier: "Challenger", lp: 1590, winRate: 23.4, top4Rate: 65.2, games: 410 },
+  // Europe West
+  { rank: 1, gameName: "Voltariux", tagLine: "EUW", region: "euw", tier: "Challenger", lp: 1640, winRate: 24.0, top4Rate: 67.5, games: 390 },
+  { rank: 2, gameName: "Double61", tagLine: "EUW", region: "euw", tier: "Challenger", lp: 1560, winRate: 21.9, top4Rate: 63.1, games: 440 },
 ];
 
 export default function LeaderboardPage() {
-  const [selectedRegion, setSelectedRegion] = useState("VN");
+  const [selectedRegion, setSelectedRegion] = useState<PlatformRegion>("vn");
   const [search, setSearch] = useState("");
 
-  const regions = ["VN", "NA", "EUW", "KR"];
+  const regions: { id: PlatformRegion; label: string }[] = [
+    { id: "vn", label: "VN" },
+    { id: "na", label: "NA" },
+    { id: "euw", label: "EUW" },
+    { id: "kr", label: "KR" },
+  ];
 
   const filteredLeaderboard = MOCK_LEADERBOARD.filter((entry) => {
+    if (entry.region !== selectedRegion) return false;
     if (search && !entry.gameName.toLowerCase().includes(search.toLowerCase()))
       return false;
     return true;
@@ -67,17 +82,17 @@ export default function LeaderboardPage() {
           <Globe className="w-4 h-4 text-slate-400 ml-2" />
           {regions.map((region) => (
             <button
-              key={region}
+              key={region.id}
               type="button"
-              onClick={() => setSelectedRegion(region)}
+              onClick={() => setSelectedRegion(region.id)}
               className={cn(
                 "px-3 py-1 text-xs font-bold rounded-lg transition-colors cursor-pointer select-none",
-                selectedRegion === region
+                selectedRegion === region.id
                   ? "bg-amber-500 text-slate-950 shadow"
                   : "text-slate-400 hover:text-white"
               )}
             >
-              {region}
+              {region.label}
             </button>
           ))}
           </div>
@@ -107,7 +122,7 @@ export default function LeaderboardPage() {
 
                 return (
                   <tr
-                    key={entry.rank}
+                    key={`${entry.region}-${entry.rank}`}
                     className="hover:bg-[#16202e] transition-colors"
                   >
                     <td className="py-3 px-4 text-center font-bold">
@@ -132,7 +147,7 @@ export default function LeaderboardPage() {
 
                     <td className="py-3 px-4 font-semibold text-slate-100">
                       <Link
-                        href={`/player/${selectedRegion.toLowerCase()}/${entry.gameName}/${entry.tagLine}`}
+                        href={`/player/${entry.region}/${encodeURIComponent(entry.gameName)}/${encodeURIComponent(entry.tagLine)}`}
                         className="hover:text-amber-400 transition-colors flex items-center gap-1.5"
                       >
                         <span>{entry.gameName}</span>

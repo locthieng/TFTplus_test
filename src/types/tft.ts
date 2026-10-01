@@ -25,6 +25,9 @@ export interface Champion {
   armor?: number;
   magicResist?: number;
   range?: number;
+  critChance?: number;
+  critDamage?: number;
+  role?: string;
   ability?: ChampionAbility;
 }
 
@@ -122,6 +125,12 @@ export interface TeamComp {
   traits: TeamCompTrait[];
   recommendedItems: TeamCompItem[];
   augments: string[]; // Augment IDs or names
+  carryChampionIds?: string[];
+  coreChampionIds?: string[];
+  heroHexCoreIds?: string[];
+  priorityHexCoreIds?: string[];
+  alternativeHexCoreIds?: string[];
+  tags?: string[];
   earlyGame?: string;
   midGame?: string;
   lateGame?: string;

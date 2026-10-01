@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { MOCK_CHAMPIONS, MOCK_ITEMS, MOCK_TRAITS } from "@/data/mockTftData";
+import { tftService } from "@/services/tft";
+import { Champion, Trait, Item } from "@/types/tft";
 import { ChampionAvatar } from "@/components/champion/ChampionAvatar";
 import { TraitBadge } from "@/components/trait/TraitBadge";
 import { Trophy, ArrowLeft, Clock } from "lucide-react";
@@ -34,6 +35,31 @@ export default async function PlayerProfilePage({
   const { region, gameName, tag } = await params;
   const decodedGameName = decodeURIComponent(gameName);
   const decodedTag = decodeURIComponent(tag);
+
+  const [allChampions, allTraits, allItems] = await Promise.all([
+    tftService.getChampions(),
+    tftService.getTraits(),
+    tftService.getItems(),
+  ]);
+
+  const championsById = new Map<string, Champion>();
+  for (const c of allChampions) {
+    championsById.set(c.id, c);
+    championsById.set(c.id.toLowerCase(), c);
+  }
+
+  const traitsById = new Map<string, Trait>();
+  for (const t of allTraits) {
+    traitsById.set(t.id, t);
+    traitsById.set(t.id.toLowerCase(), t);
+    traitsById.set(t.name.toLowerCase(), t);
+  }
+
+  const itemsById = new Map<string, Item>();
+  for (const i of allItems) {
+    itemsById.set(i.id, i);
+    itemsById.set(i.id.toLowerCase(), i);
+  }
 
   // Mock match history for this player
   const mockMatches: MockMatch[] = [
@@ -128,56 +154,59 @@ export default async function PlayerProfilePage({
               <span className="text-sm font-semibold text-slate-400 font-mono">
                 #{decodedTag}
               </span>
-              <span className="text-xs font-bold uppercase px-2 py-0.5 rounded bg-amber-400/10 text-amber-400 border border-amber-400/20">
-                {region.toUpperCase()}
-              </span>
             </div>
-            <p className="text-xs text-slate-400 mt-1">
-              Teamfight Tactics Set 13 • Ranked TFT Solo/Duo
-            </p>
+            <div className="flex items-center gap-2 text-xs text-slate-400 mt-1 uppercase font-semibold">
+              <span className="px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                {region}
+              </span>
+              <span>•</span>
+              <span className="text-amber-400 font-bold">Challenger</span>
+              <span>•</span>
+              <span>Rank #1</span>
+            </div>
           </div>
         </div>
 
-        {/* Rank & Stats Cards */}
-        <div className="grid grid-cols-3 gap-3 text-center">
-          <div className="bg-[#172130] border border-[#27364d] p-3 rounded-xl">
-            <span className="text-[10px] text-slate-400 uppercase font-semibold block">
-              Tier / LP
-            </span>
-            <span className="text-sm sm:text-base font-extrabold text-amber-400 block mt-0.5">
-              Challenger
-            </span>
-            <span className="text-xs font-mono text-slate-300">1,520 LP</span>
+        {/* Quick Rank Snapshot Card */}
+        <div className="flex items-center gap-6 bg-[#16202e] border border-[#243144] rounded-xl p-4">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-lg bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400">
+              <Trophy className="w-6 h-6" />
+            </div>
+            <div>
+              <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">
+                Current Tier
+              </span>
+              <span className="text-sm font-extrabold text-amber-400">
+                Challenger 1,420 LP
+              </span>
+            </div>
           </div>
 
-          <div className="bg-[#172130] border border-[#27364d] p-3 rounded-xl">
-            <span className="text-[10px] text-slate-400 uppercase font-semibold block">
-              Top 4 Rate
-            </span>
-            <span className="text-sm sm:text-base font-extrabold text-emerald-400 block mt-0.5">
-              64.8%
-            </span>
-            <span className="text-xs font-mono text-slate-400">265 / 410</span>
-          </div>
+          <div className="h-8 w-px bg-slate-700/60" />
 
-          <div className="bg-[#172130] border border-[#27364d] p-3 rounded-xl">
-            <span className="text-[10px] text-slate-400 uppercase font-semibold block">
+          <div>
+            <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">
               Win Rate
             </span>
-            <span className="text-sm sm:text-base font-extrabold text-sky-400 block mt-0.5">
-              22.1%
+            <span className="text-sm font-extrabold text-slate-200">
+              24.8% <span className="text-xs text-slate-400 font-normal">(68.2% Top 4)</span>
             </span>
-            <span className="text-xs font-mono text-slate-400">91 Wins</span>
           </div>
         </div>
       </div>
 
-      {/* Match History */}
+      {/* Match History Section */}
       <div className="space-y-4">
-        <h2 className="text-lg font-bold text-slate-100 flex items-center gap-2">
-          <Trophy className="w-5 h-5 text-amber-400" />
-          Recent Matches
-        </h2>
+        <div className="flex items-center justify-between border-b border-[#20293b] pb-3">
+          <h2 className="text-lg font-bold text-slate-100 flex items-center gap-2">
+            <span>Recent Matches</span>
+            <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-[#182333] text-slate-400 border border-[#26374f]">
+              {mockMatches.length} Matches
+            </span>
+          </h2>
+          <span className="text-xs text-slate-500">Normal / Ranked Convergence</span>
+        </div>
 
         <div className="space-y-3">
           {mockMatches.map((m) => {
@@ -188,12 +217,12 @@ export default async function PlayerProfilePage({
               <div
                 key={m.matchId}
                 className={cn(
-                  "p-4 sm:p-5 rounded-2xl border flex flex-col md:flex-row md:items-center justify-between gap-4 transition-all",
+                  "bg-[#121824] border rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 transition-all",
                   isTop1
-                    ? "bg-gradient-to-r from-amber-950/20 via-[#131a26] to-[#121824] border-amber-500/40"
+                    ? "border-amber-500/40 bg-gradient-to-r from-amber-500/5 to-transparent"
                     : isTop4
-                    ? "bg-gradient-to-r from-blue-950/20 via-[#131a26] to-[#121824] border-blue-500/30"
-                    : "bg-[#121824] border-[#222c3d]"
+                    ? "border-blue-500/30"
+                    : "border-[#20293b]"
                 )}
               >
                 {/* Placement badge & match info */}
@@ -240,12 +269,25 @@ export default async function PlayerProfilePage({
                 {/* Champions Played */}
                 <div className="flex flex-wrap items-center gap-2 py-1">
                   {m.units.map((unit, uIdx) => {
-                    const champData = MOCK_CHAMPIONS.find(
-                      (c) => c.id === unit.championId
-                    );
-                    if (!champData) return null;
+                    const champData =
+                      championsById.get(unit.championId) ||
+                      championsById.get(unit.championId.toLowerCase()) || {
+                        id: unit.championId,
+                        apiName: unit.championId,
+                        name: unit.championId,
+                        cost: 1,
+                        imageUrl: "",
+                        traits: [],
+                        health: [500, 900, 1620],
+                        attackDamage: [40, 72, 130],
+                        attackSpeed: 0.65,
+                        armor: 25,
+                        magicResist: 25,
+                        range: 1,
+                      };
+
                     const items = (unit.items || [])
-                      .map((id) => MOCK_ITEMS.find((it) => it.id === id))
+                      .map((id) => itemsById.get(id) || itemsById.get(id.toLowerCase()))
                       .filter((it): it is NonNullable<typeof it> => !!it);
 
                     return (
@@ -265,10 +307,17 @@ export default async function PlayerProfilePage({
                 {/* Traits & Augments */}
                 <div className="flex flex-wrap items-center gap-2">
                   {m.traits.map((t, tIdx) => {
-                    const traitData = MOCK_TRAITS.find(
-                      (tr) => tr.id === t.traitId
-                    );
-                    if (!traitData) return null;
+                    const traitData =
+                      traitsById.get(t.traitId) ||
+                      traitsById.get(t.traitId.toLowerCase()) || {
+                        id: t.traitId,
+                        apiName: t.traitId,
+                        name: t.traitId,
+                        iconUrl: "",
+                        description: "",
+                        breakpoints: [],
+                      };
+
                     return (
                       <TraitBadge
                         key={tIdx}

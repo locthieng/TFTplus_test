@@ -1,7 +1,8 @@
 import { CostTier, TeamCompTier, TraitTierStyle } from "@/types/tft";
+import { TFT_RELEASE_CONFIG } from "@/config/tftConfig";
 
-export const CURRENT_SET = "13";
-export const CURRENT_PATCH = "14.24";
+export const CURRENT_SET = TFT_RELEASE_CONFIG.setId;
+export const CURRENT_PATCH = TFT_RELEASE_CONFIG.patch;
 
 export const COST_COLORS: Record<CostTier, { text: string; bg: string; border: string; glow: string }> = {
   1: {

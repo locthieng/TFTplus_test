@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { BoardChampion } from "@/types/tft";
-import { MOCK_CHAMPIONS, MOCK_ITEMS } from "@/data/mockTftData";
+import { useBuilderData } from "@/features/builder/context/BuilderDataContext";
 import { COST_COLORS } from "@/constants/tft";
 import { Star, X, Plus } from "lucide-react";
 import { cn } from "@/utils/cn";
@@ -33,11 +33,14 @@ export function HexCell({
   onDragOver,
   onDrop,
 }: HexCellProps) {
+  const { championsById, itemsById } = useBuilderData();
+
   const champData = champion
-    ? MOCK_CHAMPIONS.find((c) => c.id === champion.championId)
+    ? championsById.get(champion.championId) ||
+      championsById.get(champion.championId.toLowerCase())
     : undefined;
 
-  const costStyle = champData ? COST_COLORS[champData.cost] : null;
+  const costStyle = champData ? COST_COLORS[champData.cost] || COST_COLORS[1] : null;
 
   return (
     <div
@@ -106,7 +109,8 @@ export function HexCell({
               {champion && champion.items.length > 0 && (
                 <div className="absolute bottom-1 left-1/2 -translate-x-1/2 flex items-center gap-0.5 z-10">
                   {champion.items.map((itemId, idx) => {
-                    const itemData = MOCK_ITEMS.find((it) => it.id === itemId);
+                    const itemData =
+                      itemsById.get(itemId) || itemsById.get(itemId.toLowerCase());
                     if (!itemData) return null;
                     return (
                       <div
@@ -134,7 +138,7 @@ export function HexCell({
                   e.stopPropagation();
                   onRemove?.();
                 }}
-                className="absolute -top-1 -right-1 z-30 p-1 bg-rose-600 hover:bg-rose-500 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity shadow-lg"
+                className="absolute -top-1 -right-1 z-30 p-1 bg-rose-600 hover:bg-rose-500 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity shadow-lg cursor-pointer"
                 title="Remove unit"
               >
                 <X className="w-3 h-3" />

@@ -2,13 +2,22 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { TftService } from "@/services/tft/TftService";
-import { MOCK_CHAMPIONS, MOCK_ITEMS, MOCK_TRAITS, MOCK_AUGMENTS } from "@/data/mockTftData";
+import { tftService } from "@/services/tft";
+import { Champion, Trait, Item, Augment } from "@/types/tft";
 import { COMP_TIER_COLORS, COST_COLORS } from "@/constants/tft";
 import { ChampionAvatar } from "@/components/champion/ChampionAvatar";
 import { TraitBadge } from "@/components/trait/TraitBadge";
 import { ArrowLeft, Swords, Shield, Sparkles, BookOpen, Clock } from "lucide-react";
 import { cn } from "@/utils/cn";
+import { encodeBuilderSnapshot } from "@/features/builder/share/builderShareCodec";
+import { TFT_RELEASE_CONFIG } from "@/config/tftConfig";
+
+export async function generateStaticParams() {
+  const comps = await tftService.getTeamComps({
+    setId: TFT_RELEASE_CONFIG.setId,
+  });
+  return comps.map((c) => ({ id: c.id }));
+}
 
 export default async function TeamCompDetailPage({
   params,
@@ -16,24 +25,76 @@ export default async function TeamCompDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const comp = await TftService.getTeamCompById(id);
+  const comp = await tftService.getTeamCompById(id);
 
-  if (!comp) {
+  if (!comp || comp.setId !== TFT_RELEASE_CONFIG.setId) {
     notFound();
   }
 
-  const tierStyle = COMP_TIER_COLORS[comp.tier];
+  const [allChampions, allTraits, allItems, allAugments] = await Promise.all([
+    tftService.getChampions(),
+    tftService.getTraits(),
+    tftService.getItems(),
+    tftService.getAugments(),
+  ]);
+
+  const championsById = new Map<string, Champion>();
+  for (const c of allChampions) {
+    championsById.set(c.id, c);
+    championsById.set(c.id.toLowerCase(), c);
+  }
+
+  const traitsById = new Map<string, Trait>();
+  for (const t of allTraits) {
+    traitsById.set(t.id, t);
+    traitsById.set(t.id.toLowerCase(), t);
+    traitsById.set(t.name.toLowerCase(), t);
+  }
+
+  const itemsById = new Map<string, Item>();
+  for (const i of allItems) {
+    itemsById.set(i.id, i);
+    itemsById.set(i.id.toLowerCase(), i);
+  }
+
+  const augmentsById = new Map<string, Augment>();
+  for (const a of allAugments) {
+    augmentsById.set(a.id, a);
+    augmentsById.set(a.id.toLowerCase(), a);
+  }
+
+  const tierStyle = COMP_TIER_COLORS[comp.tier] || COMP_TIER_COLORS.B;
 
   // Helper to resolve items
-  const getChampionItems = (championId: string, itemIds?: string[]) => {
-    if (!itemIds) return [];
+  const getChampionItems = (itemIds?: string[]) => {
+    if (!itemIds || itemIds.length === 0) return [];
     return itemIds
-      .map((itId) => MOCK_ITEMS.find((it) => it.id === itId))
+      .map((itId) => {
+        const found = itemsById.get(itId) || itemsById.get(itId.toLowerCase());
+        if (found) return found;
+        return {
+          id: itId,
+          name: itId.replace(/_/g, " "),
+          imageUrl: "",
+          type: "completed" as const,
+          description: "",
+        };
+      })
       .filter((it): it is NonNullable<typeof it> => it !== undefined);
   };
 
+  const snapshotParam = encodeBuilderSnapshot(
+    comp.champions.map((ch, idx) => ({
+      championId: ch.championId,
+      x: ch.position?.col ?? idx % 7,
+      y: ch.position?.row ?? Math.floor(idx / 7),
+      starLevel: ch.starLevel ?? 2,
+      items: ch.items ?? [],
+    }))
+  );
+
   return (
-    <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <div className="flex-1 max-w-[1440px] w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
       {/* Back button */}
       <div>
         <Link
@@ -95,18 +156,8 @@ export default async function TeamCompDetailPage({
         {/* Link to Open in Builder */}
         <div className="z-10 flex items-center gap-3">
           <Link
-            href={`/builder?snapshot=${btoa(
-              JSON.stringify(
-                comp.champions.map((ch, idx) => ({
-                  championId: ch.championId,
-                  x: ch.position?.col ?? idx % 7,
-                  y: ch.position?.row ?? Math.floor(idx / 7),
-                  starLevel: ch.starLevel ?? 2,
-                  items: ch.items ?? [],
-                }))
-              )
-            )}`}
-            className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs shadow-lg shadow-amber-500/20 transition-all flex items-center gap-2"
+            href={`/builder?snapshot=${snapshotParam}`}
+            className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs shadow-lg shadow-amber-500/20 transition-all flex items-center gap-2 cursor-pointer"
           >
             <Sparkles className="w-4 h-4" />
             Open in Team Builder
@@ -142,10 +193,25 @@ export default async function TeamCompDetailPage({
                       (c) => c.position?.row === rIdx && c.position?.col === cIdx
                     );
                     const champData = champUnit
-                      ? MOCK_CHAMPIONS.find((c) => c.id === champUnit.championId)
+                      ? championsById.get(champUnit.championId) ||
+                        championsById.get(champUnit.championId.toLowerCase()) || {
+                          id: champUnit.championId,
+                          apiName: champUnit.championId,
+                          name: champUnit.name,
+                          cost: champUnit.cost,
+                          imageUrl: champUnit.imageUrl || "",
+                          traits: [],
+                          health: [600, 1080, 1944],
+                          attackDamage: [50, 90, 162],
+                          attackSpeed: 0.7,
+                          armor: 30,
+                          magicResist: 30,
+                          range: 1,
+                        }
                       : null;
+
                     const costStyle = champData
-                      ? COST_COLORS[champData.cost]
+                      ? COST_COLORS[champData.cost] || COST_COLORS[1]
                       : null;
 
                     return (
@@ -187,11 +253,24 @@ export default async function TeamCompDetailPage({
             </h3>
             <div className="flex flex-wrap gap-4">
               {comp.champions.map((champUnit, idx) => {
-                const champData = MOCK_CHAMPIONS.find(
-                  (c) => c.id === champUnit.championId
-                );
-                if (!champData) return null;
-                const items = getChampionItems(champUnit.championId, champUnit.items);
+                const champData =
+                  championsById.get(champUnit.championId) ||
+                  championsById.get(champUnit.championId.toLowerCase()) || {
+                    id: champUnit.championId,
+                    apiName: champUnit.championId,
+                    name: champUnit.name,
+                    cost: champUnit.cost,
+                    imageUrl: champUnit.imageUrl || "",
+                    traits: [],
+                    health: [600, 1080, 1944],
+                    attackDamage: [50, 90, 162],
+                    attackSpeed: 0.7,
+                    armor: 30,
+                    magicResist: 30,
+                    range: 1,
+                  };
+
+                const items = getChampionItems(champUnit.items);
 
                 return (
                   <ChampionAvatar
@@ -220,8 +299,17 @@ export default async function TeamCompDetailPage({
             </h2>
             <div className="flex flex-col gap-2">
               {comp.traits.map((t, idx) => {
-                const traitData = MOCK_TRAITS.find((tr) => tr.id === t.traitId);
-                if (!traitData) return null;
+                const traitData =
+                  traitsById.get(t.traitId) ||
+                  traitsById.get(t.traitId.toLowerCase()) || {
+                    id: t.traitId,
+                    apiName: t.traitId,
+                    name: t.name,
+                    iconUrl: t.iconUrl || "",
+                    description: "",
+                    breakpoints: [],
+                  };
+
                 return (
                   <div key={idx} className="flex items-center justify-between">
                     <TraitBadge
@@ -247,8 +335,18 @@ export default async function TeamCompDetailPage({
               </h2>
               <div className="space-y-2">
                 {comp.augments.map((augId, idx) => {
-                  const augData = MOCK_AUGMENTS.find((a) => a.id === augId);
-                  if (!augData) return null;
+                  const augData =
+                    augmentsById.get(augId) ||
+                    augmentsById.get(augId.toLowerCase()) || {
+                      id: augId,
+                      apiName: augId,
+                      name: augId.replace(/_/g, " "),
+                      tier: "gold" as const,
+                      iconUrl:
+                        "https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/tft_hextech_augment.png",
+                      description: "",
+                    };
+
                   return (
                     <div
                       key={idx}

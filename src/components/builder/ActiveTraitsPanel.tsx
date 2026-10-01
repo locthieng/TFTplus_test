@@ -3,16 +3,23 @@
 import React, { useMemo } from "react";
 import Image from "next/image";
 import { useBuilderStore } from "@/stores/useBuilderStore";
+import { useBuilderData } from "@/features/builder/context/BuilderDataContext";
 import { calculateBoardTraits } from "@/utils/traitCalculator";
 import { TRAIT_STYLE_CONFIG } from "@/constants/tft";
 import { cn } from "@/utils/cn";
 
 export function ActiveTraitsPanel() {
   const board = useBuilderStore((state) => state.board);
+  const { championsById, traitsById } = useBuilderData();
 
   const calculatedTraits = useMemo(() => {
-    return calculateBoardTraits(board);
-  }, [board]);
+    if (championsById.size === 0 || traitsById.size === 0) return [];
+    return calculateBoardTraits({
+      board,
+      championsById,
+      traitsById,
+    });
+  }, [board, championsById, traitsById]);
 
   const activeTraits = calculatedTraits.filter((t) => t.isActive);
   const inactiveTraits = calculatedTraits.filter((t) => !t.isActive);

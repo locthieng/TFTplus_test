@@ -1,0 +1,2762 @@
+[
+  {
+    "id": "tft_augment_goldenquest",
+    "apiName": "TFT_Augment_GoldenQuest",
+    "name": "A Golden Quest",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/agoldenquest_ii.png",
+    "description": "The first time you have or more gold, gain a 2-star 5-cost champion and 2 items tailored to them.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_magicroll",
+    "apiName": "TFT_Augment_MagicRoll",
+    "name": "A Magic Roll",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/a-magical-roll-ii.png",
+    "description": "Roll 3 dice. Gain rewards based on their total. Reward:",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_storyofseven",
+    "apiName": "TFT_Augment_StoryOfSeven",
+    "name": "A Story of Seven",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/questfortheseven_ii.png",
+    "description": "Collect Golden Balls by defeating players in combat. Collect all for a reward, then restart the quest with more powerful rewards. Gain a 2-star 1-cost champion to start your journey.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_advancedloan",
+    "apiName": "TFT_Augment_AdvancedLoan",
+    "name": "Advanced Loan",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/advancedloan_ii.png",
+    "description": "Gain Gold. Your next augment is one tier lower.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_advancedloanplus",
+    "apiName": "TFT_Augment_AdvancedLoanPlus",
+    "name": "Advanced Loan+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/advancedloan_ii.png",
+    "description": "Gain Gold. Your next augment is one tier lower.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_aimforthetop",
+    "apiName": "TFT_Augment_AimForTheTop",
+    "name": "Aim For The Top!",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/aimforthetop_ii.png",
+    "description": "You are more likely to fight stronger players, and you know who you will fight. When you lose, gain XP. After your first win and every wins after, gain a component. Foes vanquished:",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_allthatshimmersplus",
+    "apiName": "TFT_Augment_AllThatShimmersPlus",
+    "name": "All That Shimmers+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/all-that-shimmers-ii.png",
+    "description": "Choose a gold-generating Artifact. Gain a Magnetic Remover and gold.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_anotherone",
+    "apiName": "TFT_Augment_AnotherOne",
+    "name": "Another One!",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/anotherone_ii.png",
+    "description": "The next completed item you make grants an additional copy of it. Gain gold now.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_anotheroneplus",
+    "apiName": "TFT_Augment_AnotherOnePlus",
+    "name": "Another One!+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/anotherone_ii.png",
+    "description": "The next completed item you make grants another copy of it. Gain component anvil.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_arcaneviktory",
+    "apiName": "TFT_Augment_ArcaneViktory",
+    "name": "Arcane Viktor-y",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/arcaneviktory_ii.png",
+    "description": "After seconds of combat, stun the enemy team for seconds. Repeat this after seconds of combat. TFT Macao Open, 2024",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_aurafarming",
+    "apiName": "TFT_Augment_AuraFarming",
+    "name": "Aura Farming",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/aurafarming_ii.png",
+    "description": "Gain a -star 5-cost champion holding a recommended item. You cannot field it until Stage -.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_backlineblueprint",
+    "apiName": "TFT_Augment_BacklineBlueprint",
+    "name": "Backline Blueprint",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/backlineblueprint_ii.png",
+    "description": "Gain a 3-cost non-Tank champion and an Emblem that matches their last-listed trait.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_backupdancers",
+    "apiName": "TFT_Augment_BackupDancers",
+    "name": "Backup Dancers",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/backupdancers_ii.png",
+    "description": "Combat start: Every seconds, champions in your rightmost bench slots grant your team % Attack Speed per slot.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_bandofthievesii",
+    "apiName": "DA_BandOfThievesII",
+    "name": "Band of Thieves II",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/bandthieves3.png",
+    "description": "Gain Thief's Gloves. After player combats, gain another.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_bandofthievesiiplus",
+    "apiName": "DA_BandOfThievesIIPlus",
+    "name": "Band of Thieves II+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/bandthieves3.png",
+    "description": "Gain Thief's Gloves. After player combats, gain another.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_bandofthievesiiplusplus",
+    "apiName": "DA_BandOfThievesIIPlusPlus",
+    "name": "Band of Thieves II++",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/bandthieves3.png",
+    "description": "Gain Thief's Gloves. After player combats, gain another.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_18_biggrabbag",
+    "apiName": "DA_18_BigGrabBag",
+    "name": "Big Grab Bag",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/grab-bag-ii.png",
+    "description": "Gain 3 random components, gold, and 1 Reforger.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_birthdayreunion",
+    "apiName": "TFT_Augment_BirthdayReunion",
+    "name": "Birthday Reunion",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/birthdayreunion_ii.png",
+    "description": "Gain gold. At Level, gain a random 2-star 2-cost champion. At Level, gain a Thief's Gloves. At Level, gain a random 2-star 5-cost champion. Inkborn Fables Tactician's Crown, 2024",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_blazingsoul",
+    "apiName": "TFT_Augment_BlazingSoul",
+    "name": "Blazing Soul I",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/blazing-soul-ii.png",
+    "description": "Combat start: Your highest Attack Speed champion gains % Ability Power and % Attack Speed. Repeat on another ally every seconds.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_thedarkinblade",
+    "apiName": "TFT_Augment_TheDarkinBlade",
+    "name": "Blood Offering",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/trailofblood_ii.png",
+    "description": "Gain a Bloodthirster. Combat start: Allies holding Bloodthirsters lose % Health but gain a % Health shield and % Attack Damage and Ability Power.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_bloodrage",
+    "apiName": "TFT_Augment_BloodRage",
+    "name": "Blood Rage",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/bloodrage_ii.png",
+    "description": "Your allies gain -% Damage Amp based on their missing Health. Maximum Damage Amp gained at % Health.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_bodyguardtraining",
+    "apiName": "TFT_Augment_BodyguardTraining",
+    "name": "Bodyguard Training",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/bodyguardstraining_ii.png",
+    "description": "Allies gain Armor and Magic Resist, increased by per player level. Gizmos & Gadgets Championship, 2022",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_boosterpack",
+    "apiName": "TFT_Augment_BoosterPack",
+    "name": "Booster Pack",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/boosterpack1_ii.png",
+    "description": "Gain gold of random champions. (At least one -cost guaranteed!) (Each champion has a small chance of being holographic!)",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_boosterpackplus",
+    "apiName": "TFT_Augment_BoosterPackPlus",
+    "name": "Booster Pack+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/boosterpack1_ii.png",
+    "description": "Gain gold of random champions. (At least one -cost guaranteed!) (Each champion has a small chance of being holographic!)",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_boosterpackplusplus",
+    "apiName": "TFT_Augment_BoosterPackPlusPlus",
+    "name": "Booster Pack++",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/choiceui/boosterpack1_ii.png",
+    "description": "Gain gold of random champions. (At least one -cost guaranteed!) (Each champion has a small chance of being holographic!)",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_bronzeforlifei",
+    "apiName": "TFT_Augment_BronzeForLifeI",
+    "name": "Bronze For Life I",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/bronzeforlife_ii.png",
+    "description": "Your team gains % Damage Amp for each Bronze-tier trait. Damage Amp Bonus: %",
+    "tier": "gold"
+  },
+  {
+    "id": "da_capitalgainsii",
+    "apiName": "DA_CapitalGainsII",
+    "name": "Capital Gains II",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t2.png",
+    "description": "Store gold equal to the interest you earn. On -, gain gold equal to % of the stored gold. Gain gold now.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_homecooking",
+    "apiName": "TFT_Augment_HomeCooking",
+    "name": "Care Package",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/carepackage_ii.png",
+    "description": "Now and at the start of the next Stages, receive a care package with loot and gold.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_caretakersfavor",
+    "apiName": "DA_CaretakersFavor",
+    "name": "Caretaker's Favor",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/caretaker_s-chosen-ii.png",
+    "description": "Gain a component anvil when you reach level 5, 6, 7, and 8. Component anvils offer 4 choices.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_celestialblessingii",
+    "apiName": "DA_CelestialBlessingII",
+    "name": "Celestial Blessing II",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/celestialblessing2.png",
+    "description": "Your team gains % Omnivamp. Excess healing is converted to a shield up to Health.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_challengersgrace",
+    "apiName": "DA_ChallengersGrace",
+    "name": "Challenger's Grace",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/choiceui/precisiongrace_ii.png",
+    "description": "At the start of combat, allies gain % Attack Speed for seconds. On takedown, allies dash to their next target and gain this bonus again.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_chargetransfer2",
+    "apiName": "TFT_Augment_ChargeTransfer2",
+    "name": "Charge Transfer II",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/chargetransfer2_ii.png",
+    "description": "Your team gains % Damage Amp. % of overkill damage is dealt to the nearest enemy as magic damage.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_climbtheladder2",
+    "apiName": "TFT_Augment_ClimbTheLadder2",
+    "name": "Climb The Ladder II",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/climbtheladder_ii.png",
+    "description": "Each time an ally dies, allies that share at least one trait with them gain % Ability Power, % Attack Damage, Armor, and Magic Resist.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_clockworkaccelerator",
+    "apiName": "TFT_Augment_ClockworkAccelerator",
+    "name": "Clockwork Accelerator",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/clockworkaccelerator_ii.png",
+    "description": "Your team gains % Attack Speed every seconds in combat.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_cloningfacility",
+    "apiName": "TFT_Augment_CloningFacility",
+    "name": "Cloning Facility",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/trickmirror_ii.png",
+    "description": "Empower the hex in the center of the third row. Summon a clone of the champion in it with % base Health and % increased Mana cost.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_clutteredmind",
+    "apiName": "DA_ClutteredMind",
+    "name": "Cluttered Mind",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/dizzy-ii.png",
+    "description": "Gain -cost champions now. If your bench is full at the end of player combat, gain XP.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_cognitiveoverload",
+    "apiName": "TFT_Augment_CognitiveOverload",
+    "name": "Cognitive Overload",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/cognitiveoverload_ii.png",
+    "description": "Gain gold, 2-star 1-cost champion, 2-cost champion, 3-cost champions, XP, and Shop reroll.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_cookingpot",
+    "apiName": "TFT_Augment_CookingPot",
+    "name": "Cooking Pot",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/cookingpot_ii.png",
+    "description": "At the start of each turn, all allies holding a Frying Pan or Spatula item grant the nearest champion permanent Health. Gain a Frying Pan.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_cosmicrestart",
+    "apiName": "TFT_Augment_CosmicRestart",
+    "name": "Cosmic Restart",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/cosmicrestart_ii.png",
+    "description": "Call upon the Gods to sell all units on your board and bench. Gain random Emblems and free Shop rerolls.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_crownguardspirit",
+    "apiName": "TFT_Augment_CrownguardSpirit",
+    "name": "Crown's Will",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/will-of-the-crown-ii.png",
+    "description": "Gain a Needlessly Large Rod and a Chain Vest. Your team gains Ability Power and Armor.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_crymeariver",
+    "apiName": "TFT_Augment_CryMeARiver",
+    "name": "Cry Me A River",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/crymeariver_ii.png",
+    "description": "Gain a Tear of the Goddess. Your team gains Mana Regen. After seconds in combat, increase this to.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_cyberneticimplants_gold",
+    "apiName": "DA_CyberneticImplants_Gold",
+    "name": "Cybernetic Implants",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/cybernetic2.png",
+    "description": "Your champions holding an item gain Health and % Attack Damage. Gain a B.F. Sword.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_cyberneticuplink_gold",
+    "apiName": "DA_CyberneticUplink_Gold",
+    "name": "Cybernetic Uplink",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/cybernetic-uplink-ii.png",
+    "description": "Your champions holding an item gain Health and Mana Regen. Gain a Tear of the Goddess.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_tragicalblade",
+    "apiName": "TFT_Augment_TragicalBlade",
+    "name": "Deadlier Blades",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/deadlierblades_ii.png",
+    "description": "Gain a Deathblade. Deathblades permanently gain % Attack Damage whenever their holders score a takedown.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_deadliercaps",
+    "apiName": "TFT_Augment_DeadlierCaps",
+    "name": "Deadlier Caps",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/deadliercaps_ii.png",
+    "description": "Gain a Rabadon's Deathcap. Rabadon's Deathcaps grant Mana Regen and permanently gain % Ability Power whenever their holders score a takedown.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_duoqueue",
+    "apiName": "TFT_Augment_DuoQueue",
+    "name": "Duo Queue",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/duoqueue_ii.png",
+    "description": "Gain random 5-cost champions and copies of a random component.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_earlylearning",
+    "apiName": "TFT_Augment_EarlyLearning",
+    "name": "Early Learnings",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/earlylearning_ii.png",
+    "description": "Your team gains % Attack Damage & Ability Power. This increases by % after each player combat. 1-cost champions gain double. TFT Vegas Open, 2023",
+    "tier": "gold"
+  },
+  {
+    "id": "da_electrochargeii",
+    "apiName": "DA_ElectrochargeII",
+    "name": "Electrocharge II",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/electrocharge-ii.png",
+    "description": "Every attacks an ally takes, they deal - (based on current Stage) magic damage to nearby enemies ( second cooldown).",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_epicrolldown",
+    "apiName": "TFT_Augment_EpicRolldown",
+    "name": "Epic Rolldown",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/epicrolldown_ii.png",
+    "description": "When you reach Level 8, gain Shop rerolls. Runeterra Reforged Championship, 2023",
+    "tier": "gold"
+  },
+  {
+    "id": "da_epoch",
+    "apiName": "DA_Epoch",
+    "name": "Epoch",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/epoch_ii.png",
+    "description": "Now, and at the start of every stage, gain XP and free rerolls.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_epochplus",
+    "apiName": "DA_EpochPlus",
+    "name": "Epoch+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/epoch_ii.png",
+    "description": "Now, and at the start of every stage, gain XP and free rerolls.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_evilbeyondmeasure",
+    "apiName": "TFT_Augment_EvilBeyondMeasure",
+    "name": "Evil Beyond Measure",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/evilbeyondmeasure_ii.png",
+    "description": "Your champions deal % of their damage as True Damage for each Star level.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_exclusivecustomization",
+    "apiName": "TFT_Augment_ExclusiveCustomization",
+    "name": "Exclusive Customization",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/exclusivecustomization_ii.png",
+    "description": "Gain a Lucky Item Chest, a Magnetic Remover, and gold. Use a Lucky Item Chest on a champion to choose from an armory of recommended items!",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_exclusivecustomization2",
+    "apiName": "TFT_Augment_ExclusiveCustomization2",
+    "name": "Exclusive Customization II",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/exclusivecustomization_ii.png",
+    "description": "Gain Lucky Item Chests, a Magnetic Remover, and gold. Use a Lucky Item Chest on a champion to choose from an armory of recommended items!",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_explosivegrowth",
+    "apiName": "TFT_Augment_ExplosiveGrowth",
+    "name": "Explosive Growth",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/explosivegrowth_ii.png",
+    "description": "Now and at the start of the next rounds, gain XP.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_explosivegrowthplus",
+    "apiName": "TFT_Augment_ExplosiveGrowthPlus",
+    "name": "Explosive Growth+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/explosivegrowth_ii.png",
+    "description": "Now and at the start of the next rounds, gain XP.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_feedtheflames",
+    "apiName": "TFT_Augment_FeedTheFlames",
+    "name": "Feed the Flames",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/feedtheflames_ii.png",
+    "description": "Gain a Sunfire Cape. Your team gains % Omnivamp when attacking Burning enemies.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_flexible",
+    "apiName": "TFT_Augment_Flexible",
+    "name": "Flexible",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/flexible_ii.png",
+    "description": "Gain random Emblem. At the start of every Stage, gain a random Emblem. Your team gains Health for each Emblem they are holding.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_forwardthinking",
+    "apiName": "TFT_Augment_ForwardThinking",
+    "name": "Forward Thinking",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/forwardthinking_ii.png",
+    "description": "Lose all your gold. After player combats, gain back the original amount and another gold. Incoming Gold:",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_frontlinefoundation",
+    "apiName": "TFT_Augment_FrontlineFoundation",
+    "name": "Frontline Foundation",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/frontlinefoundation_ii.png",
+    "description": "Gain a 2-star 1-cost Tank champion and an Emblem that matches their last-listed trait.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_gaingold",
+    "apiName": "TFT_Augment_GainGold",
+    "name": "Gain @Gold@ Gold",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/windfall2.png",
+    "description": "Gain gold.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_gaingold",
+    "apiName": "DA_GainGold",
+    "name": "Gain 21 Gold",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/windfall2.png",
+    "description": "Gain gold.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_gildedsteel",
+    "apiName": "TFT_Augment_GildedSteel",
+    "name": "Gilded Steel",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/gildedsteel_ii.png",
+    "description": "Gain non-Tank 5-cost champions. If you field at least one 5-cost champion, your 1 to 4-cost champions gain % Durability. K.O. Coliseum Tactician's Crown, 2025",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_glasscannonii",
+    "apiName": "TFT_Augment_GlassCannonII",
+    "name": "Glass Cannon II",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/glasscannon_ii.png",
+    "description": "Allies that start combat in the back row begin combat at % Health but gain % Damage Amp.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_golddestiny",
+    "apiName": "TFT_Augment_GoldDestiny",
+    "name": "Gold Destiny",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/goldendestiny_ii.png",
+    "description": "Gain a random Gold Augment and gold.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_golddestinyplus",
+    "apiName": "TFT_Augment_GoldDestinyPlus",
+    "name": "Gold Destiny+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/goldendestiny_ii.png",
+    "description": "Gain a random Gold Augment and gold.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_goldfordummies",
+    "apiName": "TFT_Augment_GoldForDummies",
+    "name": "Gold For Dummies",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/goldfordummies_ii.png",
+    "description": "Gain a Training Dummy. Every seconds, all Training Dummies grant gold.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_golemify",
+    "apiName": "TFT_Augment_Golemify",
+    "name": "Golemify",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/golemify_ii.png",
+    "description": "Lose all champions on your board and bench. Gain a Golem with % of their combined Health and % of their combined Attack Damage. The Golem gains Health per stage. Gain a non-Tank 2-star -cost champion.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_grouphug2",
+    "apiName": "TFT_Augment_GroupHug2",
+    "name": "Group Hug II",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/grouphug2_ii.png",
+    "description": "Combat start: Allies grant other adjacent allies Armor and Magic Resist. This effect stacks.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_hardbargain",
+    "apiName": "TFT_Augment_HardBargain",
+    "name": "Hard Bargain",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/hardbargain_ii.png",
+    "description": "You cannot choose your Carousel rewards. Gain an additional player Health and Gold each carousel round. When you do not pick a Carousel Reward, you are given an unpicked champion and the item it carries",
+    "tier": "gold"
+  },
+  {
+    "id": "da_healingorbsii",
+    "apiName": "DA_HealingOrbsII",
+    "name": "Healing Orbs II",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/healing-orbs-ii.png",
+    "description": "When an enemy dies, a nearby ally is healed for Health.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_warmogsbuckle",
+    "apiName": "TFT_Augment_WarmogsBuckle",
+    "name": "Heart of Steel",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/healthygains_ii.png",
+    "description": "Gain a Steadfast Heart. Every seconds of combat its holder survives, Steadfast Heart gains additional permanent max Health.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_heavyisthecrown",
+    "apiName": "TFT_Augment_HeavyIsTheCrown",
+    "name": "Heavy Is the Crown",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/heavyisthecrown_ii.png",
+    "description": "Gain a Crown of Demacia, which provides significant bonuses to the wearer. If the holder dies, lose the round.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_heftyrolls",
+    "apiName": "TFT_Augment_HeftyRolls",
+    "name": "Hefty Rolls",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/heftyrolls_ii.png",
+    "description": "Your team gains Health and size for each time you've rolled this game. Gain gold. Rolls: Health:",
+    "tier": "gold"
+  },
+  {
+    "id": "da_heroicgrabbag",
+    "apiName": "DA_HeroicGrabBag",
+    "name": "Heroic Grab Bag",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/heroic-grab-bag-ii.png",
+    "description": "Gain 2 Lesser Champion Duplicators. Gain gold.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_heroicgrabbagplus",
+    "apiName": "TFT_Augment_HeroicGrabBagPlus",
+    "name": "Heroic Grab Bag+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/heroic-grab-bag-ii.png",
+    "description": "Gain Lesser Champion Duplicators and gold. This item allows you to copy a 3-cost or less champion.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_heroicgrabbagplusplus",
+    "apiName": "TFT_Augment_HeroicGrabBagPlusPlus",
+    "name": "Heroic Grab Bag++",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/heroic-grab-bag-ii.png",
+    "description": "Gain Lesser Champion Duplicators and gold. This item allows you to copy a 3-cost or less champion.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_highvoltage",
+    "apiName": "TFT_Augment_HighVoltage",
+    "name": "High Voltage",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/highvoltage_ii.png",
+    "description": "Gain an Ionic Spark. Your Ionic Sparks have + hex radius and do % more damage.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_howlinggale",
+    "apiName": "TFT_Augment_HowlingGale",
+    "name": "Howling Gale",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/howlinggale_ii.png",
+    "description": "For every Mana your team spends, summon a whirlwind that knocks up enemies.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_justslayer",
+    "apiName": "TFT_Augment_JustSlayer",
+    "name": "Indiscriminate Killer",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/indiscriminateslayer_ii.png",
+    "description": "Gain a Giant Slayer. Giant Slayers gain their Damage Amp against all enemies instead of just Tanks.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_infinityprotection",
+    "apiName": "TFT_Augment_InfinityProtection",
+    "name": "Infinity Protection",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/infinityprotection_ii.png",
+    "description": "Gain gold now. On Stage 3-7, gain an Infinity Force. Infinity Force gives allies in the same row a % Health shield. Monsters Attack Championship, 2023",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_investmentstrategy1",
+    "apiName": "TFT_Augment_InvestmentStrategy1",
+    "name": "Investment Strategy I",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/investmentstrategy_ii.png",
+    "description": "Your champions gain permanent max Health per interest you earn.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_itemcollector2",
+    "apiName": "TFT_Augment_ItemCollector2",
+    "name": "Item Collector II",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/itemcollector_ii.png",
+    "description": "Your team gains Health. For each unique item they are holding, your team gains bonus Health, % Attack Damage, and % Ability Power.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_jeweledlotus_i",
+    "apiName": "DA_JeweledLotus_I",
+    "name": "Jeweled Lotus I",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/jeweled-lotus-ii.png",
+    "description": "Your team gains % Critical Strike Chance and Precision. Precision: Ability damage can critically strike. Additional Precision grants 10% Critical Strike Damage.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_furiousblows",
+    "apiName": "TFT_Augment_FuriousBlows",
+    "name": "Kahunahuna",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/furiousblows_ii.png",
+    "description": "Every th attack deals bonus true damage equal to % Basic Attack Damage.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_knowyourenemy",
+    "apiName": "DA_KnowYourEnemy",
+    "name": "Know Your Enemy",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/know-your-enemy-ii.png",
+    "description": "You can see who you will fight next. Your team gains % Damage Amp, increased to % if you and your opponent have any of the same traits active.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_lastsecondsave",
+    "apiName": "TFT_Augment_LastSecondSave",
+    "name": "Last Second Save",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/lastsecondsave_ii.png",
+    "description": "The first time each ally falls below % Health, they restore % maximum Health.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_lategamescaling",
+    "apiName": "TFT_Augment_LateGameScaling",
+    "name": "Late Game Scaling",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/lategamescaling_ii.png",
+    "description": "Gain XP at the start of player combat rounds. Your 5-cost champions gain % Health and % Attack Speed. Cyber City Tactician's Crown, 2025",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_legionofthrees",
+    "apiName": "TFT_Augment_LegionOfThrees",
+    "name": "Legion of Threes",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/legionofthrees_ii.png",
+    "description": "Gain a random Emblem. Your 3-cost champions and all allies equipped with an Emblem gain Health and % Attack Speed. Reckoning Championship, 2021",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_guardbreakerspirit",
+    "apiName": "TFT_Augment_GuardbreakerSpirit",
+    "name": "Mace's Will",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/will-of-the-flail-ii.png",
+    "description": "Gain a Sparring Gloves. Your team gains % Critical Strike Chance.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_magicroll",
+    "apiName": "DA_MagicRoll",
+    "name": "Magic Roll",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/a-magical-roll-ii.png",
+    "description": "Roll 3 dice. Gain rewards based on their total.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_makeshiftarmorii",
+    "apiName": "DA_MakeshiftArmorII",
+    "name": "Makeshift Armor II",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/makeshift2.png",
+    "description": "Champions without items equipped gain Armor and Magic Resist.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_mirroredmonetization",
+    "apiName": "TFT_Augment_MirroredMonetization",
+    "name": "Malicious Monetization",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/mirroredmonetization_ii.png",
+    "description": "Gain gold. For the next rounds, enemy champions drop gold when killed.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_18_luxaugmentii",
+    "apiName": "DA_18_LuxAugmentII",
+    "name": "Master of All Origins",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t3.png",
+    "description": "Open an armory and choose one of traits. Gain a Lux with that trait and a Spear of Shojin. Traits on your board are more likely to appear in the armory. Lux provides +2 to her chosen trait",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_maxbuild",
+    "apiName": "TFT_Augment_MaxBuild",
+    "name": "Max Build",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/maxbuild_ii.png",
+    "description": "Gain a Champion Duplicator, gold, and your next shop contains 5 unique four-cost champions. Galaxies Championship, 2020",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_foodfighttactics",
+    "apiName": "TFT_Augment_FoodfightTactics",
+    "name": "Mess Hall",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/foodfighttactics_ii.png",
+    "description": "After seconds of combat, your champions gain % Attack Speed and attacks also hurl delicious projectiles that deal magic damage.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_misfits",
+    "apiName": "TFT_Augment_Misfits",
+    "name": "Misfits",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/misfits_ii.png",
+    "description": "Your team gains Health for each active Unique trait. Gain a Rhaast and a Miss Fortune. Unique traits belong to 1 champion and are shown in orange.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_moneyhungry",
+    "apiName": "TFT_Augment_MoneyHungry",
+    "name": "Money Hungry",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/moneyhungry1_ii.png",
+    "description": "Gain gold now, then gold at the start of every stage. Picking up gold makes your Tactician larger.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_moneyhungryplus",
+    "apiName": "DA_MoneyHungryPlus",
+    "name": "Money Hungry+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/moneyhungry2_ii.png",
+    "description": "Gain gold now, then gold at the start of every stage. Picking up gold makes your Tactician larger.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_moonlight",
+    "apiName": "TFT_Augment_Moonlight",
+    "name": "Moonlight",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/moonlight_ii.png",
+    "description": "Combat start: random 1-cost champion is upgraded to 3-star for that round and gains % Attack Damage and % Ability Power.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_noscoutnopivot",
+    "apiName": "TFT_Augment_NoScoutNoPivot",
+    "name": "NO SCOUT NO PIVOT",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/noscoutnopivot_ii.png",
+    "description": "Champions that fight in player combat cannot be benched or sold. Your team gains % Health, and % Attack Damage and Ability Power after player combat.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_noblesacrifice",
+    "apiName": "TFT_Augment_NobleSacrifice",
+    "name": "Noble Sacrifice",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/anoblesacrifice_ii.png",
+    "description": "When your first ally dies each combat, grant your team + % of that ally's Armor and Magic Resistance.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_overheal",
+    "apiName": "TFT_Augment_Overheal",
+    "name": "Overheal",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/overheal_ii.png",
+    "description": "Every third attack deals % damage and heals % of the damage. Excess healing is converted to a shield up to Health.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_pandorasbench",
+    "apiName": "DA_PandorasBench",
+    "name": "Pandora's Bench",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/pandoras-bench-ii.png",
+    "description": "At the start of every round, champions on the rightmost bench slots transform into random champions of the same cost. Gain gold.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_pandorasitemsii",
+    "apiName": "DA_PandorasItemsII",
+    "name": "Pandora's Items II",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/pandora2.png",
+    "description": "Round start: items on your bench are randomized. Gain random components.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_patientstudy",
+    "apiName": "DA_PatientStudy",
+    "name": "Patient Study",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/learning-from-experience-ii.png",
+    "description": "After player combat, gain XP if you won or XP if you lost.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_crossfire2",
+    "apiName": "TFT_Augment_Crossfire2",
+    "name": "Piercing Sight",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/crossfire_ii.png",
+    "description": "Enemies take % damage as bonus true damage, increased by % up to % every time they take damage.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_pilfer",
+    "apiName": "TFT_Augment_Pilfer",
+    "name": "Pilfer",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/pilfer_ii.png",
+    "description": "Each round, gain a 1-star copy of the first champion you killed last combat. The first time you gain gold worth of champions in this way, gain a Thief's Gloves.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_plotarmor",
+    "apiName": "TFT_Augment_PlotArmor",
+    "name": "Plot Armor",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/plotarmor_ii.png",
+    "description": "Your team gains Armor and Magic Resist. After falling below % Health, increase this to for the rest of combat.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_promisedprotection",
+    "apiName": "DA_PromisedProtection",
+    "name": "Promised Protection",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/promisedprotection_ii.png",
+    "description": "Gain a Protector's Vow. Protector's Vow grants its holder % additional Mana from all sources and max Health.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_psychicforge",
+    "apiName": "TFT_Augment_PsychicForge",
+    "name": "Psychic Forge",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/psychicforge_ii.png",
+    "description": "Round start Completed Items on benched champions turn into one of their recommended items. Gain a random completed item.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_pyromaniac",
+    "apiName": "TFT_Augment_Pyromaniac",
+    "name": "Pyromaniac",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/pyromaniac_ii.png",
+    "description": "Gain a Red Buff. Your Burns deal % increased damage.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_quietquitting",
+    "apiName": "TFT_Augment_QuietQuitting",
+    "name": "Quiet Quitting",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/quietquitting_ii.png",
+    "description": "For the next player combats, you cannot use your shop. After, gain gold and a Completed Item Anvil.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_replication",
+    "apiName": "TFT_Augment_Replication",
+    "name": "Replication",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/replication-ii.png",
+    "description": "Choose 1 of 3 components. For the next rounds, gain a copy of that component.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_savingsaccount",
+    "apiName": "TFT_Augment_SavingsAccount",
+    "name": "Savings Account",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/savingsaccount_ii.png",
+    "description": "After you earn gold in interest, gain gold. Your max interest is increased to. Gain gold now. Gold earned:",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_seraphimsstaff",
+    "apiName": "TFT_Augment_SeraphimsStaff",
+    "name": "Seraphim's Staff",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/seraphimsstaff_ii.png",
+    "description": "Gain an Archangel's Staff. Archangel's Staff grants additional Mana Regen if its holder has % or more Ability Power.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_sideeffects",
+    "apiName": "TFT_Augment_SideEffects",
+    "name": "Side Effects",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/sideeffects_ii.png",
+    "description": "When an ally is healed, they deal % of the healing to their target as magic damage. Every seconds, allies heal for % of their max Health.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_slammin",
+    "apiName": "DA_Slammin",
+    "name": "Slammin'",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/slammin_ii.png",
+    "description": "Gain gold. After each player combat, if there are no items on your bench (other than consumables), gain XP.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_slamminplus",
+    "apiName": "DA_SlamminPlus",
+    "name": "Slammin'+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/slammin_ii.png",
+    "description": "Gain gold and XP now. After each player combat, if there are no items on your bench (other than consumables), gain XP.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_sololeveling",
+    "apiName": "TFT_Augment_SoloLeveling",
+    "name": "Solo Leveling",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/sololeveling_ii.png",
+    "description": "For the next combats, your team size is 1 but the champion you field has massively increased stats. Gain XP for every kill they get. Afterwards, gain item components.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_itemgargoylestoneplate",
+    "apiName": "TFT_Augment_ItemGargoyleStoneplate",
+    "name": "Solo Plate",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/soloplate_ii.png",
+    "description": "Gain a Gargoyle Stoneplate. Combat start: Allies holding Gargoyle Stoneplate gain % max Health if they're the only one in their row.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_shojinspirit",
+    "apiName": "TFT_Augment_ShojinSpirit",
+    "name": "Spear's Will",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/will-of-the-spear-ii.png",
+    "description": "Your team gains % Attack Damage and Mana. Gain a B.F. Sword and a Tear of the Goddess.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_speedydoublekill",
+    "apiName": "TFT_Augment_SpeedyDoubleKill",
+    "name": "Speedy Double Kill",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/speedydoublekill_ii.png",
+    "description": "Gain a Guinsoo's Rageblade. When 2 players are eliminated, gain gold. Fates Championship, 2021",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_spiritlink1",
+    "apiName": "TFT_Augment_SpiritLink1",
+    "name": "Spirit Link",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/spiritlink_ii.png",
+    "description": "Champions restore % of their max Health every seconds. Increase the healing by % for every 10 missing player Health.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_itemspiritvisage",
+    "apiName": "TFT_Augment_ItemSpiritVisage",
+    "name": "Spirit of Redemption",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/spiritofredemption_ii.png",
+    "description": "Gain a Spirit Visage. Every seconds, Spirit Visage heals allies within hex for % of their missing Health.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_spreadingroots",
+    "apiName": "TFT_Augment_SpreadingRoots",
+    "name": "Spreading Roots",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/spreadingroots_ii.png",
+    "description": "Gain random Emblems and gold.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_spreadingrootsplus",
+    "apiName": "TFT_Augment_SpreadingRootsPlus",
+    "name": "Spreading Roots+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/spreadingroots_ii.png",
+    "description": "Gain random Emblems, a Reforger, and gold.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_forgerod",
+    "apiName": "TFT_Augment_ForgeRod",
+    "name": "Staffsmith",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/rodsmith_ii.png",
+    "description": "Gain random completed items that build from Needlessly Large Rod.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_forgesword",
+    "apiName": "TFT_Augment_ForgeSword",
+    "name": "Swordsmith",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/swordsmith_ii.png",
+    "description": "Gain random completed items that build from B.F. Sword.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_teslacoil",
+    "apiName": "TFT_Augment_TeslaCoil",
+    "name": "Tesla Coil",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/teslacoil_ii.png",
+    "description": "Each of your allies with items equipped emits arcs of lightning every seconds, dealing - magic damage based on stage.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_thegoldendragon",
+    "apiName": "TFT_Augment_TheGoldenDragon",
+    "name": "The Golden Dragon",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/thegoldendragon_ii.png",
+    "description": "Gain a Mogul's Mail. Champions holding Mogul's Mail take up 2 team slots but gain Health and % Durability. Mogul's Mail gives gold as well as combat power. Dragonlands Championship, 2022",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_thornplatedarmor",
+    "apiName": "TFT_Augment_ThornPlatedArmor",
+    "name": "Thorn-Plated Armor",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/thornplatedarmor_ii.png",
+    "description": "Gain a Bramble Vest. Your Bramble Vests deal -% more damage (based on Stage).",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_timeskip",
+    "apiName": "TFT_Augment_TimeSkip",
+    "name": "Time Skip",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/timeskip_ii.png",
+    "description": "Disable your Shop for the next rounds. Then gain XP.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_tombraider1",
+    "apiName": "TFT_Augment_TombRaider1",
+    "name": "Tomb Raider I",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/tombraider_ii.png",
+    "description": "For the next players eliminated, choose one of their completed items to keep.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_tonsofstatsi",
+    "apiName": "DA_TonsOfStatsI",
+    "name": "Tons of Stats!",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/tons-of-stats-ii.png",
+    "description": "Your team gains Health, % Attack Damage, % Ability Power, Armor, Magic Resist, % Attack Speed, and Mana.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_treasurehunt",
+    "apiName": "TFT_Augment_TreasureHunt",
+    "name": "Treasure Hunt",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/treasurehunt_ii.png",
+    "description": "Gain a locked chest each Stage between now and Stage. Unlock each chest when you spend gold on Shop rerolls. These chests persist until opened.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_trifecta1",
+    "apiName": "TFT_Augment_Trifecta1",
+    "name": "Trifecta I",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/trifecta-ii.png",
+    "description": "Gain -cost champions. Combat Start: random -cost champions gain Health and % Attack Speed.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_twomuchvalue",
+    "apiName": "TFT_Augment_TwoMuchValue",
+    "name": "Two Much Value",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/twomuchvalue_ii.png",
+    "description": "Gain reroll for every unique 2-cost champions fielded last player combat. Gain 2-cost champions.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_twotanky",
+    "apiName": "TFT_Augment_TwoTanky",
+    "name": "Two Tanky",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/two-tanky-ii.png",
+    "description": "When you field exactly 2 copies of a champion, they both gain Health. When one copy dies, the other gains a % max Health Shield for seconds. When you 3-star, gain a 2-star copy.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_twotrick",
+    "apiName": "TFT_Augment_TwoTrick",
+    "name": "Two Trick",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/two-trick-ii.png",
+    "description": "Gain a random 2-star 2-cost and 2 random 2-star 1-cost champions.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_urf",
+    "apiName": "DA_URF",
+    "name": "U.R.F",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/ultrarapidfire_ii.png",
+    "description": "Gain a Spatula. Champions holding Spatula or Frying Pan items gain % Attack Speed and Mana Regen.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_urfsgambit",
+    "apiName": "TFT_Augment_UrfsGambit",
+    "name": "Urf's Gambit",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/urfsgambit_ii.png",
+    "description": "If you win your next player combat, gain a Spatula. If you lose, gain a Frying Pan. Gain a component anvil and gold now.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_dhampyr1",
+    "apiName": "TFT_Augment_Dhampyr1",
+    "name": "Vampiric Vitality I",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/dhampyr_ii.png",
+    "description": "You heal for % of the damage you deal to enemy Tacticians. Your team gains % Omnivamp.",
+    "tier": "gold"
+  },
+  {
+    "id": "da_verticalityii",
+    "apiName": "DA_VerticalityII",
+    "name": "Verticality II",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t2.png",
+    "description": "Champions gain % Attack Damage, % Ability Power, Armor, and Magic Resist for each ally that shares a trait with them.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_unforgotten",
+    "apiName": "TFT_Augment_Unforgotten",
+    "name": "Warlord's Honor",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/unforgotten_ii.png",
+    "description": "Every round, your team gain % Attack Damage and Ability Power. Champions start with stack of this effect, and can stack up to times.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_warpath",
+    "apiName": "TFT_Augment_Warpath",
+    "name": "Warpath",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/warpath_ii.png",
+    "description": "Gain a 2-star 2-cost champion. After dealing player damage, gain a chest of high cost champions and items. (Current: )",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_waterlotus1",
+    "apiName": "TFT_Augment_WaterLotus1",
+    "name": "Water Lotus I",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/waterlotus_ii.png",
+    "description": "Your team gains % Critical Strike chance, and their Abilities can critically strike. If an Ability critically strikes, restore % of your Mana over seconds.",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_worththewaitgold",
+    "apiName": "TFT_Augment_WorthTheWaitGold",
+    "name": "Worth the Wait",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/worththewait_ii.png",
+    "description": "Gain a random -cost champion. Gain another copy of them at the start of each round for the rest of the game. Champion:",
+    "tier": "gold"
+  },
+  {
+    "id": "tft_augment_anexaltedadventure",
+    "apiName": "TFT_Augment_AnExaltedAdventure",
+    "name": "An Exalted Adventure",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/exaltedadventure_iii.png",
+    "description": "Gain three 2-cost champions. If you 3-star two of them, gain an orb filled with loot. Gain a Lesser Champion Duplicator at the start of next stages. Champions:,,",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_thebaronslair",
+    "apiName": "TFT_Augment_TheBaronsLair",
+    "name": "Baron's Lair",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/thebaronslair_iii.png",
+    "description": "Gain a random Tank item. After seconds of combat, your team gains % bonus Attack Damage and Ability Power every second for the rest of combat. TFT Paris Open, 2025",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_beltoverflow",
+    "apiName": "TFT_Augment_BeltOverflow",
+    "name": "Belt Overflow",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/beltoverflow_iii.png",
+    "description": "Gain Giant's Belts. Your Giant's Belts grant + bonus Health.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "da_birthdaypresent",
+    "apiName": "DA_BirthdayPresent",
+    "name": "Birthday Present",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/golden-gifts-iii.png",
+    "description": "Gain a 2-star champion and gold each time you level up. The champion's cost tier is your level minus (max: -cost).",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_blazingsoul2",
+    "apiName": "TFT_Augment_BlazingSoul2",
+    "name": "Blazing Soul II",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/blazing-soul-iii.png",
+    "description": "Combat start: Your highest Attack Speed champion gains % Ability Power and % Attack Speed. Repeat on another ally every seconds.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_bronzeforlife2",
+    "apiName": "TFT_Augment_BronzeForLife2",
+    "name": "Bronze For Life II",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/bronzeforlife_iii.png",
+    "description": "Your team gains % Damage Amp and Armor and Magic Resist for each Bronze-tier trait. Damage Amp: % Armor and Magic Resist:",
+    "tier": "prismatic"
+  },
+  {
+    "id": "da_buildabud",
+    "apiName": "DA_BuildABud",
+    "name": "Build A Bud",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/constructacompanion_iii.png",
+    "description": "Gain a random -star -cost champion. Gain gold.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "da_buriedtreasuresiii",
+    "apiName": "DA_BuriedTreasuresIII",
+    "name": "Buried Treasures III",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/buried-treasures-iii.png",
+    "description": "Gain a random item component now and at the start of the next rounds.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "da_calltochaos",
+    "apiName": "DA_CallToChaos",
+    "name": "Call To Chaos",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/calltochaos_iii.png",
+    "description": "Gain a powerful and random reward.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "da_celestialblessingiii",
+    "apiName": "DA_CelestialBlessingIII",
+    "name": "Celestial Blessing III",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/celestialblessing3.png",
+    "description": "Your team gains % Omnivamp. Excess healing is converted to a shield up to Health.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_comebackstory",
+    "apiName": "TFT_Augment_ComebackStory",
+    "name": "Comeback Story",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/comebackstory_iii.png",
+    "description": "Your team gains Health and % Attack Speed per missing player Health.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_museumheist",
+    "apiName": "TFT_Augment_MuseumHeist",
+    "name": "Component Heist",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/museumheist_iii.png",
+    "description": "After player combats, gain 1 of every item component. Gain a random component now.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_constructacompanion",
+    "apiName": "TFT_Augment_ConstructACompanion",
+    "name": "Construct a Companion",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/constructacompanion_iii.png",
+    "description": "The next 1-cost champion you buy is 3-star. Gain gold.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_coronation",
+    "apiName": "TFT_Augment_Coronation",
+    "name": "Coronation",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/coronation_iii.png",
+    "description": "Gain a Tactician's Crown. Tactician's Crown, Shield, and Cape grant the holder an additional % Attack Speed, % Attack Damage, and % Ability Power.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_expectedunexpectedness",
+    "apiName": "TFT_Augment_ExpectedUnexpectedness",
+    "name": "Expected Unexpectedness",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/addicted-to-rolling-iii.png",
+    "description": "Now and at the start of the next stages, roll 3 dice. Gain various rewards based on their total.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_forgeafriend",
+    "apiName": "TFT_Augment_ForgeAFriend",
+    "name": "Forge a Friend",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/constructacompanion_iii.png",
+    "description": "The next 1-cost champion you buy is 3-star. Gain gold.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_forgedinstrength",
+    "apiName": "TFT_Augment_ForgedInStrength",
+    "name": "Forged in Strength",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/forgedinstrength_iii.png",
+    "description": "Gain random Artifact. When you drop below Health, gain more random Artifacts. Remix Rumble Championship, 2023",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_giantandmighty",
+    "apiName": "TFT_Augment_GiantAndMighty",
+    "name": "Giant and Mighty",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/giantandmighty_iii.png",
+    "description": "Your team becomes large, gaining Health and % max Health.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "da_goinglong",
+    "apiName": "DA_GoingLong",
+    "name": "Going Long",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/going-long-iii.png",
+    "description": "You no longer gain interest. Gain gold now. Gain XP after every player combat. Interest is extra gold you gain per g saved.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_goldengamble",
+    "apiName": "TFT_Augment_GoldenGamble",
+    "name": "Golden Gamble",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/goldengamble_iii.png",
+    "description": "Gain gold and flip a coin. If heads, gain a Radiant Lucky Item Chest. If tails, gain Completed item anvils.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_goldengambleplus",
+    "apiName": "TFT_Augment_GoldenGamblePlus",
+    "name": "Golden Gamble+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/goldengamble_iii.png",
+    "description": "Gain gold and flip a coin. If heads, gain a Radiant Lucky Item Chest. If tails, gain Completed item anvils.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_goldengambleplusplus",
+    "apiName": "TFT_Augment_GoldenGamblePlusPlus",
+    "name": "Golden Gamble++",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/goldengamble_iii.png",
+    "description": "Gain gold and flip a coin. If heads, gain a Radiant Lucky Item Chest. If tails, gain Completed item anvils.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_hardcommit",
+    "apiName": "TFT_Augment_HardCommit",
+    "name": "Hard Commit",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/hardcommit_iii.png",
+    "description": "Gain a random Emblem. Now and at the start of each Stage, gain a 1-star champion of that trait with a cost equal to the Stage (max 5) and gold.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_holdtheline",
+    "apiName": "TFT_Augment_HoldTheLine",
+    "name": "Hold the Line",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/holdtheline_iii.png",
+    "description": "Allies in your back 2 rows gain % Ability Power and % Attack Damage for each ally that starts combat in your front row.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_investedplus",
+    "apiName": "TFT_Augment_InvestedPlus",
+    "name": "Invested+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/invested-iii.png",
+    "description": "Gain gold. After every combat, gain 1 Shop reroll for every gold above (max gold).",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_investedplusplus",
+    "apiName": "TFT_Augment_InvestedPlusPlus",
+    "name": "Invested++",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/invested-iii.png",
+    "description": "Gain gold. After every combat, gain 1 Shop reroll for every gold above (max gold).",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_investmentstrategy2",
+    "apiName": "TFT_Augment_InvestmentStrategy2",
+    "name": "Investment Strategy II",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/investmentstrategy_iii.png",
+    "description": "Your champions gain permanent max Health per interest you earn. Your max interest is increased to. Gain gold.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "da_jeweledlotus_ii",
+    "apiName": "DA_JeweledLotus_II",
+    "name": "Jeweled Lotus II",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/jeweled-lotus-iii.png",
+    "description": "Your team gains % Critical Strike Chance, % Critical Strike Damage, and Precision. Precision: Ability damage can critically strike. Additional Precision grants 10% Critical Strike Damage.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "da_livingforge",
+    "apiName": "DA_LivingForge",
+    "name": "Living Forge",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/living-forge-iii.png",
+    "description": "Gain an Artifact Anvil now and after every player combats.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "da_luckygloves",
+    "apiName": "DA_LuckyGloves",
+    "name": "Lucky Gloves",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/lucky-gloves-iii.png",
+    "description": "Thief's Gloves will always give your champions ideal items. Gain Sparring Gloves and gold.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "da_luckyglovesplus",
+    "apiName": "DA_LuckyGlovesPlus",
+    "name": "Lucky Gloves+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/lucky-gloves-iii.png",
+    "description": "Thief's Gloves will always give your champions ideal items. Gain Sparring Gloves now, then another after player combats.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_luxurysubscription",
+    "apiName": "TFT_Augment_LuxurySubscription",
+    "name": "Luxury Subscription",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/luxurysubscription_iii.png",
+    "description": "Gain a package containing a 5-cost champion, a 2-star 1-cost champion, and gold. At the start of the next stages, gain the package again.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_minmaxer",
+    "apiName": "TFT_Augment_MinMaxer",
+    "name": "Min-Max",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/minmax_iii.png",
+    "description": "Gain a Golden Item Remover and random components. Golden Item Remover is a Magnetic Remover with infinite uses.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_moneymonsoon",
+    "apiName": "TFT_Augment_MoneyMonsoon",
+    "name": "Money Monsoon",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/moneymonsoon_iii.png",
+    "description": "Gain gold now and every round for the rest of the game.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_ninelives",
+    "apiName": "TFT_Augment_NineLives",
+    "name": "Nine Lives",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/ninelives_iii.png",
+    "description": "Set your current and max player Health to. On combat loss, you only lose health and gain loot. You can't gain health.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "da_onebufftwobuff",
+    "apiName": "DA_OneBuffTwoBuff",
+    "name": "One Buff Two Buff",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/onebufftwobuff_iii.png",
+    "description": "Gain a Red Buff, a Blue Buff, and a Champion Duplicator.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_onebufftwobuff",
+    "apiName": "TFT_Augment_OneBuffTwoBuff",
+    "name": "One Buff, Two Buff",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/onebufftwobuff_iii.png",
+    "description": "Gain a Red Buff, a Blue Buff, and a Champion Duplicator.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "da_pandorasitemsiii",
+    "apiName": "DA_PandorasItemsIII",
+    "name": "Pandora's Items III",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/pandora3.png",
+    "description": "Round start: items on your bench are randomized. Gain Radiant item.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_prismaticdestiny",
+    "apiName": "TFT_Augment_PrismaticDestiny",
+    "name": "Prismatic Destiny",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/prismaticdestiny_iii.png",
+    "description": "Gain a random Prismatic Augment and gold.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "da_prismaticdestinyplus",
+    "apiName": "DA_PrismaticDestinyPlus",
+    "name": "Prismatic Destiny+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/prismaticdestiny_iii.png",
+    "description": "Gain a random Prismatic Augment and gold.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "da_prismaticticket",
+    "apiName": "DA_PrismaticTicket",
+    "name": "Prismatic Ticket",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/goldenticket3.png",
+    "description": "Each time your shop is rerolled you have a % chance to gain a free reroll.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_protagonist",
+    "apiName": "TFT_Augment_Protagonist",
+    "name": "Protagonist",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/protaganist_iii.png",
+    "description": "Gain a random 1-cost Champion Augment. After turns, gain a copy of the champion at the start of every turn.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_qualityoverquantity",
+    "apiName": "TFT_Augment_QualityOverQuantity",
+    "name": "Quality Over Quantity",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/qualityoverquantity_iii.png",
+    "description": "Champions holding exactly 1 item upgrade that item to Radiant. Champions holding Radiant items gain % Health. Gain Magnetic Removers. Thief's Gloves counts as multiple items.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "da_radiantrascal",
+    "apiName": "DA_RadiantRascal",
+    "name": "Radiant Rascal",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/roll-the-dice-iii.png",
+    "description": "Gain a Radiant Thief's Gloves item. This equips 2 random Radiant items every round.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "da_radiantrelic",
+    "apiName": "DA_RadiantRelic",
+    "name": "Radiant Relics",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/radiantrelic-iii.png",
+    "description": "Choose 1 of 5 Radiant Items. Gain a Magnetic Remover.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_retribution",
+    "apiName": "TFT_Augment_Retribution",
+    "name": "Retribution",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/retribution_iii.png",
+    "description": "Gain Hands of Justice. Allies equipped with Hand of Justice gain Precision and % Critical Strike Chance. {{TFT_Keyword_Precision}}",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_shimmerscaleessence",
+    "apiName": "TFT_Augment_ShimmerscaleEssence",
+    "name": "Shimmerscale Essence",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/shimmerscaleessence_iii.png",
+    "description": "Gain a Mogul's Mail. In rounds, gain a Gamblers Blade. These items give gold as well as combat power.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "da_shoppingspree",
+    "apiName": "DA_ShoppingSpree",
+    "name": "Shopping Spree",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/silver-ticket-iii.png",
+    "description": "When you level up, gain a number of Shop refreshes equal to your level +. Gain gold.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_awakenedsoul",
+    "apiName": "TFT_Augment_AwakenedSoul",
+    "name": "Soul Awakening",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/awakenedsoul_iii.png",
+    "description": "Combat start: Your team gains % Attack Damage and Ability Power per second for seconds. At max stacks, deal % bonus true damage.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_subscriptionservice",
+    "apiName": "TFT_Augment_SubscriptionService",
+    "name": "Subscription Service",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/subscriptionservice_iii.png",
+    "description": "Now and at the start of each Stage, open a Shop of 4 unique 4-cost champions and gain gold.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_sweettreats",
+    "apiName": "TFT_Augment_SweetTreats",
+    "name": "Sweet Treats",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/sweettreats_iii.png",
+    "description": "Gain an Artifact anvil. Your team gains Health for each item equipped on champions. Health Gained: Magic N' Mayhem Tactician's Crown, 2024",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_swordoverflow",
+    "apiName": "TFT_Augment_SwordOverflow",
+    "name": "Sword Overflow",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/bladeoverflow_iii.png",
+    "description": "Gain B.F. Swords. Your B.F. Swords grant +% Attack Speed.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_tacticianskitchen",
+    "apiName": "TFT_Augment_TacticiansKitchen",
+    "name": "Tactician's Kitchen",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/tacticianskitchen_iii.png",
+    "description": "Gain a random Emblem. After rounds, gain a Tactician's Cape.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "da_goldenegg",
+    "apiName": "DA_GoldenEgg",
+    "name": "The Golden Egg",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/the-golden-egg-iii.png",
+    "description": "Gain a golden egg that hatches in turns for a huge amount of loot. Winning player combat speeds up the hatch timer by an extra turn.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_traittree",
+    "apiName": "TFT_Augment_TraitTree",
+    "name": "The Trait Tree",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/thetraittree_iii.png",
+    "description": "Gain random Emblems, a Reforger, and gold.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_traittreeplus",
+    "apiName": "TFT_Augment_TraitTreePlus",
+    "name": "The Trait Tree+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/thetraittree_iii.png",
+    "description": "Gain random Emblems, a Reforger, and gold.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_tombraider2",
+    "apiName": "TFT_Augment_TombRaider2",
+    "name": "Tomb Raider II",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/tombraider_iii.png",
+    "description": "Gain completed item anvil. Every time a player is eliminated, choose one of their completed items to keep.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_trifecta2",
+    "apiName": "TFT_Augment_Trifecta2",
+    "name": "Trifecta II",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/trifecta-iii.png",
+    "description": "Gain -cost champions. Allies gain % Attack Speed. Combat Start: random -cost champions gain Health and % Attack Speed.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_unlimitedpower",
+    "apiName": "TFT_Augment_UnlimitedPower",
+    "name": "Unlimited Power",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/unlimitedpower_iii.png",
+    "description": "Gain a Nashor's Tooth, a Jeweled Gauntlet, a Needlessly Large Rod and a Magnetic Remover. Useful for Magic Carries!",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_upwardmobility",
+    "apiName": "TFT_Augment_UpwardMobility",
+    "name": "Upward Mobility",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/upwardmobility_iii.png",
+    "description": "Buying XP costs 1 less. Gain Health and free rerolls whenever you level up.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "da_urfsgrabbag",
+    "apiName": "DA_UrfsGrabBag",
+    "name": "Urf's Grab Bag",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/urfs-grab-bag-iii.png",
+    "description": "Gain Spatula, random components, and gold.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "da_verticalityiii",
+    "apiName": "DA_VerticalityIII",
+    "name": "Verticality III",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t3.png",
+    "description": "Champions gain % Attack Damage, % Ability Power, Armor, and Magic Resist for each ally that shares a trait with them.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_wandoverflow",
+    "apiName": "TFT_Augment_WandOverflow",
+    "name": "Wand Overflow",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/wandoverflow_iii.png",
+    "description": "Gain Needlessly Large Rods. Your Needlessly Large Rods grant +% Attack Speed.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_waterlotus2",
+    "apiName": "TFT_Augment_WaterLotus2",
+    "name": "Water Lotus II",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/waterlotus_iii.png",
+    "description": "Your team gains % Critical Strike chance, and their Abilities can critically strike. If an Ability critically strikes, restore % of your Mana over seconds.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_westicktogether",
+    "apiName": "TFT_Augment_WeStickTogether",
+    "name": "We Stick Together",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/westicktogether_iii.png",
+    "description": "Gain a random Emblem and a completed item anvil. Allies that share a trait with that Emblem gain % Attack Speed. Into The Arcane Tactician's Crown, 2025",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_winout",
+    "apiName": "TFT_Augment_WinOut",
+    "name": "Win Out",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/winout_iii.png",
+    "description": "When you reach level 9, immediately level to 10 and gain free Shop rerolls. Gain XP now.",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_worththewaitprismatic",
+    "apiName": "TFT_Augment_WorthTheWaitPrismatic",
+    "name": "Worth the Wait II",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/worththewait_iii.png",
+    "description": "Gain copies of a random -cost champion. Gain another copy of them at the start of each round for the rest of the game. Champion:",
+    "tier": "prismatic"
+  },
+  {
+    "id": "tft_augment_thevidalion",
+    "apiName": "TFT_Augment_TheVidalion",
+    "name": "Woven Magic",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/wovenmagic_iii.png",
+    "description": "Gain a random item component. Every Mana your team spends grants an additional component (max /). Mana spent: /",
+    "tier": "prismatic"
+  },
+  {
+    "id": "da_ascension",
+    "apiName": "DA_Ascension",
+    "name": "Ascension",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/ascension2.png",
+    "description": "After seconds of combat, your units gain % Damage Amp.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_powerup",
+    "apiName": "TFT_Augment_PowerUp",
+    "name": "Augmented Power",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/powerup_i.png",
+    "description": "Your next augment is one tier higher.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_componentquestbow",
+    "apiName": "TFT_Augment_ComponentQuestBow",
+    "name": "Backup Bows",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/recurvewrecker_i.png",
+    "description": "Gain a Recurve Bow. After your team attacks times, gain more. Attacks:",
+    "tier": "silver"
+  },
+  {
+    "id": "da_bandofthieves",
+    "apiName": "DA_BandOfThieves",
+    "name": "Band of Thieves",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/bandthieves1.png",
+    "description": "Gain Thief's Gloves.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_primalaugment_sivir",
+    "apiName": "DA_18_PrimalAugment_Sivir",
+    "name": "Beast Within",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t2.png",
+    "description": "Primal grants an additional Blessing. Gain a Vi now and a Sivir after rounds.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_primalaugmentplus_nidalee",
+    "apiName": "DA_18_PrimalAugmentPlus_Nidalee",
+    "name": "Beast Within+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t2.png",
+    "description": "Primal grants an additional Blessing. Gain a Vi and a Nidalee.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_blossomtraitaugment",
+    "apiName": "DA_18_BlossomTraitAugment",
+    "name": "Blossom's Call",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t2.png",
+    "description": "When you buy a Wisp, gain a random Blossom champion based on the Wisp's cost. Gain a Yunara, a Yorick, and a Karma.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_bonusgift",
+    "apiName": "DA_BonusGift",
+    "name": "Bonus Gifts",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t2.png",
+    "description": "Whenever you open a loot orb, you have a % chance to gain a gray loot orb. Gain gray loot orbs.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_bonusgiftplus",
+    "apiName": "DA_BonusGiftPlus",
+    "name": "Bonus Gifts+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t2.png",
+    "description": "Whenever you open a loot orb, you have a % chance to gain a gray loot orb. Gain gray loot orbs.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_boxinglessons",
+    "apiName": "TFT_Augment_BoxingLessons",
+    "name": "Boxing Lessons",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/boxinglessons_i.png",
+    "description": "Your team gains Health for each ally that starts combat in the front row.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_branchingout",
+    "apiName": "TFT_Augment_BranchingOut",
+    "name": "Branching Out",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/branching-out-i.png",
+    "description": "Gain a random Emblem.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_branchingoutplus",
+    "apiName": "TFT_Augment_BranchingOutPlus",
+    "name": "Branching Out+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/branching-out-i.png",
+    "description": "Gain a random Emblem and a Reforger. Reforgers allow you to remake any item.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_calledshot",
+    "apiName": "TFT_Augment_CalledShot",
+    "name": "Called Shot",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/calledshot_i.png",
+    "description": "Set your win streak to. Gain gold.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_capitalgainsi",
+    "apiName": "DA_CapitalGainsI",
+    "name": "Capital Gains I",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t1.png",
+    "description": "Store gold equal to the interest you earn. On -, gain gold equal to % of the stored gold. Gain gold now.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_caretakersally",
+    "apiName": "DA_18_CaretakersAlly",
+    "name": "Caretaker's Ally",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/caretaker_s-chosen-i.png",
+    "description": "Gain a random 2-cost champion now. Gain the same one again every time you level up. Champion: 0",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_componentquestsword",
+    "apiName": "TFT_Augment_ComponentQuestSword",
+    "name": "Carve a Path",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/carveapath_i.png",
+    "description": "Gain a B.F. Sword. After your team deals physical damage, gain more. Damage dealt:",
+    "tier": "silver"
+  },
+  {
+    "id": "da_celestialblessingi",
+    "apiName": "DA_CelestialBlessingI",
+    "name": "Celestial Blessing I",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/celestialblessing1.png",
+    "description": "Your team gains % Omnivamp. Excess healing is converted to a shield up to Health.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_champdelivery",
+    "apiName": "DA_ChampDelivery",
+    "name": "Champ Delivery",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t1.png",
+    "description": "Gain -cost champions. After rounds, gain more.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_champdeliveryplus",
+    "apiName": "DA_ChampDeliveryPlus",
+    "name": "Champ Delivery+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t1.png",
+    "description": "Gain -cost champions. After rounds, gain more.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_champdeliveryplusplus",
+    "apiName": "DA_ChampDeliveryPlusPlus",
+    "name": "Champ Delivery++",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t1.png",
+    "description": "Gain -cost champions. After rounds, gain more.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_chaosevolution",
+    "apiName": "TFT_Augment_ChaosEvolution",
+    "name": "Chaotic Evolution",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/chaosevolution_i.png",
+    "description": "Starring up a champion grants them one of the following: Health, % Durability, % Ability Power, % Attack Damage, % Attack Speed. Bonuses stack.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_chargetransfer1",
+    "apiName": "TFT_Augment_ChargeTransfer1",
+    "name": "Charge Transfer I",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/chargetransfer1_i.png",
+    "description": "Your team gains % Damage Amp. % of overkill damage is dealt to the nearest enemy as magic damage.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_solartraitaugment",
+    "apiName": "DA_18_SolarTraitAugment",
+    "name": "Chosen of the Sun",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t2.png",
+    "description": "Gain a Leona, a Kayle, and a Sejuani. Leona gains permanent max Health each round, increased by for each unique 3-star champion fielded.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_clearmind",
+    "apiName": "DA_ClearMind",
+    "name": "Clear Mind",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/clearmind2.png",
+    "description": "If there are no champions on your bench at the end of player combat, gain XP.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_climbtheladder1",
+    "apiName": "TFT_Augment_ClimbTheLadder1",
+    "name": "Climb The Ladder I",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/climbtheladder_i.png",
+    "description": "Each time an ally dies, allies that share at least one trait with them gain % Ability Power, % Attack Damage, Armor, and Magic Resist.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_cognitivetax",
+    "apiName": "TFT_Augment_CognitiveTax",
+    "name": "Cognitive Tax",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/cognitivetax_i.png",
+    "description": "Gain gold and XP.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_cognitivetaxplus",
+    "apiName": "TFT_Augment_CognitiveTaxPlus",
+    "name": "Cognitive Tax+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/cognitivetax_i.png",
+    "description": "Gain gold and XP.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_commercecore",
+    "apiName": "DA_CommerceCore",
+    "name": "Commerce Core",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/trade3.png",
+    "description": "Gain free Shop rerolls now and every round for the rest of the game.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_componentbuffet",
+    "apiName": "DA_ComponentBuffet",
+    "name": "Component Buffet",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/the-customer-is-always-right-i.png",
+    "description": "Whenever you would get a component, gain a component anvil instead. Gain a random component.The anvil offers 4 choices.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_componentquest",
+    "apiName": "DA_ComponentQuest",
+    "name": "Component Quest",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t3.png",
+    "description": "Gain a random component and gold. The next 7 times you win a player combat, gain a different random component. Afterwards, gain gold.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_florafatalisaugment",
+    "apiName": "DA_18_FloraFatalisAugment",
+    "name": "Consuming Flora",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t2.png",
+    "description": "Gain a Flora Fatalis emblem. The champion holding the emblem gains % increased benefits from Flora Fatalis. Gain gold.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_componentquestrod",
+    "apiName": "TFT_Augment_ComponentQuestRod",
+    "name": "Continuous Conjuration",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/hyperbolicrodextender_i.png",
+    "description": "Gain a Needlessly Large Rod. After your team deals magic damage, gain more. Damage dealt:",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_corrosion",
+    "apiName": "TFT_Augment_Corrosion",
+    "name": "Corrosion",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/corrosion_i.png",
+    "description": "Enemies in the first two rows lose Armor and Magic Resist every seconds.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_coventraitaugment",
+    "apiName": "DA_18_CovenTraitAugment",
+    "name": "Coven Acolyte",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t2.png",
+    "description": "When you choose to continue gathering Coven essence, heal Tactician health. Gain a Camille, an Elise, and a Caitlyn.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_craftedcrafting",
+    "apiName": "TFT_Augment_CraftedCrafting",
+    "name": "Crafted Crafting",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/craftedcrafting_i.png",
+    "description": "Whenever you craft a completed item, gain rerolls.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_coventraitaugment_loottoap",
+    "apiName": "DA_18_CovenTraitAugment_LootToAP",
+    "name": "Dark Ritual",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t2.png",
+    "description": "Converting Coven Essence to rewards grants Coven champions Ability Power instead of loot. Gain a Camille, an Elise, and a Caitlyn.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_headstart",
+    "apiName": "TFT_Augment_HeadStart",
+    "name": "Delayed Start",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/headstart_i.png",
+    "description": "Sell your board and bench. Gain random 2-star -cost champions. Disable your Shop for the next rounds.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_dummify",
+    "apiName": "TFT_Augment_Dummify",
+    "name": "Dummify",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/dummify_i.png",
+    "description": "Lose all champions on your board and bench. Gain a Training Dummy with % of their combined Health. The Training Dummy gains Health per stage. Gain a non-Tank 2-star -cost champion.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_efficientshopper",
+    "apiName": "TFT_Augment_EfficientShopper",
+    "name": "Efficient Shopper",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/efficientshopper_i.png",
+    "description": "For the next carousels, gain a second copy of the champion taken. Gain gold now.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_electrochargei",
+    "apiName": "DA_ElectrochargeI",
+    "name": "Electrocharge I",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/electrocharge-i.png",
+    "description": "Every attacks an ally takes, they deal - (based on current Stage) magic damage to nearby enemies ( second cooldown).",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_faetraitaugment",
+    "apiName": "DA_18_FaeTraitAugment",
+    "name": "Embiggen",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t2.png",
+    "description": "Fae pixies are now larger and grant % more Attack Damage and Ability Power. Fae champions gain % Attack Damage and Ability Power immediately. Gain a Xayah and a Rakan.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_expedition",
+    "apiName": "TFT_Augment_Expedition",
+    "name": "Expedition",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/expedition_i.png",
+    "description": "At the start of every round, lose the champion in the rightmost bench slot. After losing gold of champions in this way, gain a powerful reward. Gain a 3-cost champion now.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_extrabuckles",
+    "apiName": "DA_ExtraBuckles",
+    "name": "Extra Buckles",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/extrabuckles_i.png",
+    "description": "Gain a Giant's Belt. After your champions take damage, get more.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_eyeforaneye",
+    "apiName": "TFT_Augment_EyeForAnEye",
+    "name": "Eye For An Eye",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/eyeforaneye_i.png",
+    "description": "For every ally champions that die, gain a random component (max ). Deaths Remaining:",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_eyeforaneyeplus",
+    "apiName": "TFT_Augment_EyeForAnEyePlus",
+    "name": "Eye For An Eye+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/eyeforaneye_i.png",
+    "description": "Gain a random component. For every ally champions that die, gain another component (max ). Deaths Remaining:",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_feelinglucky",
+    "apiName": "TFT_Augment_FeelingLucky",
+    "name": "Feeling Lucky",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/feelinglucky_i.png",
+    "description": "Gain gold, then flip a coin. If heads, gain more gold.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_findyourcenter",
+    "apiName": "TFT_Augment_FindYourCenter",
+    "name": "Find Your Center",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/findyourcenter_i.png",
+    "description": "Your champion that starts combat in the center of the front row gains % Damage Amp and % max Health.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_firesaleplus",
+    "apiName": "TFT_Augment_FiresalePlus",
+    "name": "Firesale",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/firesale_i.png",
+    "description": "Each round, steal a random -cost or lower champion from the shop. Gain gold.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_infernotraitaugment",
+    "apiName": "DA_18_InfernoTraitAugment",
+    "name": "Flame On",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t1.png",
+    "description": "Your 1 and 2-cost Inferno champions gain Attack Damage and Ability Power. The one who did the most damage last combat gains double. Gain a Varus and an Akali.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_emblemflorafatalisaugment",
+    "apiName": "DA_18_EmblemFloraFatalisAugment",
+    "name": "Flora Fatalis Emblem",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/particles/tft/item_icons/traits/spatula/set18/tft18_emblem_florafatalis.png",
+    "description": "",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_componentquesttear",
+    "apiName": "TFT_Augment_ComponentQuestTear",
+    "name": "Flowing Tears",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/griefofthegreatgoddess_i.png",
+    "description": "Gain a Tear of the Goddess. After your team spends Mana, gain more. Mana spent:",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_marksman",
+    "apiName": "TFT_Augment_MarksMan",
+    "name": "Focused Fire",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/marksman_i.png",
+    "description": "Your team gains % Attack Damage. Every seconds, they gain % more.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_fourcing",
+    "apiName": "DA_18_FOURcing",
+    "name": "FOURcing",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t2.png",
+    "description": "Gain a random 4-cost champion. For each item equipped to that champion, your team gains health.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_futurefocused",
+    "apiName": "DA_FutureFocused",
+    "name": "Future Focused",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t1.png",
+    "description": "Your Tactician loses Health, but after player combats, gain 4-cost champions and gold.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_glasscannoni",
+    "apiName": "TFT_Augment_GlassCannonI",
+    "name": "Glass Cannon I",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/glasscannon_i.png",
+    "description": "Allies that start combat in the back row begin combat at % Health but gain % Damage Amp.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_goodforsomethingi",
+    "apiName": "DA_18_GoodForSomethingI",
+    "name": "Good For Something I",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/good-for-something-i.png",
+    "description": "Champions that aren't holding items have a % chance to drop gold on death.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_grouphug1",
+    "apiName": "TFT_Augment_GroupHug1",
+    "name": "Group Hug I",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/grouphug1_i.png",
+    "description": "Combat start: Allies grant other adjacent allies Armor and Magic Resist. This effect stacks.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_healingorbsi",
+    "apiName": "DA_HealingOrbsI",
+    "name": "Healing Orbs I",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/healing-orbs-i.png",
+    "description": "When an enemy dies, a nearby ally is healed for Health.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_hedgefund",
+    "apiName": "DA_HedgeFund",
+    "name": "Hedge Fund",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/richgetricher3.png",
+    "description": "Gain gold. Your max interest is increased to 10.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_hustler",
+    "apiName": "DA_Hustler",
+    "name": "Hustler",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/hyperroll2.png",
+    "description": "You no longer gain interest but gain gold at the start of every player combat round. Gain gold now. Interest is extra gold you gain per g saved.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_ironassets",
+    "apiName": "DA_IronAssets",
+    "name": "Iron Assets",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/iron-assets-i.png",
+    "description": "Gain a component anvil and gold.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_itsmebaby",
+    "apiName": "DA_ItsMeBaby",
+    "name": "It's Me, Baby",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t2.png",
+    "description": "Gain a championship hex in the bottom right corner. The champion in it gains % Damage Amp and % Attack Speed, and drops gold every takedowns. Lore & Legends Tactician's Crown, 2026",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_itemcollector1",
+    "apiName": "TFT_Augment_ItemCollector1",
+    "name": "Item Collector I",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/itemcollector_i.png",
+    "description": "For each unique item they are holding, your team gains % Attack Damage and % Ability Power.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_blackthorntraitaugment",
+    "apiName": "DA_BlackthornTraitAugment",
+    "name": "Item Extraction",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t2.png",
+    "description": "The first times you sacrifice a champion in the Blackthorn hex, gain a copy of a random component they're holding. Gain an Azir, Veigar, and a Rek'Sai.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_itemgrabbag",
+    "apiName": "DA_ItemGrabBag",
+    "name": "Item Grab Bag I",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/itemgrabbag1.png",
+    "description": "Gain 1 random completed item.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_kickstart",
+    "apiName": "TFT_Augment_KickStart",
+    "name": "Kick Start",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/kickstart_i.png",
+    "description": "Gain a random 2-star 2-cost champion and gold.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_kingslayer",
+    "apiName": "DA_Kingslayer",
+    "name": "Kingslayer",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/kingslayer_i.png",
+    "description": "After winning player combat, gain gold. If they had more health than you, gain Gold instead. Gain gold.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_lategamespecialist",
+    "apiName": "DA_LateGameSpecialist",
+    "name": "Late Game Specialist",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/late-game-specialist-i.png",
+    "description": "When you reach Level, gain gold.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_latentforge",
+    "apiName": "DA_LatentForge",
+    "name": "Latent Forge",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/long-time-crafting-i.png",
+    "description": "After player combats, gain an Artifact anvil.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_levelup",
+    "apiName": "DA_LevelUp",
+    "name": "Level Up!",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/levelup3.png",
+    "description": "When you buy XP, gain an additional. Gain immediately.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_lineup",
+    "apiName": "TFT_Augment_Lineup",
+    "name": "Lineup",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/lineup-i.png",
+    "description": "Your team gains Armor and Magic Resist for each ally that starts combat in the front two rows.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_incoming",
+    "apiName": "TFT_Augment_Incoming",
+    "name": "Lit Fuse",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/incoming_i.png",
+    "description": "Allies that start in the back two rows split total Mana after seconds of combat.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_loadeddice",
+    "apiName": "DA_LoadedDice",
+    "name": "Loaded Dice",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t1.png",
+    "description": "Your dice and coins are luckier. Roll a die and gain gold equal to the number rolled. Then flip a coin and gain gold if you flip heads.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_makeshiftarmori",
+    "apiName": "DA_MakeshiftArmorI",
+    "name": "Makeshift Armor I",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/makeshift1.png",
+    "description": "Champions without items equipped gain Armor and Magic Resist.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_missedconnections",
+    "apiName": "DA_MissedConnections",
+    "name": "Missed Connections",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missed-connections-i.png",
+    "description": "Gain a copy of each 1-cost champion.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_elderwoodtraitaugment",
+    "apiName": "DA_18_ElderwoodTraitAugment",
+    "name": "Nature's Shelter",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t2.png",
+    "description": "Champions that start combat adjacent to an Elderwood plant gain % Attack Speed and heal % of their maximum Health every seconds. Gain an Alistar, an Ornn, and a Xayah.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_nestinganvils",
+    "apiName": "DA_NestingAnvils",
+    "name": "Nesting Anvils",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t3.png",
+    "description": "Gain an Artifact Anvil. After you open it, gain a Component Anvil. After you open that, gain gold.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_nestinganvilsplus",
+    "apiName": "DA_NestingAnvilsPlus",
+    "name": "Nesting Anvils+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t3.png",
+    "description": "Gain an Artifact Anvil. After you open it, gain a Component Anvil. After you open that, gain gold.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_nestingdollsplus",
+    "apiName": "DA_NestingDollsPlus",
+    "name": "Nesting Dolls",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t3.png",
+    "description": "After a champion dies in combat, spawn a copy of them one star level lower with % health. Gain free rerolls.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_riftbeasttraitaugment",
+    "apiName": "DA_18_RiftbeastTraitAugment",
+    "name": "Omega Riftbeast",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t2.png",
+    "description": "You can now choose a second Alpha Riftbeast. Gain a Scuttlecrab, a Cinderling, and a Pebbles.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_waverider",
+    "apiName": "TFT_Augment_Waverider",
+    "name": "On a Roll",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/onaroll_i.png",
+    "description": "Whenever you star up a champion that you fielded last combat, gain free Shop rerolls. Gain gold.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_onetwofive",
+    "apiName": "DA_18_OneTwoFive",
+    "name": "One, Two, Five!",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/one-two-five-i.png",
+    "description": "Gain 1 random component, gold, and 1 random 5-cost champion.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_onestwosthree",
+    "apiName": "DA_18_OnesTwosThree",
+    "name": "Ones Two Three",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t1.png",
+    "description": "Gain 1-cost champions, 2-cost champion, and 3-cost champion.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_pandorasitemsi",
+    "apiName": "DA_PandorasItemsI",
+    "name": "Pandora's Items I",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/pandora1.png",
+    "description": "Round start: items on your bench are randomized. Gain random component.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_partialascension",
+    "apiName": "DA_PartialAscension",
+    "name": "Partial Ascension",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/ascension1.png",
+    "description": "After seconds of combat, your units gain % Damage Amp.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_patienceisavirtue",
+    "apiName": "TFT_Augment_PatienceIsAVirtue",
+    "name": "Patience is a Virtue",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/patienceisavirtue_i.png",
+    "description": "Gain rerolls now. Each round, gain free rerolls if you did not buy a champion last round.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_placebo",
+    "apiName": "TFT_Augment_Placebo",
+    "name": "Placebo",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/placebo_i.png",
+    "description": "Your team gains % Attack Speed. Gain gold.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_placeboplus",
+    "apiName": "TFT_Augment_PlaceboPlus",
+    "name": "Placebo+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/placebo_i.png",
+    "description": "Your team gains % Attack Speed. Gain gold.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_pocketrecombobulator",
+    "apiName": "TFT_Augment_PocketRecombobulator",
+    "name": "Pocket Recombobulator",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/pocketrecombulator_i.png",
+    "description": "Get Pocket Recombobulators, a consumable that transforms a 1 or 2-cost champion into one of a higher cost. They keep their Star level. Also receive Reforgers.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_portableforge",
+    "apiName": "DA_PortableForge",
+    "name": "Portable Forge",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/portableforge2.png",
+    "description": "Choose 1 of 4 Artifacts. Artifacts are more powerful items with a unique effect.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_quickstreaks",
+    "apiName": "DA_QuickStreaks",
+    "name": "Quick Streaks",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t1.png",
+    "description": "You gain twice as much progress towards win and loss streaks. Gain gold.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_recombobulator",
+    "apiName": "DA_Recombobulator",
+    "name": "Recombobulator",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/recombobulator-i.png",
+    "description": "Champions on your board permanently transform into random champions 1 cost tier higher (max 5). Gain Magnetic Removers and free rerolls.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_rerolltransfer",
+    "apiName": "TFT_Augment_RerollTransfer",
+    "name": "Reroll Transfer",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/reroll-transfer-i.png",
+    "description": "For every unused Augment Reroll, gain free shop rerolls. Gain gold. Does not include the round this augment is selected.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_residualmagic",
+    "apiName": "DA_18_ResidualMagic",
+    "name": "Residual Magic",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t1.png",
+    "description": "Your team gains Health. Each time you purchase a Wisp, increase this by.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_residualmagicplus",
+    "apiName": "DA_18_ResidualMagicPlus",
+    "name": "Residual Magic +",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t1.png",
+    "description": "Your team gains Health. Each time you purchase a Wisp, increase this by.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_residualmagicplusplus",
+    "apiName": "DA_18_ResidualMagicPlusPlus",
+    "name": "Residual Magic ++",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t1.png",
+    "description": "Your team gains Health. Each time you purchase a Wisp, increase this by.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_restartmission",
+    "apiName": "TFT_Augment_RestartMission",
+    "name": "Restart Mission",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/restartmission_i.png",
+    "description": "Remove all champions on your board and bench. Gain random 2-star 3-costs, 2-star 2-costs, and 2-star 1-cost champion.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_riggedshopplus",
+    "apiName": "TFT_Augment_RiggedShopPlus",
+    "name": "Rigged Shop+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/riggedshop_i.png",
+    "description": "Your next shop and every shops will contain all 3-cost champions. Gain rerolls.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_rollingfordays",
+    "apiName": "DA_RollingForDays",
+    "name": "Rolling For Days",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/rolling-for-days-i.png",
+    "description": "Gain free Shop rerolls.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_salvagebin",
+    "apiName": "DA_SalvageBin",
+    "name": "Salvage Bin",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/salvage2.png",
+    "description": "Gain 1 random completed item now, and 1 component after player combats. Selling champions breaks completed items into components (excluding Tactician's items and Emblems).",
+    "tier": "silver"
+  },
+  {
+    "id": "da_salvagebinplus",
+    "apiName": "DA_SalvageBinPlus",
+    "name": "Salvage Bin+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/salvage2.png",
+    "description": "Gain 1 random completed item now, and 1 component after player combats. Selling champions breaks completed items into components (excluding Tactician's items and Emblems).",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_silverdestiny",
+    "apiName": "TFT_Augment_SilverDestiny",
+    "name": "Silver Destiny",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/silverdestiny_i.png",
+    "description": "Gain a random Silver Augment and gold.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_silverdestinyplus",
+    "apiName": "TFT_Augment_SilverDestinyPlus",
+    "name": "Silver Destiny+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/silverdestiny_i.png",
+    "description": "Gain a random Silver Augment and gold.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_silverdestinyplusplus",
+    "apiName": "TFT_Augment_SilverDestinyPlusPlus",
+    "name": "Silver Destiny++",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/silverdestiny_i.png",
+    "description": "Gain a random Silver Augment and gold.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_silverspoon",
+    "apiName": "DA_SilverSpoon",
+    "name": "Silver Spoon",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/silver-spoon-i.png",
+    "description": "Gain XP.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_sizematters",
+    "apiName": "TFT_Augment_SizeMatters",
+    "name": "Size Matters",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/sizematters_i.png",
+    "description": "Gain a Giant's Belt. After a champion starts combat with more than max Health, gain a Warmog's Armor.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_sliceoflife",
+    "apiName": "TFT_Augment_SliceOfLife",
+    "name": "Slice of Life",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/slice_of_life_i.png",
+    "description": "Twice per stage, gain a random champion. Its cost increases by Stage. This effect ends after receiving 5-cost champion.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_magicrollminus",
+    "apiName": "TFT_Augment_MagicRollMinus",
+    "name": "Slightly Magic Roll",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/slightlymagicroll_i.png",
+    "description": "Roll a die. Gain rewards based on the number rolled. Reward:",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_sprykinaugment",
+    "apiName": "DA_18_SprykinAugment",
+    "name": "Small Furry Friend",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t2.png",
+    "description": "While Sprykin is active, gain a second BFF summon that is % as powerful. Gain a Teemo, a Veigar, and a Kobuko.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_smallgrabbag",
+    "apiName": "TFT_Augment_SmallGrabBag",
+    "name": "Small Grab Bag",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/smallgrabbag_i.png",
+    "description": "Gain random item components.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_standunited",
+    "apiName": "DA_StandUnited",
+    "name": "Stand United",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/standunited1.png",
+    "description": "Your units gain % Attack Damage and % Ability Power for each non-unique Trait active across your team.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_lunartraitaugment",
+    "apiName": "DA_18_LunarTraitAugment",
+    "name": "Sun and Moon",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t2.png",
+    "description": "Your Lunar champions gain Health and % Damage Amp for each unique Solar champion fielded. Gain a Leona, a Kayle, and a Diana.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_lunartraitaugmentplus",
+    "apiName": "DA_18_LunarTraitAugmentPlus",
+    "name": "Sun and Moon+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t2.png",
+    "description": "Your Lunar champions gain Health and % Damage Amp for each unique Solar champion fielded. Gain a Leona, a Kayle, and an Aphelios.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_survivor",
+    "apiName": "TFT_Augment_Survivor",
+    "name": "Survivor",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/survivor_i.png",
+    "description": "Gain gold. After players are eliminated, gain more gold.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_tablescraps",
+    "apiName": "TFT_Augment_TableScraps",
+    "name": "Table Scraps",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/tablescraps_i.png",
+    "description": "After the next carousels, gain one champion that was not taken and its item. Gain gold.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_teambuilding",
+    "apiName": "DA_TeamBuilding",
+    "name": "Team Building",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/building-an-army-i.png",
+    "description": "Gain a Lesser Champion Duplicator. Gain another after player combats. This item allows you to copy a 3-cost or less champion.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_thetower",
+    "apiName": "TFT_Augment_TheTower",
+    "name": "The Tower",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/thetower_i.png",
+    "description": "Gain a giant Training Dummy with increased Health (increases with Stage). Every seconds, it zaps the nearest enemies dealing % max Health true damage.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_titanictitan",
+    "apiName": "TFT_Augment_TitanicTitan",
+    "name": "Titanic Titan",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/titanictitan_i.png",
+    "description": "Increase your current and max player Health by. On carousel rounds you are released earlier, but are much slower.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_tradesector",
+    "apiName": "DA_TradeSector",
+    "name": "Trade Sector",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/trade2.png",
+    "description": "Gain a Shop reroll every round. Gain gold.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_tradesectorplus",
+    "apiName": "DA_TradeSectorPlus",
+    "name": "Trade Sector+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/trade2.png",
+    "description": "Gain a Shop reroll every round. Gain gold.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_traitladder",
+    "apiName": "DA_TraitLadder",
+    "name": "Trait Ladder",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t3.png",
+    "description": "Gain a random emblem. After fielding non-unique traits in a player combat, gain a reward. Then increase the number of traits needed and the size of the reward.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_twinguardians",
+    "apiName": "TFT_Augment_TwinGuardians",
+    "name": "Twin Guardians",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/twinguardians_i.png",
+    "description": "If you have exactly allies in your first row, grant them bonus Health, Armor, and Magic Resist.",
+    "tier": "silver"
+  },
+  {
+    "id": "tft_augment_underdogs",
+    "apiName": "TFT_Augment_Underdogs",
+    "name": "Underdogs",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/underdogs1.png",
+    "description": "Whenever your team has fewer allies alive than your opponent, regenerate % missing Health each second (Max: ).",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_rivalsaugment",
+    "apiName": "DA_18_RivalsAugment",
+    "name": "Unrivaled",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t2.png",
+    "description": "You can field Rengar and Kha'Zix together with no penalties, and they gain bonuses when the other casts. Gain a Rengar and a Kha'Zix.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_verticalityi",
+    "apiName": "DA_VerticalityI",
+    "name": "Verticality I",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t1.png",
+    "description": "Champions gain % Attack Damage, % Ability Power, Armor, and Magic Resist for each ally that shares a trait with them.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_weighttheworth",
+    "apiName": "DA_18_WeightTheWorth",
+    "name": "Weight The Worth",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t2.png",
+    "description": "The first time you 3-star a champion, gain a copy of them each round for the rest of the game. 3-starring the same champion again grants additional copies. Gain a Lesser Champion Duplicator.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_wisprebateplus",
+    "apiName": "DA_18_WispRebatePlus",
+    "name": "Wisp Rebate",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t1.png",
+    "description": "Each time you purchase a Wisp, gain gold. Gain gold now.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_18_wisprebateplusplus",
+    "apiName": "DA_18_WispRebatePlusPlus",
+    "name": "Wisp Rebate+",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/missing-t1.png",
+    "description": "Each time you purchase a Wisp, gain gold. Gain gold now.",
+    "tier": "silver"
+  },
+  {
+    "id": "da_youngandwildandfree",
+    "apiName": "DA_YoungAndWildAndFree",
+    "name": "Young and Wild and Free",
+    "iconUrl": "https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/augments/hexcore/young-and-wild-and-free-i.png",
+    "description": "You can always move freely on Carousel rounds. Gain gold.",
+    "tier": "silver"
+  }
+]

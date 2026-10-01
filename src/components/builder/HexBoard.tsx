@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useBuilderStore } from "@/stores/useBuilderStore";
+import { BUILDER_CONFIG } from "@/config/builderConfig";
 import { HexCell } from "./HexCell";
 
 export function HexBoard() {
@@ -70,13 +71,13 @@ export function HexBoard() {
       <div className="w-full flex items-center justify-between mb-4 pb-2 border-b border-[#1f283a]/60 text-xs text-slate-400">
         <span className="font-semibold text-slate-300">Tactician&apos;s Board</span>
         <span className="font-mono bg-[#161f2e] px-2 py-0.5 rounded border border-slate-700/60">
-          Units: <strong className="text-amber-400">{board.length}</strong> / 10
+          Units: <strong className="text-amber-400">{board.length}</strong> / {BUILDER_CONFIG.defaultMaxUnits}
         </span>
       </div>
 
-      {/* Hex Grid: 4 rows x 7 columns */}
+      {/* Hex Grid: rows x columns from config */}
       <div className="flex flex-col items-center -space-y-3 sm:-space-y-4 py-2">
-        {Array.from({ length: 4 }).map((_, rowIdx) => {
+        {Array.from({ length: BUILDER_CONFIG.rows }).map((_, rowIdx) => {
           // Odd rows are offset by half a cell
           const isOddRow = rowIdx % 2 !== 0;
 
@@ -87,7 +88,7 @@ export function HexBoard() {
                 isOddRow ? "ml-8 sm:ml-10" : ""
               }`}
             >
-              {Array.from({ length: 7 }).map((_, colIdx) => {
+              {Array.from({ length: BUILDER_CONFIG.columns }).map((_, colIdx) => {
                 const champOnHex = board.find(
                   (c) => c.x === colIdx && c.y === rowIdx
                 );

@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { BoardChampion } from "@/types/tft";
+import { BUILDER_CONFIG } from "@/config/builderConfig";
 
 interface BuilderState {
   board: BoardChampion[];
@@ -8,6 +9,7 @@ interface BuilderState {
   removeChampion: (x: number, y: number) => void;
   moveChampion: (fromX: number, fromY: number, toX: number, toY: number) => void;
   setStarLevel: (x: number, y: number, starLevel: 1 | 2 | 3) => void;
+  cycleStarLevel: (x: number, y: number) => void;
   addItemToChampion: (x: number, y: number, itemId: string) => void;
   removeItemFromChampion: (x: number, y: number, itemIndex: number) => void;
   clearBoard: () => void;
@@ -25,6 +27,15 @@ export const useBuilderStore = create<BuilderState>((set, get) => ({
 
     // If specific hex coordinate provided
     if (x !== undefined && y !== undefined) {
+      if (
+        x < 0 ||
+        x >= BUILDER_CONFIG.columns ||
+        y < 0 ||
+        y >= BUILDER_CONFIG.rows
+      ) {
+        return;
+      }
+
       const existingIdx = board.findIndex((c) => c.x === x && c.y === y);
       if (existingIdx !== -1) {
         // Replace champion on hex
@@ -40,15 +51,25 @@ export const useBuilderStore = create<BuilderState>((set, get) => ({
         return;
       }
 
+      // Check max units capacity
+      if (board.length >= BUILDER_CONFIG.defaultMaxUnits) {
+        return;
+      }
+
       set({
         board: [...board, { championId, x, y, starLevel: 2, items: [] }],
       });
       return;
     }
 
-    // Find the first empty hex (scanning 4 rows x 7 cols)
-    for (let r = 0; r < 4; r++) {
-      for (let c = 0; c < 7; c++) {
+    // Check max units capacity
+    if (board.length >= BUILDER_CONFIG.defaultMaxUnits) {
+      return;
+    }
+
+    // Find the first empty hex (scanning rows x cols)
+    for (let r = 0; r < BUILDER_CONFIG.rows; r++) {
+      for (let c = 0; c < BUILDER_CONFIG.columns; c++) {
         const isOccupied = board.some((ch) => ch.x === c && ch.y === r);
         if (!isOccupied) {
           set({
@@ -71,6 +92,16 @@ export const useBuilderStore = create<BuilderState>((set, get) => ({
   },
 
   moveChampion: (fromX: number, fromY: number, toX: number, toY: number) => {
+    // Check destination bounds
+    if (
+      toX < 0 ||
+      toX >= BUILDER_CONFIG.columns ||
+      toY < 0 ||
+      toY >= BUILDER_CONFIG.rows
+    ) {
+      return;
+    }
+
     const { board } = get();
     const sourceChamp = board.find((c) => c.x === fromX && c.y === fromY);
     if (!sourceChamp) return;
@@ -106,10 +137,26 @@ export const useBuilderStore = create<BuilderState>((set, get) => ({
     }));
   },
 
+  cycleStarLevel: (x: number, y: number) => {
+    set((state) => ({
+      board: state.board.map((c) => {
+        if (c.x === x && c.y === y) {
+          const next = ((c.starLevel % 3) + 1) as 1 | 2 | 3;
+          return { ...c, starLevel: next };
+        }
+        return c;
+      }),
+    }));
+  },
+
   addItemToChampion: (x: number, y: number, itemId: string) => {
     set((state) => ({
       board: state.board.map((c) => {
-        if (c.x === x && c.y === y && c.items.length < 3) {
+        if (
+          c.x === x &&
+          c.y === y &&
+          c.items.length < BUILDER_CONFIG.maxItemsPerChampion
+        ) {
           return { ...c, items: [...c.items, itemId] };
         }
         return c;
@@ -132,8 +179,35 @@ export const useBuilderStore = create<BuilderState>((set, get) => ({
 
   clearBoard: () => set({ board: [], selectedHex: null }),
 
-  loadSnapshot: (champions: BoardChampion[]) =>
-    set({ board: champions, selectedHex: null }),
+  loadSnapshot: (champions: BoardChampion[]) => {
+    const seenCoords = new Set<string>();
+    const validChampions: BoardChampion[] = [];
+
+    for (const c of champions) {
+      if (validChampions.length >= BUILDER_CONFIG.maxUnits) break;
+      if (
+        c.x < 0 ||
+        c.x >= BUILDER_CONFIG.columns ||
+        c.y < 0 ||
+        c.y >= BUILDER_CONFIG.rows
+      ) {
+        continue;
+      }
+      const key = `${c.x}:${c.y}`;
+      if (seenCoords.has(key)) continue;
+      seenCoords.add(key);
+
+      validChampions.push({
+        championId: c.championId,
+        x: c.x,
+        y: c.y,
+        starLevel: c.starLevel || 2,
+        items: (c.items || []).slice(0, BUILDER_CONFIG.maxItemsPerChampion),
+      });
+    }
+
+    set({ board: validChampions, selectedHex: null });
+  },
 
   selectHex: (x: number, y: number) => set({ selectedHex: { x, y } }),
 

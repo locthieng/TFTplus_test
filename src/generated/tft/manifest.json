@@ -1,0 +1,12 @@
+{
+  "set": "18",
+  "name": "Enchanted Wilds",
+  "patch": "18.3",
+  "championCount": 74,
+  "traitCount": 36,
+  "itemCount": 171,
+  "augmentCount": 345,
+  "generatedAt": "2026-10-01T09:34:39.644Z",
+  "source": "communitydragon",
+  "sourceVersion": "latest"
+}

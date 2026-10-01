@@ -1,0 +1,68 @@
+import { Pet } from "../types/pet";
+
+export const PETS_DATA: Pet[] = [
+  {
+    id: "pet_pengu_featherknight",
+    name: "Pengu Featherknight",
+    species: "Featherknight",
+    imageUrl: "https://raw.communitydragon.org/latest/game/assets/ux/tft/companions/companion_featherknight_base.png",
+    rarity: "Rare",
+    description: "The classic, spirited sword-wielding penguin who embodies tactical determination.",
+  },
+  {
+    id: "pet_choncc_sugarplum",
+    name: "Sugarplum Choncc",
+    species: "Choncc",
+    imageUrl: "https://raw.communitydragon.org/latest/game/assets/ux/tft/companions/companion_choncc_sugarplum.png",
+    rarity: "Legendary",
+    description: "Always hungry for victory and sweet berry treats on the battlefield.",
+  },
+  {
+    id: "pet_dowsie_astronomer",
+    name: "Star Gazer Dowsie",
+    species: "Dowsie",
+    imageUrl: "https://raw.communitydragon.org/latest/game/assets/ux/tft/companions/companion_dowsie_base.png",
+    rarity: "Epic",
+    description: "Magical sea serpent navigating cosmic constellations and starlit board waves.",
+  },
+  {
+    id: "pet_furyhorn_flame",
+    name: "Volcanic Furyhorn",
+    species: "Furyhorn",
+    imageUrl: "https://raw.communitydragon.org/latest/game/assets/ux/tft/companions/companion_furyhorn_base.png",
+    rarity: "Rare",
+    description: "Fierce charging battering-ram tactician filled with fiery competitive spirit.",
+  },
+  {
+    id: "pet_ao_shin_dragon",
+    name: "Storm Dragon Ao Shin",
+    species: "Ao Shin",
+    imageUrl: "https://raw.communitydragon.org/latest/game/assets/ux/tft/companions/companion_aoshin_base.png",
+    rarity: "Mythic",
+    description: "Majestic thunderstorm serpentine dragon invoking lightning thunderclaps upon triumphs.",
+  },
+  {
+    id: "pet_poro_fluffy",
+    name: "Freljord Poro",
+    species: "Poro",
+    imageUrl: "https://raw.communitydragon.org/latest/game/assets/ux/tft/companions/companion_poro_base.png",
+    rarity: "Rare",
+    description: "Incomparably adorable, fluffy companion motivated by delicious Poro-Snax.",
+  },
+  {
+    id: "pet_hauntling_spooky",
+    name: "Shadow Isle Hauntling",
+    species: "Hauntling",
+    imageUrl: "https://raw.communitydragon.org/latest/game/assets/ux/tft/companions/companion_hauntling_base.png",
+    rarity: "Epic",
+    description: "Playful spooky specter that pranks opponents during intense planning rounds.",
+  },
+  {
+    id: "pet_shisa_sunfire",
+    name: "Sunfire Shisa",
+    species: "Shisa",
+    imageUrl: "https://raw.communitydragon.org/latest/game/assets/ux/tft/companions/companion_shisa_base.png",
+    rarity: "Legendary",
+    description: "Noble guardian feline radiating celestial dawnfire and protective aura.",
+  },
+];

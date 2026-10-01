@@ -1,23 +1,37 @@
-import { BoardChampion, CalculatedTrait, TraitBreakpoint } from "@/types/tft";
-import { MOCK_CHAMPIONS, MOCK_TRAITS } from "@/data/mockTftData";
+import {
+  BoardChampion,
+  Champion,
+  Trait,
+  CalculatedTrait,
+  TraitBreakpoint,
+} from "@/types/tft";
+
+export interface TraitCalculationInput {
+  board: BoardChampion[];
+  championsById: ReadonlyMap<string, Champion>;
+  traitsById: ReadonlyMap<string, Trait>;
+}
 
 /**
- * Calculates active and inactive traits based on champions currently placed on the board.
- * In standard TFT rules:
- * 1. Only unique champions count towards trait thresholds (duplicates do not increase trait counts).
+ * Pure Trait Calculator for TFT.
+ * 1. Only unique champions count towards trait thresholds (duplicates do not increase unit counts).
  * 2. Active traits are sorted by highest breakpoint tier first, then by unit count descending.
+ * 3. Does not import any external or mock data; receives lookup maps directly.
  */
-export function calculateBoardTraits(boardChampions: BoardChampion[]): CalculatedTrait[] {
-  if (!boardChampions || boardChampions.length === 0) return [];
+export function calculateBoardTraits(input: TraitCalculationInput): CalculatedTrait[] {
+  const { board, championsById, traitsById } = input;
+  if (!board || board.length === 0) return [];
 
   // 1. Get unique champion IDs on the board
-  const uniqueChampionIds = Array.from(new Set(boardChampions.map((c) => c.championId)));
+  const uniqueChampionIds = Array.from(
+    new Set(board.map((c) => c.championId))
+  );
 
   // 2. Count unit occurrences per trait
   const traitCounts: Record<string, number> = {};
 
   for (const champId of uniqueChampionIds) {
-    const champion = MOCK_CHAMPIONS.find((c) => c.id === champId);
+    const champion = championsById.get(champId);
     if (!champion) continue;
 
     for (const traitId of champion.traits) {
@@ -29,7 +43,7 @@ export function calculateBoardTraits(boardChampions: BoardChampion[]): Calculate
   const results: CalculatedTrait[] = [];
 
   for (const [traitId, count] of Object.entries(traitCounts)) {
-    const trait = MOCK_TRAITS.find((t) => t.id === traitId || t.apiName === traitId);
+    const trait = traitsById.get(traitId);
     if (!trait) continue;
 
     // Find highest active breakpoint
