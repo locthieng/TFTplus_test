@@ -2,11 +2,11 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { ChevronDown, ChevronUp, ExternalLink, Wrench } from "lucide-react";
-import { TeamComp, Champion, Item, Trait } from "@/types/tft";
+import { TeamComp, Champion, Item, Trait, Augment } from "@/types/tft";
 import { COST_COLORS, COMP_TIER_COLORS } from "@/constants/tft";
 import { encodeBuilderSnapshot } from "@/features/builder/share/builderShareCodec";
+import { GameImage } from "@/components/common/GameImage";
 import { cn } from "@/utils/cn";
 
 export interface TeamCompRowProps {
@@ -14,6 +14,7 @@ export interface TeamCompRowProps {
   championsById?: ReadonlyMap<string, Champion>;
   traitsById?: ReadonlyMap<string, Trait>;
   itemsById?: ReadonlyMap<string, Item>;
+  augmentsById?: ReadonlyMap<string, Augment>;
 }
 
 export function TeamCompRow({
@@ -21,6 +22,7 @@ export function TeamCompRow({
   championsById,
   traitsById,
   itemsById,
+  augmentsById,
 }: TeamCompRowProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -109,20 +111,25 @@ export function TeamCompRow({
                 {/* Champion portrait */}
                 <div
                   className={cn(
-                    "w-8 h-8 sm:w-9 sm:h-9 rounded relative overflow-hidden border-2 bg-slate-900 shadow-xs",
+                    "w-8 h-8 sm:w-9 sm:h-9 rounded relative overflow-hidden border-2 bg-slate-900 shadow-xs transition-transform group-hover/champ:scale-105",
                     costColor.border,
-                    isCarry ? "ring-2 ring-amber-400/70" : ""
+                    isCarry ? "ring-2 ring-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)] z-10" : ""
                   )}
-                  title={`${champ.name} (${cost} cost)`}
+                  title={`${champ.name} (${cost} cost)${isCarry ? " • Main Carry" : ""}`}
                 >
-                  <Image
+                  <GameImage
                     src={champ.imageUrl || resolvedChamp?.imageUrl || "/placeholder.png"}
                     alt={champ.name}
                     width={36}
                     height={36}
-                    unoptimized
                     className="w-full h-full object-cover"
                   />
+                  {/* Carry crown/star marker */}
+                  {isCarry && (
+                    <div className="absolute top-0 left-0 bg-amber-500 text-[8px] font-black text-slate-950 px-0.5 rounded-br uppercase leading-none shadow-xs">
+                      ★
+                    </div>
+                  )}
                   {/* Star level */}
                   {champ.starLevel && champ.starLevel > 1 && (
                     <div className="absolute top-0 right-0 bg-black/80 px-0.5 rounded-bl text-[9px] font-black text-amber-400 leading-none">
@@ -144,12 +151,11 @@ export function TeamCompRow({
                           title={itemObj?.name || itemId}
                         >
                           {itemObj?.imageUrl && (
-                            <Image
+                            <GameImage
                               src={itemObj.imageUrl}
                               alt={itemObj.name}
                               width={14}
                               height={14}
-                              unoptimized
                               className="w-full h-full object-cover"
                             />
                           )}
@@ -175,12 +181,11 @@ export function TeamCompRow({
                 title={`${tr.name} (${tr.count})`}
               >
                 {resolvedTrait?.iconUrl && (
-                  <Image
+                  <GameImage
                     src={resolvedTrait.iconUrl}
                     alt={tr.name}
                     width={14}
                     height={14}
-                    unoptimized
                     className="w-3.5 h-3.5 object-contain"
                   />
                 )}
@@ -296,12 +301,11 @@ export function TeamCompRow({
                           title={placedChamp?.name || `Cell (${row}, ${col})`}
                         >
                           {placedChamp && (
-                            <Image
+                            <GameImage
                               src={placedChamp.imageUrl || resolvedChamp?.imageUrl || "/placeholder.png"}
                               alt={placedChamp.name}
                               width={28}
                               height={28}
-                              unoptimized
                               className="w-full h-full object-cover"
                             />
                           )}
@@ -318,14 +322,27 @@ export function TeamCompRow({
           {comp.augments && comp.augments.length > 0 && (
             <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-[#1a2335]">
               <span className="text-[11px] font-bold text-slate-400 uppercase">Recommended Augments:</span>
-              {comp.augments.map((aug, i) => (
-                <span
-                  key={i}
-                  className="px-2 py-0.5 rounded bg-[#151f33] border border-[#24344d] text-slate-300 text-[11px]"
-                >
-                  {aug}
-                </span>
-              ))}
+              {comp.augments.map((augId, i) => {
+                const augObj = augmentsById?.get(augId) || augmentsById?.get(augId.toLowerCase());
+                return (
+                  <span
+                    key={i}
+                    className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#151f33] border border-[#24344d] text-slate-300 text-[11px]"
+                    title={augObj?.description || undefined}
+                  >
+                    {augObj?.iconUrl && (
+                      <GameImage
+                        src={augObj.iconUrl}
+                        alt={augObj.name}
+                        width={14}
+                        height={14}
+                        className="w-3.5 h-3.5 object-contain rounded-xs"
+                      />
+                    )}
+                    <span className="font-medium text-slate-200">{augObj?.name || augId}</span>
+                  </span>
+                );
+              })}
             </div>
           )}
         </div>

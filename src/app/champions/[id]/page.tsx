@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { tftService } from "@/services/tft";
+import { GameImage } from "@/components/common/GameImage";
 import { COST_COLORS, TRAIT_STYLE_CONFIG } from "@/constants/tft";
 import {
   ArrowLeft,
@@ -105,13 +105,12 @@ export default async function ChampionDetailPage({
                 costStyle.border
               )}
             >
-              <Image
+              <GameImage
                 src={champion.imageUrl}
                 alt={champion.name}
                 width={80}
                 height={80}
                 className="w-full h-full object-cover scale-105"
-                unoptimized
               />
             </div>
 
@@ -141,13 +140,12 @@ export default async function ChampionDetailPage({
                     className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#162133] border border-[#24354e] hover:border-amber-400/50 text-[11px] font-semibold text-slate-300 transition-colors"
                   >
                     <div className="w-3.5 h-3.5 relative flex-shrink-0">
-                      <Image
+                      <GameImage
                         src={trait.iconUrl}
                         alt={trait.name}
                         width={14}
                         height={14}
                         className="w-full h-full object-contain filter drop-shadow"
-                        unoptimized
                       />
                     </div>
                     <span>{trait.name}</span>
@@ -208,7 +206,7 @@ export default async function ChampionDetailPage({
                 <span className="font-semibold">Health</span>
               </div>
               <div className="font-mono text-xs font-bold text-slate-200">
-                {champion.health?.join(" / ") ?? "600 / 1080 / 1944"}
+                {champion.health?.length ? champion.health.join(" / ") : "—"}
               </div>
             </div>
 
@@ -219,7 +217,7 @@ export default async function ChampionDetailPage({
                 <span className="font-semibold">AD</span>
               </div>
               <div className="font-mono text-xs font-bold text-slate-200">
-                {champion.attackDamage?.join(" / ") ?? "50 / 90 / 162"}
+                {champion.attackDamage?.length ? champion.attackDamage.join(" / ") : "—"}
               </div>
             </div>
 
@@ -230,7 +228,7 @@ export default async function ChampionDetailPage({
                 <span className="font-semibold">AS</span>
               </div>
               <div className="font-mono text-xs font-bold text-slate-200">
-                {(champion.attackSpeed ?? 0.7).toFixed(2)}
+                {champion.attackSpeed != null ? champion.attackSpeed.toFixed(2) : "—"}
               </div>
             </div>
 
@@ -241,7 +239,7 @@ export default async function ChampionDetailPage({
                 <span className="font-semibold">Armor</span>
               </div>
               <div className="font-mono text-xs font-bold text-slate-200">
-                {champion.armor ?? 30}
+                {champion.armor != null ? champion.armor : "—"}
               </div>
             </div>
 
@@ -252,7 +250,7 @@ export default async function ChampionDetailPage({
                 <span className="font-semibold">MR</span>
               </div>
               <div className="font-mono text-xs font-bold text-slate-200">
-                {champion.magicResist ?? 30}
+                {champion.magicResist != null ? champion.magicResist : "—"}
               </div>
             </div>
 
@@ -263,7 +261,7 @@ export default async function ChampionDetailPage({
                 <span className="font-semibold">Range</span>
               </div>
               <div className="font-mono text-xs font-bold text-slate-200">
-                {champion.range ?? 1} Hex{(champion.range ?? 1) > 1 ? "es" : ""}
+                {champion.range != null ? `${champion.range} Hex${champion.range > 1 ? "es" : ""}` : "—"}
               </div>
             </div>
 
@@ -274,7 +272,7 @@ export default async function ChampionDetailPage({
                 <span className="font-semibold">Crit %</span>
               </div>
               <div className="font-mono text-xs font-bold text-slate-200">
-                {champion.critChance ?? 25}%
+                {champion.critChance != null ? `${champion.critChance}%` : "—"}
               </div>
             </div>
 
@@ -285,7 +283,7 @@ export default async function ChampionDetailPage({
                 <span className="font-semibold">Crit DMG</span>
               </div>
               <div className="font-mono text-xs font-bold text-slate-200">
-                {champion.critDamage ?? 140}%
+                {champion.critDamage != null ? `${champion.critDamage}%` : "—"}
               </div>
             </div>
           </div>
@@ -305,13 +303,12 @@ export default async function ChampionDetailPage({
                 >
                   <div className="flex items-center gap-2">
                     <div className="w-6 h-6 rounded bg-[#172233] border border-[#233148] p-0.5 flex items-center justify-center flex-shrink-0">
-                      <Image
+                      <GameImage
                         src={trait.iconUrl}
                         alt={trait.name}
                         width={20}
                         height={20}
                         className="w-full h-full object-contain filter drop-shadow"
-                        unoptimized
                       />
                     </div>
                     <Link

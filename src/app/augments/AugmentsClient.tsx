@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import Image from "next/image";
 import { Augment, AugmentTier } from "@/types/tft";
 import { SearchInput } from "@/components/common/SearchInput";
+import { GameImage } from "@/components/common/GameImage";
 import { Shield } from "lucide-react";
 import { cn } from "@/utils/cn";
 
@@ -138,13 +138,12 @@ export function AugmentsClient({ initialAugments }: AugmentsClientProps) {
                 )}
               >
                 <div className="w-14 h-14 rounded-xl border border-[#2b394f] overflow-hidden bg-slate-900 flex-shrink-0 p-1">
-                  <Image
+                  <GameImage
                     src={aug.iconUrl}
                     alt={aug.name}
                     width={56}
                     height={56}
                     className="w-full h-full object-contain"
-                    unoptimized
                   />
                 </div>
 

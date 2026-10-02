@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { Trait, TraitTierStyle } from "@/types/tft";
 import { TRAIT_STYLE_CONFIG } from "@/constants/tft";
 import { Tooltip } from "@/components/common/Tooltip";
+import { GameImage } from "@/components/common/GameImage";
 import { cn } from "@/utils/cn";
 
 export interface TraitBadgeProps {
@@ -39,13 +39,12 @@ export function TraitBadge({
       )}
     >
       <div className="w-4 h-4 relative flex items-center justify-center">
-        <Image
+        <GameImage
           src={trait.iconUrl}
           alt={trait.name}
           width={16}
           height={16}
           className="w-full h-full object-contain filter drop-shadow"
-          unoptimized
         />
       </div>
       <span>{count}</span>
@@ -61,13 +60,12 @@ export function TraitBadge({
     <div className="space-y-1.5 min-w-[200px]">
       <div className="flex items-center gap-2 border-b border-slate-700/80 pb-1">
         <div className="w-5 h-5 relative">
-          <Image
+          <GameImage
             src={trait.iconUrl}
             alt={trait.name}
             width={20}
             height={20}
             className="w-full h-full object-contain"
-            unoptimized
           />
         </div>
         <span className="font-bold text-xs text-amber-300">{trait.name}</span>

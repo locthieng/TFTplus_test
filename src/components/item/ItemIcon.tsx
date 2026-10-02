@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { Item } from "@/types/tft";
 import { Tooltip } from "@/components/common/Tooltip";
+import { GameImage } from "@/components/common/GameImage";
 import { cn } from "@/utils/cn";
 
 export interface ItemIconProps {
@@ -42,13 +42,12 @@ export function ItemIcon({
         className
       )}
     >
-      <Image
+      <GameImage
         src={item.imageUrl}
         alt={item.name}
         width={imageSizes[size]}
         height={imageSizes[size]}
         className="w-full h-full object-cover"
-        unoptimized
       />
     </div>
   );

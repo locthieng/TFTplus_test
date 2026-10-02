@@ -1,10 +1,10 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { tftService } from "@/services/tft";
 import { TRAIT_STYLE_CONFIG } from "@/constants/tft";
 import { ChampionAvatar } from "@/components/champion/ChampionAvatar";
+import { GameImage } from "@/components/common/GameImage";
 import { ArrowLeft, Layers, Hammer, Users } from "lucide-react";
 import { cn } from "@/utils/cn";
 import { encodeBuilderSnapshot } from "@/features/builder/share/builderShareCodec";
@@ -67,13 +67,12 @@ export default async function TraitDetailPage({
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-6 border-b border-[#20293b]">
           <div className="flex items-center gap-5">
             <div className="w-20 h-20 rounded-2xl bg-[#172233] border border-[#2b394f] p-3 flex items-center justify-center flex-shrink-0 shadow-lg">
-              <Image
+              <GameImage
                 src={trait.iconUrl}
                 alt={trait.name}
                 width={56}
                 height={56}
                 className="w-full h-full object-contain filter drop-shadow"
-                unoptimized
               />
             </div>
 

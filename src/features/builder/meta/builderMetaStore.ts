@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { BoardChampion } from "@/types/tft";
+import { TFT_RELEASE_CONFIG } from "@/config/tftConfig";
 
 export interface BuilderMeta {
   carryChampionId?: string;
@@ -12,6 +13,8 @@ export interface SavedBuild {
   id: string;
   name: string;
   createdAt: string;
+  setId?: string;
+  patch?: string;
   board: BoardChampion[];
   meta: BuilderMeta;
 }
@@ -31,13 +34,17 @@ export function getLocalSavedBuilds(): SavedBuild[] {
 export function saveLocalBuild(
   name: string,
   board: BoardChampion[],
-  meta: BuilderMeta
+  meta: BuilderMeta,
+  setId: string = TFT_RELEASE_CONFIG.setId,
+  patch: string = TFT_RELEASE_CONFIG.patch
 ): SavedBuild {
   const current = getLocalSavedBuilds();
   const newBuild: SavedBuild = {
     id: `build_${Date.now()}`,
     name: name.trim() || `My Build #${current.length + 1}`,
     createdAt: new Date().toISOString(),
+    setId,
+    patch,
     board,
     meta,
   };
@@ -48,6 +55,19 @@ export function saveLocalBuild(
     // Ignore storage quota errors
   }
   return newBuild;
+}
+
+export function validateSavedBuildVersion(
+  build: SavedBuild,
+  currentSetId: string = TFT_RELEASE_CONFIG.setId
+): { isCompatible: boolean; warning?: string } {
+  if (build.setId && build.setId !== currentSetId) {
+    return {
+      isCompatible: false,
+      warning: `This build was saved for Set ${build.setId}. Current active set is Set ${currentSetId}. Champions or synergies may not align.`,
+    };
+  }
+  return { isCompatible: true };
 }
 
 export function deleteLocalBuild(id: string): SavedBuild[] {

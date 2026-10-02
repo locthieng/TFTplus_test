@@ -15,9 +15,27 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TFT Companion — Meta Comps, Team Builder, Champion Stats & Profile",
+  title: {
+    default: "TFTPlus — Set 18 Enchanted Wilds Meta Comps, Builder & Stats",
+    template: "%s | TFTPlus",
+  },
   description:
-    "Explore top Teamfight Tactics meta comps, tier lists, champion traits, items, build synergistic comps with the interactive hex builder, and track player stats.",
+    "Master TFT Set 18 Enchanted Wilds (Patch 18.3). Real-time meta team comps, interactive Hex Builder, full champion database, item recipes, and augments tier list.",
+  openGraph: {
+    title: "TFTPlus — Set 18 Enchanted Wilds Meta Comps, Builder & Stats",
+    description:
+      "Master TFT Set 18 Enchanted Wilds with meta comps, hex board builder, champion stats, and craftable item recipes.",
+    url: "https://tf-tplus-test.vercel.app",
+    siteName: "TFTPlus",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "TFTPlus — Set 18 Enchanted Wilds Meta Comps & Builder",
+    description:
+      "TFT Set 18 Enchanted Wilds companion: interactive Hex Builder, meta tier lists, and complete game stats.",
+  },
 };
 
 export default function RootLayout({

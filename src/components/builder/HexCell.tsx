@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { BoardChampion } from "@/types/tft";
 import { useBuilderData } from "@/features/builder/context/BuilderDataContext";
 import { COST_COLORS } from "@/constants/tft";
+import { GameImage } from "@/components/common/GameImage";
 import { Star, X, Plus } from "lucide-react";
 import { cn } from "@/utils/cn";
 
@@ -74,13 +74,12 @@ export function HexCell({
         >
           {champData ? (
             <>
-              <Image
+              <GameImage
                 src={champData.imageUrl}
                 alt={champData.name}
                 width={72}
                 height={72}
                 className="w-full h-full object-cover scale-110 pointer-events-none"
-                unoptimized
               />
 
               {/* Star level banner */}
@@ -117,13 +116,12 @@ export function HexCell({
                         key={idx}
                         className="w-3.5 h-3.5 rounded-sm border border-slate-700 bg-slate-900 overflow-hidden"
                       >
-                        <Image
+                        <GameImage
                           src={itemData.imageUrl}
                           alt={itemData.name}
                           width={14}
                           height={14}
                           className="w-full h-full object-cover"
-                          unoptimized
                         />
                       </div>
                     );

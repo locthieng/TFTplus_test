@@ -224,9 +224,9 @@ export const SET18_TEAM_COMPS: TeamComp[] = [
       }
     ],
     "augments": [
-      "Aim For The Top!",
-      "A Golden Quest",
-      "Unified Front"
+      "tft_augment_aimforthetop",
+      "tft_augment_goldenquest",
+      "da_18_lunartraitaugment"
     ]
   },
   {
@@ -444,9 +444,9 @@ export const SET18_TEAM_COMPS: TeamComp[] = [
       }
     ],
     "augments": [
-      "Titanic Titan",
-      "Heavy Hitters",
-      "Primal Roar"
+      "tft_augment_titanictitan",
+      "da_18_primalaugmentplus_nidalee",
+      "da_cyberneticimplants_gold"
     ]
   },
   {
@@ -648,9 +648,9 @@ export const SET18_TEAM_COMPS: TeamComp[] = [
       }
     ],
     "augments": [
-      "Coven Emblem",
-      "Magic Roll",
-      "Jeweled Lotus"
+      "da_18_coventraitaugment",
+      "da_magicroll",
+      "da_jeweledlotus_i"
     ]
   },
   {
@@ -844,9 +844,9 @@ export const SET18_TEAM_COMPS: TeamComp[] = [
       }
     ],
     "augments": [
-      "Spellweaver Crest",
-      "Healing Orbs",
-      "Ascension"
+      "da_18_blossomtraitaugment",
+      "da_healingorbsii",
+      "da_ascension"
     ]
   },
   {
@@ -1048,9 +1048,9 @@ export const SET18_TEAM_COMPS: TeamComp[] = [
       }
     ],
     "augments": [
-      "Elderwood Heart",
-      "Executioner Crest",
-      "Cybernetic Uplink"
+      "da_18_elderwoodtraitaugment",
+      "da_cyberneticuplink_gold",
+      "da_18_biggrabbag"
     ]
   },
   {
@@ -1244,9 +1244,9 @@ export const SET18_TEAM_COMPS: TeamComp[] = [
       }
     ],
     "augments": [
-      "Beast Mastery",
-      "Rift Blessing",
-      "Featherweights"
+      "da_18_riftbeasttraitaugment",
+      "tft_augment_epicrolldown",
+      "da_celestialblessingii"
     ]
   },
   {
@@ -1464,9 +1464,9 @@ export const SET18_TEAM_COMPS: TeamComp[] = [
       }
     ],
     "augments": [
-      "Inferno Heart",
-      "Blistering Heat",
-      "Combat Ready"
+      "da_18_infernotraitaugment",
+      "tft_augment_frontlinefoundation",
+      "da_cyberneticimplants_gold"
     ]
   },
   {
@@ -1668,9 +1668,9 @@ export const SET18_TEAM_COMPS: TeamComp[] = [
       }
     ],
     "augments": [
-      "Rival Duel",
-      "Thrill of the Hunt",
-      "Cybernetic Implants"
+      "da_18_rivalsaugment",
+      "da_cyberneticimplants_gold",
+      "da_healingorbsi"
     ]
   },
   {
@@ -1888,9 +1888,9 @@ export const SET18_TEAM_COMPS: TeamComp[] = [
       }
     ],
     "augments": [
-      "Blackthorn Bloom",
-      "Executioner Crown",
-      "Martyr"
+      "da_18_luxaugmentii",
+      "da_jeweledlotus_ii",
+      "da_ascension"
     ]
   },
   {
@@ -2092,9 +2092,9 @@ export const SET18_TEAM_COMPS: TeamComp[] = [
       }
     ],
     "augments": [
-      "Solar Blessing",
-      "Stand United",
-      "Defender Crest"
+      "da_18_solartraitaugment",
+      "da_standunited",
+      "da_cyberneticuplink_gold"
     ]
   },
   {
@@ -2296,9 +2296,9 @@ export const SET18_TEAM_COMPS: TeamComp[] = [
       }
     ],
     "augments": [
-      "Sprykin Sprint",
-      "Mushroom Field",
-      "Pocket Watch"
+      "da_18_sprykinaugment",
+      "tft_augment_magicroll",
+      "da_18_residualmagicplus"
     ]
   },
   {
@@ -2508,9 +2508,9 @@ export const SET18_TEAM_COMPS: TeamComp[] = [
       }
     ],
     "augments": [
-      "Wuju Style",
-      "Harmacist",
-      "Combat Training"
+      "da_18_blossomtraitaugment",
+      "tft_augment_titanictitan",
+      "da_celestialblessingii"
     ]
   }
 ];

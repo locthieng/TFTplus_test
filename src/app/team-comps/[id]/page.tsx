@@ -1,12 +1,12 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { tftService } from "@/services/tft";
 import { Champion, Trait, Item, Augment } from "@/types/tft";
 import { COMP_TIER_COLORS, COST_COLORS } from "@/constants/tft";
 import { ChampionAvatar } from "@/components/champion/ChampionAvatar";
 import { TraitBadge } from "@/components/trait/TraitBadge";
+import { GameImage } from "@/components/common/GameImage";
 import { ArrowLeft, Swords, Shield, Sparkles, BookOpen, Clock } from "lucide-react";
 import { cn } from "@/utils/cn";
 import { encodeBuilderSnapshot } from "@/features/builder/share/builderShareCodec";
@@ -226,13 +226,12 @@ export default async function TeamCompDetailPage({
                       >
                         <div className="w-full h-full clip-hexagon bg-slate-900 flex items-center justify-center relative overflow-hidden">
                           {champData ? (
-                            <Image
+                            <GameImage
                               src={champData.imageUrl}
                               alt={champData.name}
                               width={64}
                               height={64}
                               className="w-full h-full object-cover scale-110"
-                              unoptimized
                             />
                           ) : (
                             <div className="w-2 h-2 rounded-full bg-slate-800" />
@@ -353,13 +352,12 @@ export default async function TeamCompDetailPage({
                       className="flex items-start gap-2.5 p-2 rounded-xl bg-[#141b27] border border-[#202a3c]"
                     >
                       <div className="w-8 h-8 rounded-lg overflow-hidden flex-shrink-0 bg-slate-900 border border-slate-700">
-                        <Image
+                        <GameImage
                           src={augData.iconUrl}
                           alt={augData.name}
                           width={32}
                           height={32}
                           className="w-full h-full object-cover"
-                          unoptimized
                         />
                       </div>
                       <div>

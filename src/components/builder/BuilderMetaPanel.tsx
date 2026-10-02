@@ -1,19 +1,20 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
-import { Plus, X, Crown, BookmarkCheck, Trash2 } from "lucide-react";
+import { Plus, X, Crown, BookmarkCheck, Trash2, AlertTriangle } from "lucide-react";
 import { useBuilderStore } from "@/stores/useBuilderStore";
 import {
   useBuilderMetaStore,
   saveLocalBuild,
   deleteLocalBuild,
   getLocalSavedBuilds,
+  validateSavedBuildVersion,
   SavedBuild,
 } from "@/features/builder/meta/builderMetaStore";
 import { HEX_CORES_DATA } from "@/features/hex-cores/data/hexCoresData";
 import { HexCoreTier } from "@/features/hex-cores/types/hexCore";
 import { useBuilderData } from "@/features/builder/context/BuilderDataContext";
+import { GameImage } from "@/components/common/GameImage";
 import { COST_COLORS } from "@/constants/tft";
 import { cn } from "@/utils/cn";
 
@@ -37,6 +38,7 @@ export function BuilderMetaPanel() {
   const [buildName, setBuildName] = useState("");
   const [savedBuilds, setSavedBuilds] = useState<SavedBuild[]>([]);
   const [showSavedList, setShowSavedList] = useState(false);
+  const [versionWarning, setVersionWarning] = useState<string | null>(null);
 
   // Refresh saved builds on open
   const handleOpenSaveModal = () => {
@@ -58,6 +60,12 @@ export function BuilderMetaPanel() {
   };
 
   const handleLoadBuild = (build: SavedBuild) => {
+    const val = validateSavedBuildVersion(build);
+    if (!val.isCompatible) {
+      setVersionWarning(val.warning || null);
+    } else {
+      setVersionWarning(null);
+    }
     loadSnapshot(build.board);
     setMeta(build.meta);
     setShowSavedList(false);
@@ -90,6 +98,9 @@ export function BuilderMetaPanel() {
         <h3 className="font-extrabold text-white uppercase tracking-wider text-xs flex items-center gap-1.5">
           <Crown className="w-3.5 h-3.5 text-amber-400" />
           Tactical Augmentation & Core
+          <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-950/60 border border-amber-800/60 text-amber-300 font-normal">
+            Tactical Preset
+          </span>
         </h3>
 
         <div className="flex items-center gap-2">
@@ -112,6 +123,23 @@ export function BuilderMetaPanel() {
           </button>
         </div>
       </div>
+
+      {/* Cross-set Version Warning */}
+      {versionWarning && (
+        <div className="flex items-center justify-between p-2.5 rounded bg-amber-950/40 border border-amber-600/50 text-amber-200 text-xs">
+          <div className="flex items-center gap-2">
+            <AlertTriangle className="w-4 h-4 text-amber-400 flex-shrink-0" />
+            <span>{versionWarning}</span>
+          </div>
+          <button
+            type="button"
+            onClick={() => setVersionWarning(null)}
+            className="text-amber-400 hover:text-white text-xs font-bold ml-2 cursor-pointer"
+          >
+            Dismiss
+          </button>
+        </div>
+      )}
 
       {/* Saved builds accordion drop */}
       {showSavedList && (
@@ -139,7 +167,7 @@ export function BuilderMetaPanel() {
                   <div>
                     <span className="font-bold text-white text-xs block">{b.name}</span>
                     <span className="text-[10px] text-slate-500">
-                      {b.board.length} units • {new Date(b.createdAt).toLocaleDateString()}
+                      {b.board.length} units • Set {b.setId ?? "18"} • {new Date(b.createdAt).toLocaleDateString()}
                     </span>
                   </div>
                   <button
@@ -194,13 +222,12 @@ export function BuilderMetaPanel() {
                   )}
                   title={`Set ${champ.name} as carry`}
                 >
-                  <Image
+                  <GameImage
                     src={champ.imageUrl}
                     alt={champ.name}
                     width={36}
                     height={36}
                     className="w-full h-full object-cover"
-                    unoptimized
                   />
                   {isCarry && (
                     <div className="absolute top-0 right-0 bg-amber-500 text-slate-950 p-0.5 rounded-bl">
@@ -225,13 +252,12 @@ export function BuilderMetaPanel() {
             {heroCore ? (
               <div className="flex items-center gap-2 p-1.5 bg-[#151f31] border border-amber-500/40 rounded flex-1 relative group">
                 <div className="w-7 h-7 rounded bg-amber-950/60 border border-amber-500/50 overflow-hidden relative flex-shrink-0 flex items-center justify-center">
-                  <Image
+                  <GameImage
                     src={heroCore.iconUrl}
                     alt={heroCore.name}
                     width={28}
                     height={28}
                     className="w-full h-full object-cover"
-                    unoptimized
                   />
                 </div>
                 <div className="min-w-0 flex-1">
@@ -272,13 +298,12 @@ export function BuilderMetaPanel() {
                 className="w-8 h-8 rounded bg-[#151f31] border border-purple-500/40 relative overflow-hidden group shadow-xs"
                 title={core.name}
               >
-                <Image
+                <GameImage
                   src={core.iconUrl}
                   alt={core.name}
                   width={32}
                   height={32}
                   className="w-full h-full object-cover"
-                  unoptimized
                 />
                 <button
                   type="button"
@@ -314,13 +339,12 @@ export function BuilderMetaPanel() {
                 className="w-8 h-8 rounded bg-[#151f31] border border-blue-500/40 relative overflow-hidden group shadow-xs"
                 title={core.name}
               >
-                <Image
+                <GameImage
                   src={core.iconUrl}
                   alt={core.name}
                   width={32}
                   height={32}
                   className="w-full h-full object-cover"
-                  unoptimized
                 />
                 <button
                   type="button"
@@ -392,13 +416,12 @@ export function BuilderMetaPanel() {
                     )}
                   >
                     <div className="w-8 h-8 rounded bg-slate-900 border border-slate-700 overflow-hidden flex-shrink-0 flex items-center justify-center">
-                      <Image
+                      <GameImage
                         src={core.iconUrl}
                         alt={core.name}
                         width={32}
                         height={32}
                         className="w-full h-full object-cover"
-                        unoptimized
                       />
                     </div>
                     <div className="flex-1 min-w-0">

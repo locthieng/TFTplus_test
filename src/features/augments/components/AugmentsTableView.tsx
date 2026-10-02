@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Search } from "lucide-react";
 import { Augment } from "@/types/tft";
+import { GameImage } from "@/components/common/GameImage";
 import {
   AugmentNumericTier,
   AUGMENT_NUMERIC_TIERS,
@@ -125,13 +125,12 @@ export function AugmentsTableView({
                       <td className="py-2.5 px-4">
                         <div className="flex items-center gap-3">
                           <div className="w-9 h-9 rounded bg-slate-900 border border-[#233148] overflow-hidden flex-shrink-0 relative shadow-xs">
-                            <Image
+                            <GameImage
                               src={aug.iconUrl || "/placeholder.png"}
                               alt={aug.name}
                               width={36}
                               height={36}
                               className="w-full h-full object-cover"
-                              unoptimized
                             />
                           </div>
                           <div>
@@ -151,11 +150,15 @@ export function AugmentsTableView({
                       <td className="py-2.5 px-4 text-center">
                         <span
                           className={cn(
-                            "inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border",
+                            "inline-block px-2.5 py-0.5 rounded text-[11px] font-bold tracking-wide border shadow-xs",
                             tierColor
                           )}
                         >
-                          {aug.tier}
+                          {aug.tier === "silver"
+                            ? "Tier 1 (Silver)"
+                            : aug.tier === "gold"
+                            ? "Tier 2 (Gold)"
+                            : "Tier 3 (Prismatic)"}
                         </span>
                       </td>
                     </tr>

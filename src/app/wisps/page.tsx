@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from "react";
 import { Search, Sparkles } from "lucide-react";
 import { WISPS_DATA } from "@/features/wisps/data/wispsData";
+import { GameImage } from "@/components/common/GameImage";
 import { cn } from "@/utils/cn";
 
 export default function WispsPage() {
@@ -108,8 +109,18 @@ export default function WispsPage() {
                   <tr key={wisp.id} className="hover:bg-[#141c2c] transition-colors">
                     <td className="py-2.5 px-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-full bg-slate-900 border border-[#233148] flex items-center justify-center flex-shrink-0 text-amber-400 font-bold shadow-xs">
-                          <Sparkles className="w-4 h-4" />
+                        <div className="w-9 h-9 rounded-full bg-slate-900 border border-[#233148] flex items-center justify-center flex-shrink-0 text-amber-400 font-bold shadow-xs overflow-hidden">
+                          {wisp.iconUrl ? (
+                            <GameImage
+                              src={wisp.iconUrl}
+                              alt={wisp.name}
+                              width={36}
+                              height={36}
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <Sparkles className="w-4 h-4" />
+                          )}
                         </div>
                         <span className="font-bold text-white text-xs block">
                           {wisp.name}

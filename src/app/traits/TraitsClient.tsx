@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Trait, Champion } from "@/types/tft";
 import { TRAIT_STYLE_CONFIG, COST_COLORS } from "@/constants/tft";
 import { SearchInput } from "@/components/common/SearchInput";
+import { GameImage } from "@/components/common/GameImage";
 import { Layers } from "lucide-react";
 import { cn } from "@/utils/cn";
 
@@ -87,13 +87,12 @@ export function TraitsClient({
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
                       <div className="w-7 h-7 rounded bg-[#162133] border border-[#233148] p-1 flex items-center justify-center flex-shrink-0">
-                        <Image
+                        <GameImage
                           src={trait.iconUrl}
                           alt={trait.name}
                           width={20}
                           height={20}
                           className="w-full h-full object-contain filter drop-shadow"
-                          unoptimized
                         />
                       </div>
                       <Link
@@ -157,13 +156,12 @@ export function TraitsClient({
                           )}
                           title={`${champ.name} (${champ.cost}g)`}
                         >
-                          <Image
+                          <GameImage
                             src={champ.imageUrl}
                             alt={champ.name}
                             width={28}
                             height={28}
                             className="w-full h-full object-cover group-hover/c:scale-110 transition-transform"
-                            unoptimized
                           />
                         </Link>
                       );

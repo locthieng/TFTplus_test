@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import Image from "next/image";
 import { Item, ItemType } from "@/types/tft";
 import { SearchInput } from "@/components/common/SearchInput";
+import { GameImage } from "@/components/common/GameImage";
 import { Swords } from "lucide-react";
 import { cn } from "@/utils/cn";
 
@@ -121,13 +121,12 @@ export function ItemsClient({ initialItems }: ItemsClientProps) {
               className="bg-[#121824] border border-[#222c3d] hover:border-[#384a66] rounded-2xl p-4 sm:p-5 flex items-start gap-4 transition-all hover:shadow-xl"
             >
               <div className="w-14 h-14 rounded-xl border border-[#2b394f] overflow-hidden bg-slate-900 flex-shrink-0 p-1">
-                <Image
+                <GameImage
                   src={item.imageUrl}
                   alt={item.name}
                   width={56}
                   height={56}
                   className="w-full h-full object-contain"
-                  unoptimized
                 />
               </div>
 

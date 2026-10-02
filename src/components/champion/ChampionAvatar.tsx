@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { Champion } from "@/types/tft";
 import { COST_COLORS } from "@/constants/tft";
 import { Tooltip } from "@/components/common/Tooltip";
+import { GameImage } from "@/components/common/GameImage";
 import { cn } from "@/utils/cn";
 import { Star, Shield, Flame } from "lucide-react";
 
@@ -86,13 +86,12 @@ export function ChampionAvatar({
             className
           )}
         >
-          <Image
+          <GameImage
             src={champion.imageUrl}
             alt={champion.name}
             width={imageSizes[size]}
             height={imageSizes[size]}
             className="w-full h-full object-cover"
-            unoptimized
           />
 
           {/* Role badge (Carry / Tank) */}
@@ -130,13 +129,12 @@ export function ChampionAvatar({
                 className="w-4 h-4 rounded border border-slate-700 bg-slate-900 overflow-hidden shadow"
                 title={item.name}
               >
-                <Image
+                <GameImage
                   src={item.imageUrl}
                   alt={item.name}
                   width={16}
                   height={16}
                   className="w-full h-full object-cover"
-                  unoptimized
                 />
               </div>
             ))}

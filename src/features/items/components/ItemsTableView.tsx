@@ -1,15 +1,16 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Search } from "lucide-react";
 import { Item } from "@/types/tft";
+import { GameImage } from "@/components/common/GameImage";
 import {
   ItemPageCategory,
   ITEM_PAGE_CATEGORIES,
   filterItemsByCategory,
 } from "../categories/itemCategoryMapper";
+import { buildItemRecipeIndex } from "../recipes/itemRecipeIndex";
 import { cn } from "@/utils/cn";
 
 interface ItemsTableViewProps {
@@ -32,6 +33,10 @@ export function ItemsTableView({
       map.set(item.id.toLowerCase(), item);
     }
     return map;
+  }, [initialItems]);
+
+  const recipeIndex = useMemo(() => {
+    return buildItemRecipeIndex(initialItems);
   }, [initialItems]);
 
   const categoryItems = useMemo(() => {
@@ -107,7 +112,14 @@ export function ItemsTableView({
               <tr>
                 <th className="py-2.5 px-4 w-60">Item</th>
                 <th className="py-2.5 px-4">Bonus / Effect</th>
-                <th className="py-2.5 px-4 w-44 text-center">Recipe</th>
+                <th
+                  className={cn(
+                    "py-2.5 px-4 text-center",
+                    selectedCategory === "basic" ? "w-80 sm:w-96" : "w-44"
+                  )}
+                >
+                  {selectedCategory === "basic" ? "Combined Into" : "Recipe"}
+                </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[#182233]">
@@ -128,13 +140,12 @@ export function ItemsTableView({
                       <td className="py-2.5 px-4">
                         <div className="flex items-center gap-3">
                           <div className="w-9 h-9 rounded bg-slate-900 border border-[#233148] overflow-hidden flex-shrink-0 relative shadow-xs">
-                            <Image
+                            <GameImage
                               src={item.imageUrl || "/placeholder.png"}
                               alt={item.name}
                               width={36}
                               height={36}
                               className="w-full h-full object-cover"
-                              unoptimized
                             />
                           </div>
                           <div>
@@ -153,9 +164,35 @@ export function ItemsTableView({
                         {item.description}
                       </td>
 
-                      {/* Col 3: Recipe components */}
+                      {/* Col 3: Recipe or Combined Into */}
                       <td className="py-2.5 px-4 text-center">
-                        {item.composition && item.composition.length === 2 ? (
+                        {selectedCategory === "basic" ? (
+                          (() => {
+                            const combined = recipeIndex.get(item.id.toLowerCase()) || [];
+                            if (combined.length === 0) {
+                              return <span className="text-slate-600 font-mono text-xs">—</span>;
+                            }
+                            return (
+                              <div className="flex flex-wrap items-center justify-center gap-1.5 max-w-xs mx-auto">
+                                {combined.map((cItem) => (
+                                  <div
+                                    key={cItem.id}
+                                    className="w-6 h-6 rounded bg-slate-900 border border-[#233148] overflow-hidden relative shadow-xs group/item transition-transform hover:scale-110"
+                                    title={`${cItem.name}: ${cItem.description}`}
+                                  >
+                                    <GameImage
+                                      src={cItem.imageUrl}
+                                      alt={cItem.name}
+                                      width={24}
+                                      height={24}
+                                      className="w-full h-full object-cover"
+                                    />
+                                  </div>
+                                ))}
+                              </div>
+                            );
+                          })()
+                        ) : item.composition && item.composition.length === 2 ? (
                           <div className="inline-flex items-center gap-1.5 justify-center">
                             {item.composition.map((compId, idx) => {
                               const compItem = itemsById.get(compId);
@@ -169,13 +206,12 @@ export function ItemsTableView({
                                     title={compItem?.name || compId}
                                   >
                                     {compItem?.imageUrl ? (
-                                      <Image
+                                      <GameImage
                                         src={compItem.imageUrl}
                                         alt={compItem.name}
                                         width={24}
                                         height={24}
                                         className="w-full h-full object-cover"
-                                        unoptimized
                                       />
                                     ) : (
                                       <span className="text-[9px] text-slate-400">?</span>

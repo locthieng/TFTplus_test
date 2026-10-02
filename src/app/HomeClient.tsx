@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
-import { TeamComp, Champion, Trait, Item, TeamCompTier } from "@/types/tft";
+import { TeamComp, Champion, Trait, Item, Augment, TeamCompTier } from "@/types/tft";
 import { HomeHero } from "@/features/home/components/HomeHero";
 import { TeamCompFilterBar } from "@/features/home/components/TeamCompFilterBar";
 import { TeamCompRow } from "@/features/team-comps/components/TeamCompRow";
@@ -11,6 +11,7 @@ interface HomeClientProps {
   initialChampions: Champion[];
   initialTraits: Trait[];
   initialItems: Item[];
+  initialAugments?: Augment[];
 }
 
 export function HomeClient({
@@ -18,6 +19,7 @@ export function HomeClient({
   initialChampions,
   initialTraits,
   initialItems,
+  initialAugments = [],
 }: HomeClientProps) {
   const [selectedTrait, setSelectedTrait] = useState<string | null>(null);
   const [selectedTier, setSelectedTier] = useState<TeamCompTier | "ALL">("ALL");
@@ -51,6 +53,16 @@ export function HomeClient({
     }
     return map;
   }, [initialItems]);
+
+  const augmentsById = useMemo(() => {
+    const map = new Map<string, Augment>();
+    for (const a of initialAugments) {
+      map.set(a.id, a);
+      map.set(a.id.toLowerCase(), a);
+      map.set(a.name.toLowerCase(), a);
+    }
+    return map;
+  }, [initialAugments]);
 
   const filteredComps = useMemo(() => {
     return initialComps.filter((comp) => {
@@ -127,6 +139,7 @@ export function HomeClient({
                 championsById={championsById}
                 traitsById={traitsById}
                 itemsById={itemsById}
+                augmentsById={augmentsById}
               />
             ))}
           </div>

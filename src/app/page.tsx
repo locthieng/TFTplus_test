@@ -17,14 +17,16 @@ export default async function HomePage() {
         initialChampions={[]}
         initialTraits={[]}
         initialItems={[]}
+        initialAugments={[]}
       />
     );
   }
 
-  const [champions, traits, items] = await Promise.all([
+  const [champions, traits, items, augments] = await Promise.all([
     tftService.getChampions(),
     tftService.getTraits(),
     tftService.getItems(),
+    tftService.getAugments(),
   ]);
 
   return (
@@ -33,6 +35,7 @@ export default async function HomePage() {
       initialChampions={champions}
       initialTraits={traits}
       initialItems={items}
+      initialAugments={augments}
     />
   );
 }

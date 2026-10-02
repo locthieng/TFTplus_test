@@ -5,29 +5,29 @@ import Link from "next/link";
 import { Sparkles } from "lucide-react";
 import { PlayerSearch } from "@/components/player/PlayerSearch";
 import { RiotLoginPlaceholder } from "./RiotLoginPlaceholder";
-import { TFT_RELEASE_CONFIG } from "@/config/tftConfig";
+import { HomeHeroBackground } from "./HomeHeroBackground";
+import { TFT_RELEASE_CONFIG, PROJECT_TARGET_RELEASE } from "@/config/tftConfig";
 
 export function HomeHero() {
   return (
-    <section className="relative overflow-hidden border-b border-[#1c2738] bg-[#0c121e]">
-      {/* Background radial gradient layers */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(245,158,11,0.12),rgba(12,18,30,0))]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0e17]/80 to-[#0a0e17]" />
+    <section className="relative overflow-hidden border-b border-[#1c2738] min-h-[440px] md:min-h-[500px] flex items-center justify-center">
+      {/* Background artwork and atmospheric gradients */}
+      <HomeHeroBackground />
 
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 relative z-10 py-12 sm:py-16 text-center flex flex-col items-center">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 relative z-10 py-12 md:py-16 text-center flex flex-col items-center">
         {/* Set Badge */}
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-amber-400/10 border border-amber-400/25 text-xs font-bold text-amber-400 mb-4 tracking-wider uppercase">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-amber-400/10 border border-amber-400/25 text-xs font-bold text-amber-400 mb-3.5 tracking-wider uppercase shadow-xs">
           <Sparkles className="w-3.5 h-3.5" />
           <span>
-            {TFT_RELEASE_CONFIG.setName} • Patch {TFT_RELEASE_CONFIG.patch}
+            {TFT_RELEASE_CONFIG.setName} • Patch {PROJECT_TARGET_RELEASE.patch}
           </span>
         </div>
 
         {/* Set Identity Typography */}
-        <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight uppercase mb-2">
+        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight uppercase mb-2 drop-shadow-md">
           Teamfight Tactics
         </h1>
-        <p className="text-xs sm:text-sm font-semibold tracking-widest uppercase text-amber-400/90 mb-8">
+        <p className="text-xs sm:text-sm font-semibold tracking-widest uppercase text-amber-400/90 mb-8 max-w-xl">
           Top Meta Compositions, Dynamic Tier Lists & Board Builder
         </p>
 
@@ -37,8 +37,8 @@ export function HomeHero() {
         </div>
 
         {/* Popular searches */}
-        <div className="flex flex-wrap items-center justify-center gap-2 text-xs text-slate-400 mb-4">
-          <span className="text-slate-500">Popular:</span>
+        <div className="flex flex-wrap items-center justify-center gap-2 text-xs text-slate-400 mb-3">
+          <span className="text-slate-500 font-medium">Popular:</span>
           <Link
             href="/player/vn/Em%20Chè/DDT"
             className="text-slate-300 hover:text-amber-400 transition-colors"

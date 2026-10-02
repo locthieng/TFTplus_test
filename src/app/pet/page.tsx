@@ -4,6 +4,7 @@ import React, { useState, useMemo } from "react";
 import { Search, Heart } from "lucide-react";
 import { PETS_DATA } from "@/features/pets/data/petsData";
 import { PetRarity } from "@/features/pets/types/pet";
+import { GameImage } from "@/components/common/GameImage";
 import { cn } from "@/utils/cn";
 
 export default function PetPage() {
@@ -114,18 +115,29 @@ export default function PetPage() {
               >
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <div>
-                      <h3 className="font-bold text-white text-xs block">
-                        {pet.name}
-                      </h3>
-                      <span className="text-[10px] text-slate-400">
-                        {pet.species}
-                      </span>
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <div className="w-9 h-9 rounded bg-slate-900 border border-[#233148] overflow-hidden flex-shrink-0 relative shadow-xs">
+                        <GameImage
+                          src={pet.imageUrl}
+                          alt={pet.name}
+                          width={36}
+                          height={36}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="min-w-0">
+                        <h3 className="font-bold text-white text-xs block truncate">
+                          {pet.name}
+                        </h3>
+                        <span className="text-[10px] text-slate-400">
+                          {pet.species}
+                        </span>
+                      </div>
                     </div>
 
                     <span
                       className={cn(
-                        "px-1.5 py-0.5 rounded text-[10px] font-bold border uppercase tracking-wider",
+                        "px-1.5 py-0.5 rounded text-[10px] font-bold border uppercase tracking-wider flex-shrink-0",
                         rarityStyle
                       )}
                     >

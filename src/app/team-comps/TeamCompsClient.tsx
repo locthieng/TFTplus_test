@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from "react";
 import { TeamCompRow } from "@/features/team-comps/components/TeamCompRow";
 import { SearchInput } from "@/components/common/SearchInput";
-import { TeamComp, Trait, Champion, Item, TeamCompTier } from "@/types/tft";
+import { TeamComp, Trait, Champion, Item, Augment, TeamCompTier } from "@/types/tft";
 import { TFT_RELEASE_CONFIG } from "@/config/tftConfig";
 import { Filter } from "lucide-react";
 import { cn } from "@/utils/cn";
@@ -13,6 +13,7 @@ interface TeamCompsClientProps {
   initialTraits: Trait[];
   initialChampions: Champion[];
   initialItems: Item[];
+  initialAugments?: Augment[];
 }
 
 export function TeamCompsClient({
@@ -20,6 +21,7 @@ export function TeamCompsClient({
   initialTraits,
   initialChampions,
   initialItems,
+  initialAugments = [],
 }: TeamCompsClientProps) {
   const [selectedTier, setSelectedTier] = useState<TeamCompTier | null>(null);
   const [selectedTrait, setSelectedTrait] = useState<string | null>(null);
@@ -53,6 +55,16 @@ export function TeamCompsClient({
     }
     return map;
   }, [initialItems]);
+
+  const augmentsById = useMemo(() => {
+    const map = new Map<string, Augment>();
+    for (const a of initialAugments) {
+      map.set(a.id, a);
+      map.set(a.id.toLowerCase(), a);
+      map.set(a.name.toLowerCase(), a);
+    }
+    return map;
+  }, [initialAugments]);
 
   const filteredComps = useMemo(() => {
     return initialComps.filter((comp) => {
@@ -209,6 +221,7 @@ export function TeamCompsClient({
               championsById={championsById}
               traitsById={traitsById}
               itemsById={itemsById}
+              augmentsById={augmentsById}
             />
           ))}
         </div>

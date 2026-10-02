@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Champion, Trait, CostTier } from "@/types/tft";
 import { COST_COLORS } from "@/constants/tft";
 import { SearchInput } from "@/components/common/SearchInput";
+import { GameImage } from "@/components/common/GameImage";
 import { Users } from "lucide-react";
 import { cn } from "@/utils/cn";
 
@@ -158,13 +158,12 @@ export function ChampionsClient({
                       costStyle.border
                     )}
                   >
-                    <Image
+                    <GameImage
                       src={champ.imageUrl}
                       alt={champ.name}
                       width={48}
                       height={48}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                      unoptimized
                     />
                     <div
                       className={cn(

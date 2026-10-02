@@ -22,11 +22,13 @@ export default async function DataHealthPage() {
   const traitMap = new Map(
     traits.map((t) => [t.id.toLowerCase().replace(/\s+/g, ""), t])
   );
+  const augmentMap = new Map(augments.map((a) => [a.id.toLowerCase(), a]));
 
   // Check team comp integrity
   let brokenChampionRefs = 0;
   let brokenItemRefs = 0;
   let brokenTraitRefs = 0;
+  let brokenAugmentRefs = 0;
 
   for (const comp of teamComps) {
     for (const c of comp.champions) {
@@ -41,7 +43,40 @@ export default async function DataHealthPage() {
       const norm = t.traitId.toLowerCase().replace(/\s+/g, "");
       if (!traitMap.has(norm)) brokenTraitRefs++;
     }
+    if (comp.augments) {
+      for (const augId of comp.augments) {
+        if (!augmentMap.has(augId.toLowerCase())) brokenAugmentRefs++;
+      }
+    }
   }
+
+  const hasCriticalErrors =
+    brokenChampionRefs > 0 ||
+    brokenItemRefs > 0 ||
+    brokenTraitRefs > 0 ||
+    brokenAugmentRefs > 0 ||
+    champions.length === 0 ||
+    items.length === 0;
+
+  const hasWarnings =
+    champions.length < 70 ||
+    traits.length < 30 ||
+    items.length < 150 ||
+    augments.length < 300 ||
+    teamComps.length < 10;
+
+  const systemStatus: "Healthy" | "Warning" | "Critical" = hasCriticalErrors
+    ? "Critical"
+    : hasWarnings
+    ? "Warning"
+    : "Healthy";
+
+  const statusBadgeStyle =
+    systemStatus === "Healthy"
+      ? "bg-emerald-500/15 border-emerald-500/40 text-emerald-400"
+      : systemStatus === "Warning"
+      ? "bg-amber-500/15 border-amber-500/40 text-amber-400"
+      : "bg-rose-500/15 border-rose-500/40 text-rose-400";
 
   const healthMetrics = [
     { label: "Set ID", value: TFT_RELEASE_CONFIG.setId, status: "ok" },
@@ -69,8 +104,10 @@ export default async function DataHealthPage() {
           </p>
         </div>
 
-        <span className="px-2.5 py-1 rounded bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 text-xs font-bold uppercase tracking-wider">
-          System Healthy
+        <span
+          className={`px-3 py-1 rounded border text-xs font-bold uppercase tracking-wider ${statusBadgeStyle}`}
+        >
+          System {systemStatus}
         </span>
       </div>
 
@@ -96,7 +133,7 @@ export default async function DataHealthPage() {
         <h3 className="font-bold text-white text-xs uppercase tracking-wider">
           Relational Integrity Checks
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
           <div className="flex items-center gap-2 p-3 rounded bg-[#141b2a] border border-[#1f2b3e]">
             {brokenChampionRefs === 0 ? (
               <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
@@ -135,6 +172,20 @@ export default async function DataHealthPage() {
               <span className="font-bold text-slate-200 block">Trait References</span>
               <span className="text-[11px] text-slate-400">
                 {brokenTraitRefs === 0 ? "0 broken references" : `${brokenTraitRefs} broken!`}
+              </span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 p-3 rounded bg-[#141b2a] border border-[#1f2b3e]">
+            {brokenAugmentRefs === 0 ? (
+              <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+            ) : (
+              <AlertTriangle className="w-4 h-4 text-rose-400 flex-shrink-0" />
+            )}
+            <div>
+              <span className="font-bold text-slate-200 block">Augment References</span>
+              <span className="text-[11px] text-slate-400">
+                {brokenAugmentRefs === 0 ? "0 broken references" : `${brokenAugmentRefs} broken!`}
               </span>
             </div>
           </div>

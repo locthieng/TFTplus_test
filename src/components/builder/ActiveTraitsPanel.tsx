@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useMemo } from "react";
-import Image from "next/image";
 import { useBuilderStore } from "@/stores/useBuilderStore";
 import { useBuilderData } from "@/features/builder/context/BuilderDataContext";
 import { calculateBoardTraits } from "@/utils/traitCalculator";
 import { TRAIT_STYLE_CONFIG } from "@/constants/tft";
+import { GameImage } from "@/components/common/GameImage";
 import { cn } from "@/utils/cn";
 
 export function ActiveTraitsPanel() {
@@ -55,13 +55,12 @@ export function ActiveTraitsPanel() {
               >
                 <div className="flex items-center gap-2">
                   <div className="w-5 h-5 relative flex-shrink-0">
-                    <Image
+                    <GameImage
                       src={trait.iconUrl}
                       alt={trait.name}
                       width={20}
                       height={20}
                       className="w-full h-full object-contain filter drop-shadow"
-                      unoptimized
                     />
                   </div>
                   <span className={cn("text-xs font-bold", config.text)}>
@@ -104,13 +103,12 @@ export function ActiveTraitsPanel() {
                   >
                     <div className="flex items-center gap-2 opacity-70">
                       <div className="w-4 h-4 relative flex-shrink-0">
-                        <Image
+                        <GameImage
                           src={trait.iconUrl}
                           alt={trait.name}
                           width={16}
                           height={16}
                           className="w-full h-full object-contain grayscale"
-                          unoptimized
                         />
                       </div>
                       <span className="text-[11px] font-medium">

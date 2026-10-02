@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import Image from "next/image";
 import { useBuilderStore } from "@/stores/useBuilderStore";
 import { useBuilderData } from "@/features/builder/context/BuilderDataContext";
 import { COST_COLORS } from "@/constants/tft";
 import { ItemType } from "@/types/tft";
+import { GameImage } from "@/components/common/GameImage";
 import { X, Trash2, Star } from "lucide-react";
 import { cn } from "@/utils/cn";
 import { BUILDER_EQUIPPABLE_TABS } from "@/features/builder/rules/builderItemRules";
@@ -60,13 +60,12 @@ export function ItemAssigner() {
                 costStyle.border
               )}
             >
-              <Image
+              <GameImage
                 src={champData.imageUrl}
                 alt={champData.name}
                 width={48}
                 height={48}
                 className="w-full h-full object-cover"
-                unoptimized
               />
             </div>
             <div>
@@ -153,13 +152,12 @@ export function ItemAssigner() {
                   }
                 >
                   {itemData ? (
-                    <Image
+                    <GameImage
                       src={itemData.imageUrl}
                       alt={itemData.name}
                       width={44}
                       height={44}
                       className="w-full h-full object-contain rounded-md"
-                      unoptimized
                     />
                   ) : (
                     <span className="text-xs font-mono">{slotIdx + 1}</span>
@@ -212,13 +210,12 @@ export function ItemAssigner() {
                   )}
                   title={item.name}
                 >
-                  <Image
+                  <GameImage
                     src={item.imageUrl}
                     alt={item.name}
                     width={40}
                     height={40}
                     className="w-full h-full object-contain"
-                    unoptimized
                   />
                 </button>
               );
