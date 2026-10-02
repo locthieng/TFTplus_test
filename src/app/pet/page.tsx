@@ -1,34 +1,24 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import { Search, Heart } from "lucide-react";
-import { PETS_DATA } from "@/features/pets/data/petsData";
-import { PetRarity } from "@/features/pets/types/pet";
+import Link from "next/link";
+import { Search, Heart, Sparkles, ChevronRight } from "lucide-react";
+import { PET_SPECIES_DATA } from "@/features/pets/data/petsData";
+import { PET_SOURCE_METADATA } from "@/features/pets/data/petSourceMetadata";
 import { GameImage } from "@/components/common/GameImage";
-import { cn } from "@/utils/cn";
 
 export default function PetPage() {
   const [search, setSearch] = useState("");
-  const [selectedRarity, setSelectedRarity] = useState<PetRarity | null>(null);
 
-  const rarities: PetRarity[] = ["Rare", "Epic", "Legendary", "Mythic"];
-
-  const filteredPets = useMemo(() => {
-    return PETS_DATA.filter((p) => {
-      if (selectedRarity && p.rarity !== selectedRarity) return false;
-      if (search) {
-        const q = search.toLowerCase();
-        if (
-          !p.name.toLowerCase().includes(q) &&
-          !p.species.toLowerCase().includes(q) &&
-          !p.description.toLowerCase().includes(q)
-        ) {
-          return false;
-        }
-      }
-      return true;
-    });
-  }, [search, selectedRarity]);
+  const filteredSpecies = useMemo(() => {
+    if (!search.trim()) return PET_SPECIES_DATA;
+    const q = search.toLowerCase().trim();
+    return PET_SPECIES_DATA.filter(
+      (s) =>
+        s.name.toLowerCase().includes(q) ||
+        s.variants.some((v) => v.name.toLowerCase().includes(q))
+    );
+  }, [search]);
 
   return (
     <div className="flex-1 max-w-[1440px] w-full mx-auto px-4 sm:px-6 py-6 space-y-4">
@@ -37,10 +27,12 @@ export default function PetPage() {
         <div>
           <h1 className="text-xl sm:text-2xl font-extrabold text-slate-100 tracking-tight flex items-center gap-2">
             <Heart className="w-5 h-5 text-rose-400" />
-            TFT Little Legends & Tactician Pets
+            TFT Little Legends & Tacticians
           </h1>
-          <p className="text-xs text-slate-400 mt-0.5">
-            Tactician companions, Little Legend species, and rarity tiers.
+          <p className="text-xs text-slate-400 mt-1">
+            Official companion species catalog ({PET_SPECIES_DATA.length} species,{" "}
+            {PET_SPECIES_DATA.reduce((sum, s) => sum + s.variants.length, 0)} skin variants indexed from{" "}
+            {PET_SOURCE_METADATA.sourceName}).
           </p>
         </div>
 
@@ -51,112 +43,51 @@ export default function PetPage() {
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search pets or species..."
+            placeholder="Search species or skin variant..."
             className="w-full pl-9 pr-3 py-1.5 bg-[#151f33] border border-[#24344d] rounded text-xs text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-amber-400 transition-colors"
           />
         </div>
       </div>
 
-      {/* Rarity filter */}
-      <div className="flex items-center gap-1.5 bg-[#111722] border border-[#202a3c] rounded-lg p-2 text-xs">
-        <button
-          type="button"
-          onClick={() => setSelectedRarity(null)}
-          className={cn(
-            "px-2.5 py-1 rounded font-bold transition-colors cursor-pointer",
-            selectedRarity === null
-              ? "bg-amber-500 text-slate-950"
-              : "text-slate-300 hover:bg-[#182338]"
-          )}
-        >
-          All Rarities
-        </button>
-        {rarities.map((r) => {
-          const isSelected = selectedRarity === r;
-          return (
-            <button
-              key={r}
-              type="button"
-              onClick={() => setSelectedRarity(isSelected ? null : r)}
-              className={cn(
-                "px-2.5 py-1 rounded font-bold border transition-colors cursor-pointer",
-                isSelected
-                  ? "bg-amber-500 text-slate-950 border-amber-400"
-                  : "border-[#24344d] text-slate-400 hover:text-white"
-              )}
-            >
-              {r}
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Dense Pet Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-        {filteredPets.length === 0 ? (
+      {/* Species Grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+        {filteredSpecies.length === 0 ? (
           <div className="col-span-full py-12 text-center text-slate-500 text-xs bg-[#101624] border border-[#1e2a3f] rounded-lg">
-            No tactician pets found.
+            No tactician species found matching your query.
           </div>
         ) : (
-          filteredPets.map((pet) => {
-            const rarityStyle =
-              pet.rarity === "Rare"
-                ? "text-blue-400 border-blue-500/40 bg-blue-950/20"
-                : pet.rarity === "Epic"
-                ? "text-purple-400 border-purple-500/40 bg-purple-950/20"
-                : pet.rarity === "Legendary"
-                ? "text-amber-400 border-amber-500/40 bg-amber-950/20"
-                : "text-rose-400 border-rose-500/40 bg-rose-950/20";
+          filteredSpecies.map((species) => (
+            <Link
+              key={species.id}
+              href={`/pet/${species.id}`}
+              className="bg-[#111724] border border-[#1e2a3f] hover:border-amber-400/50 hover:bg-[#151f31] rounded-lg p-3 flex flex-col items-center text-center gap-2.5 transition-all shadow-xs group"
+            >
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-slate-900 border border-[#233148] group-hover:border-amber-400/60 overflow-hidden relative shadow-xs flex-shrink-0 transition-colors">
+                <GameImage
+                  src={species.imageUrl}
+                  alt={species.name}
+                  width={80}
+                  height={80}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                />
+              </div>
 
-            return (
-              <div
-                key={pet.id}
-                className="bg-[#111724] border border-[#1e2a3f] hover:border-[#2b3a55] rounded-md p-3 flex flex-col justify-between gap-3 transition-colors shadow-xs"
-              >
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2.5 min-w-0">
-                      <div className="w-9 h-9 rounded bg-slate-900 border border-[#233148] overflow-hidden flex-shrink-0 relative shadow-xs">
-                        <GameImage
-                          src={pet.imageUrl}
-                          alt={pet.name}
-                          width={36}
-                          height={36}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="min-w-0">
-                        <h3 className="font-bold text-white text-xs block truncate">
-                          {pet.name}
-                        </h3>
-                        <span className="text-[10px] text-slate-400">
-                          {pet.species}
-                        </span>
-                      </div>
-                    </div>
-
-                    <span
-                      className={cn(
-                        "px-1.5 py-0.5 rounded text-[10px] font-bold border uppercase tracking-wider flex-shrink-0",
-                        rarityStyle
-                      )}
-                    >
-                      {pet.rarity}
-                    </span>
-                  </div>
-
-                  <p className="text-[11px] text-slate-300 leading-relaxed">
-                    {pet.description}
-                  </p>
-                </div>
-
-                <div className="pt-2 border-t border-[#1a2335] flex items-center justify-between text-[11px] text-slate-400">
-                  <span>Little Legend</span>
-                  <span className="text-amber-400 font-semibold">TFT Tactician</span>
+              <div className="w-full min-w-0">
+                <h3 className="font-bold text-white text-xs truncate group-hover:text-amber-300 transition-colors">
+                  {species.name}
+                </h3>
+                <div className="flex items-center justify-center gap-1 mt-1 text-[10px] text-slate-400">
+                  <Sparkles className="w-3 h-3 text-amber-400" />
+                  <span>{species.variants.length} Variants</span>
                 </div>
               </div>
-            );
-          })
+
+              <div className="w-full pt-2 border-t border-[#1a2335] flex items-center justify-center text-[10px] font-semibold text-slate-400 group-hover:text-amber-400 transition-colors">
+                <span>View Variants</span>
+                <ChevronRight className="w-3 h-3 ml-0.5" />
+              </div>
+            </Link>
+          ))
         )}
       </div>
     </div>

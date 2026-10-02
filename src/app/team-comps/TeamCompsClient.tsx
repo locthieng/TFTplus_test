@@ -97,16 +97,16 @@ export function TeamCompsClient({
       {/* Page Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#20293b] pb-5">
         <div>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight">
-              TFT Meta Team Compositions
+              TFT Curated Meta Team Compositions
             </h1>
             <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-400/10 text-amber-400 border border-amber-400/20">
-              Patch {TFT_RELEASE_CONFIG.patch}
+              Curated • Set {TFT_RELEASE_CONFIG.setId} (Patch {TFT_RELEASE_CONFIG.patch})
             </span>
           </div>
           <p className="text-xs sm:text-sm text-slate-400 mt-1">
-            Top performing tier list compositions, leveling curves, item priorities, and positioning guides.
+            Curated high-performing tier list compositions, leveling curves, item priorities, and positioning guides for Set 18 Enchanted Wilds.
           </p>
         </div>
 

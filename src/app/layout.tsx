@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: "%s | TFTPlus",
   },
   description:
-    "Master TFT Set 18 Enchanted Wilds (Patch 18.3). Real-time meta team comps, interactive Hex Builder, full champion database, item recipes, and augments tier list.",
+    "Master TFT Set 18 Enchanted Wilds (Patch 18.3). Curated meta team comps, interactive Hex Builder, full champion database, item recipes, and augments tier list.",
   openGraph: {
     title: "TFTPlus — Set 18 Enchanted Wilds Meta Comps, Builder & Stats",
     description:

@@ -1,10 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import Image, { ImageProps } from "next/image";
+import Image, { ImageProps, StaticImageData } from "next/image";
 import { cn } from "@/utils/cn";
 
-export interface GameImageProps extends Omit<ImageProps, "onError"> {
+export type StaticImport = StaticImageData | { default: StaticImageData };
+
+export interface GameImageProps extends Omit<ImageProps, "onError" | "src"> {
+  src?: string | StaticImport | null;
   fallbackSrc?: string;
   fallbackText?: string;
   containerClassName?: string;

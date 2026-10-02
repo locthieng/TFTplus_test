@@ -16,6 +16,7 @@ import { HexCoreTier } from "@/features/hex-cores/types/hexCore";
 import { useBuilderData } from "@/features/builder/context/BuilderDataContext";
 import { GameImage } from "@/components/common/GameImage";
 import { COST_COLORS } from "@/constants/tft";
+import { FEATURE_FLAGS } from "@/config/featureFlags";
 import { cn } from "@/utils/cn";
 
 export function BuilderMetaPanel() {
@@ -241,136 +242,138 @@ export function BuilderMetaPanel() {
         )}
       </div>
 
-      {/* Hex Core Grid: Hero, Priority (3), Alternative (3) */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-2 border-t border-[#1a2335]">
-        {/* 1. Hero Hex Core */}
-        <div className="space-y-1.5">
-          <span className="font-bold text-[11px] text-amber-400 uppercase tracking-wider block">
-            Hero Hex Core
-          </span>
-          <div className="flex items-center gap-2">
-            {heroCore ? (
-              <div className="flex items-center gap-2 p-1.5 bg-[#151f31] border border-amber-500/40 rounded flex-1 relative group">
-                <div className="w-7 h-7 rounded bg-amber-950/60 border border-amber-500/50 overflow-hidden relative flex-shrink-0 flex items-center justify-center">
+      {/* Hex Core Grid: Hero, Priority (3), Alternative (3) - Hidden in production until verified */}
+      {FEATURE_FLAGS.hexCores && (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-2 border-t border-[#1a2335]">
+          {/* 1. Hero Hex Core */}
+          <div className="space-y-1.5">
+            <span className="font-bold text-[11px] text-amber-400 uppercase tracking-wider block">
+              Hero Hex Core
+            </span>
+            <div className="flex items-center gap-2">
+              {heroCore ? (
+                <div className="flex items-center gap-2 p-1.5 bg-[#151f31] border border-amber-500/40 rounded flex-1 relative group">
+                  <div className="w-7 h-7 rounded bg-amber-950/60 border border-amber-500/50 overflow-hidden relative flex-shrink-0 flex items-center justify-center">
+                    <GameImage
+                      src={heroCore.iconUrl}
+                      alt={heroCore.name}
+                      width={28}
+                      height={28}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <span className="font-bold text-white text-xs block truncate">
+                      {heroCore.name}
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setHeroHexCore(undefined)}
+                    className="p-1 text-slate-400 hover:text-white cursor-pointer"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setPickerTier("hero")}
+                  className="w-full py-2.5 px-3 rounded border border-dashed border-[#28374f] hover:border-amber-400 text-slate-400 hover:text-amber-300 bg-[#131b29] flex items-center justify-center gap-1.5 font-semibold text-xs transition-colors cursor-pointer"
+                >
+                  <Plus className="w-3.5 h-3.5" />
+                  Select Hero Core
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* 2. Priority Hex Cores (up to 3) */}
+          <div className="space-y-1.5">
+            <span className="font-bold text-[11px] text-purple-400 uppercase tracking-wider block">
+              Priority Hex Cores ({priorityCores.length}/3)
+            </span>
+            <div className="flex items-center gap-1.5">
+              {priorityCores.map((core) => (
+                <div
+                  key={core.id}
+                  className="w-8 h-8 rounded bg-[#151f31] border border-purple-500/40 relative overflow-hidden group shadow-xs"
+                  title={core.name}
+                >
                   <GameImage
-                    src={heroCore.iconUrl}
-                    alt={heroCore.name}
-                    width={28}
-                    height={28}
+                    src={core.iconUrl}
+                    alt={core.name}
+                    width={32}
+                    height={32}
                     className="w-full h-full object-cover"
                   />
+                  <button
+                    type="button"
+                    onClick={() => togglePriorityHexCore(core.id)}
+                    className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white transition-opacity cursor-pointer"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
                 </div>
-                <div className="min-w-0 flex-1">
-                  <span className="font-bold text-white text-xs block truncate">
-                    {heroCore.name}
-                  </span>
+              ))}
+              {priorityCores.length < 3 && (
+                <button
+                  type="button"
+                  onClick={() => setPickerTier("priority")}
+                  className="w-8 h-8 rounded border border-dashed border-[#28374f] hover:border-purple-400 text-slate-400 hover:text-purple-300 bg-[#131b29] flex items-center justify-center transition-colors cursor-pointer"
+                  title="Add Priority Hex Core"
+                >
+                  <Plus className="w-3.5 h-3.5" />
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* 3. Alternative Hex Cores (up to 3) */}
+          <div className="space-y-1.5">
+            <span className="font-bold text-[11px] text-blue-400 uppercase tracking-wider block">
+              Alternative Hex Cores ({altCores.length}/3)
+            </span>
+            <div className="flex items-center gap-1.5">
+              {altCores.map((core) => (
+                <div
+                  key={core.id}
+                  className="w-8 h-8 rounded bg-[#151f31] border border-blue-500/40 relative overflow-hidden group shadow-xs"
+                  title={core.name}
+                >
+                  <GameImage
+                    src={core.iconUrl}
+                    alt={core.name}
+                    width={32}
+                    height={32}
+                    className="w-full h-full object-cover"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => toggleAlternativeHexCore(core.id)}
+                    className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white transition-opacity cursor-pointer"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
                 </div>
+              ))}
+              {altCores.length < 3 && (
                 <button
                   type="button"
-                  onClick={() => setHeroHexCore(undefined)}
-                  className="p-1 text-slate-400 hover:text-white cursor-pointer"
+                  onClick={() => setPickerTier("alternative")}
+                  className="w-8 h-8 rounded border border-dashed border-[#28374f] hover:border-blue-400 text-slate-400 hover:text-blue-300 bg-[#131b29] flex items-center justify-center transition-colors cursor-pointer"
+                  title="Add Alternative Hex Core"
                 >
-                  <X className="w-3.5 h-3.5" />
+                  <Plus className="w-3.5 h-3.5" />
                 </button>
-              </div>
-            ) : (
-              <button
-                type="button"
-                onClick={() => setPickerTier("hero")}
-                className="w-full py-2.5 px-3 rounded border border-dashed border-[#28374f] hover:border-amber-400 text-slate-400 hover:text-amber-300 bg-[#131b29] flex items-center justify-center gap-1.5 font-semibold text-xs transition-colors cursor-pointer"
-              >
-                <Plus className="w-3.5 h-3.5" />
-                Select Hero Core
-              </button>
-            )}
+              )}
+            </div>
           </div>
         </div>
-
-        {/* 2. Priority Hex Cores (up to 3) */}
-        <div className="space-y-1.5">
-          <span className="font-bold text-[11px] text-purple-400 uppercase tracking-wider block">
-            Priority Hex Cores ({priorityCores.length}/3)
-          </span>
-          <div className="flex items-center gap-1.5">
-            {priorityCores.map((core) => (
-              <div
-                key={core.id}
-                className="w-8 h-8 rounded bg-[#151f31] border border-purple-500/40 relative overflow-hidden group shadow-xs"
-                title={core.name}
-              >
-                <GameImage
-                  src={core.iconUrl}
-                  alt={core.name}
-                  width={32}
-                  height={32}
-                  className="w-full h-full object-cover"
-                />
-                <button
-                  type="button"
-                  onClick={() => togglePriorityHexCore(core.id)}
-                  className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white transition-opacity cursor-pointer"
-                >
-                  <X className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            ))}
-            {priorityCores.length < 3 && (
-              <button
-                type="button"
-                onClick={() => setPickerTier("priority")}
-                className="w-8 h-8 rounded border border-dashed border-[#28374f] hover:border-purple-400 text-slate-400 hover:text-purple-300 bg-[#131b29] flex items-center justify-center transition-colors cursor-pointer"
-                title="Add Priority Hex Core"
-              >
-                <Plus className="w-3.5 h-3.5" />
-              </button>
-            )}
-          </div>
-        </div>
-
-        {/* 3. Alternative Hex Cores (up to 3) */}
-        <div className="space-y-1.5">
-          <span className="font-bold text-[11px] text-blue-400 uppercase tracking-wider block">
-            Alternative Hex Cores ({altCores.length}/3)
-          </span>
-          <div className="flex items-center gap-1.5">
-            {altCores.map((core) => (
-              <div
-                key={core.id}
-                className="w-8 h-8 rounded bg-[#151f31] border border-blue-500/40 relative overflow-hidden group shadow-xs"
-                title={core.name}
-              >
-                <GameImage
-                  src={core.iconUrl}
-                  alt={core.name}
-                  width={32}
-                  height={32}
-                  className="w-full h-full object-cover"
-                />
-                <button
-                  type="button"
-                  onClick={() => toggleAlternativeHexCore(core.id)}
-                  className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white transition-opacity cursor-pointer"
-                >
-                  <X className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            ))}
-            {altCores.length < 3 && (
-              <button
-                type="button"
-                onClick={() => setPickerTier("alternative")}
-                className="w-8 h-8 rounded border border-dashed border-[#28374f] hover:border-blue-400 text-slate-400 hover:text-blue-300 bg-[#131b29] flex items-center justify-center transition-colors cursor-pointer"
-                title="Add Alternative Hex Core"
-              >
-                <Plus className="w-3.5 h-3.5" />
-              </button>
-            )}
-          </div>
-        </div>
-      </div>
+      )}
 
       {/* Hex Core Selection Modal */}
-      {pickerTier && (
+      {FEATURE_FLAGS.hexCores && pickerTier && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-xs p-4">
           <div className="bg-[#121926] border border-[#233149] rounded-lg w-full max-w-lg p-5 shadow-2xl space-y-4">
             <div className="flex items-center justify-between border-b border-[#1c2738] pb-3">

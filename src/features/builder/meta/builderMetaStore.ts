@@ -9,10 +9,14 @@ export interface BuilderMeta {
   alternativeHexCoreIds: string[];
 }
 
+export const BUILDER_SAVE_SCHEMA_VERSION = 1;
+
 export interface SavedBuild {
   id: string;
   name: string;
+  version: number;
   createdAt: string;
+  updatedAt: string;
   setId?: string;
   patch?: string;
   board: BoardChampion[];
@@ -21,11 +25,69 @@ export interface SavedBuild {
 
 const STORAGE_KEY = "tftplus_saved_builds";
 
+export function migrateSavedBuild(raw: unknown): SavedBuild {
+  if (!raw || typeof raw !== "object") {
+    throw new Error("Invalid saved build payload");
+  }
+
+  const record = raw as Record<string, unknown>;
+  const rawMeta = (record.meta && typeof record.meta === "object"
+    ? record.meta
+    : {}) as Record<string, unknown>;
+
+  const version = typeof record.version === "number" ? record.version : 0;
+  const createdAt =
+    typeof record.createdAt === "string" ? record.createdAt : new Date().toISOString();
+  const updatedAt =
+    typeof record.updatedAt === "string" ? record.updatedAt : createdAt;
+
+  const id = typeof record.id === "string" ? record.id : `build_${Date.now()}`;
+  const name =
+    typeof record.name === "string" ? record.name : "Untitled Build";
+  const setId =
+    typeof record.setId === "string" ? record.setId : TFT_RELEASE_CONFIG.setId;
+  const patch =
+    typeof record.patch === "string" ? record.patch : TFT_RELEASE_CONFIG.patch;
+  const board = Array.isArray(record.board) ? (record.board as BoardChampion[]) : [];
+
+  const meta: BuilderMeta = {
+    carryChampionId:
+      typeof rawMeta.carryChampionId === "string"
+        ? rawMeta.carryChampionId
+        : undefined,
+    heroHexCoreId:
+      typeof rawMeta.heroHexCoreId === "string"
+        ? rawMeta.heroHexCoreId
+        : undefined,
+    priorityHexCoreIds: Array.isArray(rawMeta.priorityHexCoreIds)
+      ? (rawMeta.priorityHexCoreIds as string[])
+      : [],
+    alternativeHexCoreIds: Array.isArray(rawMeta.alternativeHexCoreIds)
+      ? (rawMeta.alternativeHexCoreIds as string[])
+      : [],
+  };
+
+  return {
+    id,
+    name,
+    version: version === 0 ? BUILDER_SAVE_SCHEMA_VERSION : version,
+    createdAt,
+    updatedAt,
+    setId,
+    patch,
+    board,
+    meta,
+  };
+}
+
 export function getLocalSavedBuilds(): SavedBuild[] {
   if (typeof window === "undefined") return [];
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : [];
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return [];
+    return parsed.map((item) => migrateSavedBuild(item));
   } catch {
     return [];
   }
@@ -39,10 +101,13 @@ export function saveLocalBuild(
   patch: string = TFT_RELEASE_CONFIG.patch
 ): SavedBuild {
   const current = getLocalSavedBuilds();
+  const now = new Date().toISOString();
   const newBuild: SavedBuild = {
     id: `build_${Date.now()}`,
     name: name.trim() || `My Build #${current.length + 1}`,
-    createdAt: new Date().toISOString(),
+    version: BUILDER_SAVE_SCHEMA_VERSION,
+    createdAt: now,
+    updatedAt: now,
     setId,
     patch,
     board,

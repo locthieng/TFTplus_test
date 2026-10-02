@@ -5,8 +5,8 @@ export interface ChampionAbility {
   description: string;
   iconUrl?: string;
   mana?: {
-    starting: number;
-    total: number;
+    starting?: number;
+    total?: number;
   };
   stats?: Record<string, string | number>;
 }
@@ -154,3 +154,5 @@ export interface CalculatedTrait {
   activeBreakpoint?: TraitBreakpoint;
   isActive: boolean;
 }
+
+export * from "./dataSourceMetadata";

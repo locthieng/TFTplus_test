@@ -8,6 +8,10 @@ export const HEX_CORES_DATA: HexCore[] = [
     tier: "hero",
     iconUrl: "https://raw.communitydragon.org/latest/game/assets/ux/tft/hexcore/tft18_hero_aphelios.png",
     description: "Gain an Aphelios. Your strongest Aphelios gains 35% Attack Speed and causes Moonlight to strike all adjacent targets.",
+    source: "curated-speculative",
+    setId: "18",
+    patch: "18.3",
+    verified: false,
   },
   {
     id: "hero_nidalee_huntress",
@@ -15,6 +19,10 @@ export const HEX_CORES_DATA: HexCore[] = [
     tier: "hero",
     iconUrl: "https://raw.communitydragon.org/latest/game/assets/ux/tft/hexcore/tft18_hero_nidalee.png",
     description: "Gain a Nidalee. When Nidalee transforms, she gains 40% Omnivamp and her pounce deals 50% bonus magic damage.",
+    source: "curated-speculative",
+    setId: "18",
+    patch: "18.3",
+    verified: false,
   },
   {
     id: "hero_ahri_spiritrush",
@@ -22,6 +30,10 @@ export const HEX_CORES_DATA: HexCore[] = [
     tier: "hero",
     iconUrl: "https://raw.communitydragon.org/latest/game/assets/ux/tft/hexcore/tft18_hero_ahri.png",
     description: "Gain an Ahri. Ahri casts a double soul orb every 3rd cast, dealing 70% extra damage.",
+    source: "curated-speculative",
+    setId: "18",
+    patch: "18.3",
+    verified: false,
   },
   {
     id: "hero_ezreal_trueshot",
@@ -29,6 +41,10 @@ export const HEX_CORES_DATA: HexCore[] = [
     tier: "hero",
     iconUrl: "https://raw.communitydragon.org/latest/game/assets/ux/tft/hexcore/tft18_hero_ezreal.png",
     description: "Gain an Ezreal. Ezreal abilities fire an additional piercing wave through the whole board.",
+    source: "curated-speculative",
+    setId: "18",
+    patch: "18.3",
+    verified: false,
   },
 
   // Priority Hex Cores
@@ -38,6 +54,10 @@ export const HEX_CORES_DATA: HexCore[] = [
     tier: "priority",
     iconUrl: "https://raw.communitydragon.org/latest/game/assets/ux/tft/hexcore/tft_hexcore_unified.png",
     description: "Your team gains 15 Armor and 15 Magic Resist. Frontline champions gain double.",
+    source: "curated-speculative",
+    setId: "18",
+    patch: "18.3",
+    verified: false,
   },
   {
     id: "priority_combat_ready",
@@ -45,6 +65,10 @@ export const HEX_CORES_DATA: HexCore[] = [
     tier: "priority",
     iconUrl: "https://raw.communitydragon.org/latest/game/assets/ux/tft/hexcore/tft_hexcore_combat.png",
     description: "Your team deals 8% more damage and takes 8% less damage for 15 seconds.",
+    source: "curated-speculative",
+    setId: "18",
+    patch: "18.3",
+    verified: false,
   },
   {
     id: "priority_jeweled_lotus",
@@ -52,6 +76,10 @@ export const HEX_CORES_DATA: HexCore[] = [
     tier: "priority",
     iconUrl: "https://raw.communitydragon.org/latest/game/assets/ux/tft/hexcore/tft_hexcore_jeweled.png",
     description: "Magic and True damage from your team abilities can critically strike. Gain 15% Crit Chance.",
+    source: "curated-speculative",
+    setId: "18",
+    patch: "18.3",
+    verified: false,
   },
   {
     id: "priority_cybernetic_implants",
@@ -59,6 +87,10 @@ export const HEX_CORES_DATA: HexCore[] = [
     tier: "priority",
     iconUrl: "https://raw.communitydragon.org/latest/game/assets/ux/tft/hexcore/tft_hexcore_cybernetic.png",
     description: "Your champions holding an item gain 200 Health and 20 Attack Damage.",
+    source: "curated-speculative",
+    setId: "18",
+    patch: "18.3",
+    verified: false,
   },
 
   // Alternative Hex Cores
@@ -68,6 +100,10 @@ export const HEX_CORES_DATA: HexCore[] = [
     tier: "alternative",
     iconUrl: "https://raw.communitydragon.org/latest/game/assets/ux/tft/hexcore/tft_hexcore_heal.png",
     description: "When an enemy dies, the nearest ally is healed for 300 Health.",
+    source: "curated-speculative",
+    setId: "18",
+    patch: "18.3",
+    verified: false,
   },
   {
     id: "alt_harmacist",
@@ -75,6 +111,10 @@ export const HEX_CORES_DATA: HexCore[] = [
     tier: "alternative",
     iconUrl: "https://raw.communitydragon.org/latest/game/assets/ux/tft/hexcore/tft_hexcore_harmacist.png",
     description: "Your units gain 15% Omnivamp and convert 100% of excess healing into a shield.",
+    source: "curated-speculative",
+    setId: "18",
+    patch: "18.3",
+    verified: false,
   },
   {
     id: "alt_ascension",
@@ -82,6 +122,10 @@ export const HEX_CORES_DATA: HexCore[] = [
     tier: "alternative",
     iconUrl: "https://raw.communitydragon.org/latest/game/assets/ux/tft/hexcore/tft_hexcore_ascension.png",
     description: "After 15 seconds of combat, your units deal 50% increased damage.",
+    source: "curated-speculative",
+    setId: "18",
+    patch: "18.3",
+    verified: false,
   },
   {
     id: "alt_stand_united",
@@ -89,5 +133,9 @@ export const HEX_CORES_DATA: HexCore[] = [
     tier: "alternative",
     iconUrl: "https://raw.communitydragon.org/latest/game/assets/ux/tft/hexcore/tft_hexcore_stand.png",
     description: "Your units gain 2 Attack Damage and 2 Ability Power per active non-unique Trait.",
+    source: "curated-speculative",
+    setId: "18",
+    patch: "18.3",
+    verified: false,
   },
 ];

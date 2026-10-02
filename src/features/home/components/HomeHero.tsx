@@ -16,10 +16,10 @@ export function HomeHero() {
 
       <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 relative z-10 py-12 md:py-16 text-center flex flex-col items-center">
         {/* Set Badge */}
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-amber-400/10 border border-amber-400/25 text-xs font-bold text-amber-400 mb-3.5 tracking-wider uppercase shadow-xs">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-400/10 border border-amber-400/30 text-xs font-bold text-amber-400 mb-3 tracking-widest uppercase shadow-xs">
           <Sparkles className="w-3.5 h-3.5" />
           <span>
-            {TFT_RELEASE_CONFIG.setName} • Patch {PROJECT_TARGET_RELEASE.patch}
+            SET {TFT_RELEASE_CONFIG.setId} • {TFT_RELEASE_CONFIG.setName.toUpperCase()} • PATCH {PROJECT_TARGET_RELEASE.patch}
           </span>
         </div>
 
@@ -27,8 +27,8 @@ export function HomeHero() {
         <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight uppercase mb-2 drop-shadow-md">
           Teamfight Tactics
         </h1>
-        <p className="text-xs sm:text-sm font-semibold tracking-widest uppercase text-amber-400/90 mb-8 max-w-xl">
-          Top Meta Compositions, Dynamic Tier Lists & Board Builder
+        <p className="text-xs sm:text-sm font-bold tracking-widest uppercase text-amber-400/90 mb-8 max-w-xl">
+          Curated Meta Compositions, Tier Lists & Tactical Builder
         </p>
 
         {/* Dominant Player Search */}

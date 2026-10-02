@@ -1,43 +1,41 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import { Search, Sparkles } from "lucide-react";
+import { Search, Sparkles, ShieldCheck } from "lucide-react";
 import { WISPS_DATA } from "@/features/wisps/data/wispsData";
+import { WISP_SOURCE_METADATA } from "@/features/wisps/data/wispSourceMetadata";
 import { GameImage } from "@/components/common/GameImage";
-import { cn } from "@/utils/cn";
 
 export default function WispsPage() {
   const [search, setSearch] = useState("");
-  const [selectedTier, setSelectedTier] = useState<number | null>(null);
 
   const filteredWisps = useMemo(() => {
-    return WISPS_DATA.filter((w) => {
-      if (selectedTier && w.tier !== selectedTier) return false;
-      if (search) {
-        const q = search.toLowerCase();
-        if (
-          !w.name.toLowerCase().includes(q) &&
-          !w.description.toLowerCase().includes(q) &&
-          !(w.origin && w.origin.toLowerCase().includes(q))
-        ) {
-          return false;
-        }
-      }
-      return true;
-    });
-  }, [search, selectedTier]);
+    if (!search.trim()) return WISPS_DATA;
+    const q = search.toLowerCase().trim();
+    return WISPS_DATA.filter(
+      (w) =>
+        w.name.toLowerCase().includes(q) ||
+        w.description.toLowerCase().includes(q)
+    );
+  }, [search]);
 
   return (
     <div className="flex-1 max-w-[1440px] w-full mx-auto px-4 sm:px-6 py-6 space-y-4">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#20293b] pb-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-extrabold text-slate-100 tracking-tight flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-amber-400" />
-            TFT Wisps & Spirits Catalog
-          </h1>
-          <p className="text-xs text-slate-400 mt-0.5">
-            Tactician companion spirits, environmental wisps, and cosmetic tier models.
+          <div className="flex items-center gap-2">
+            <h1 className="text-xl sm:text-2xl font-extrabold text-slate-100 tracking-tight flex items-center gap-2">
+              <Sparkles className="w-5 h-5 text-amber-400" />
+              TFT Set 18 Wisps Catalog
+            </h1>
+            <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/15 border border-amber-500/40 text-amber-400 flex items-center gap-1">
+              <ShieldCheck className="w-3 h-3" />
+              Verified Set 18
+            </span>
+          </div>
+          <p className="text-xs text-slate-400 mt-1">
+            Enchanted Wilds shop mechanics, temporary tactical buffs, and unique round effects ({WISPS_DATA.length} available in Patch {WISP_SOURCE_METADATA.patch}).
           </p>
         </div>
 
@@ -48,41 +46,10 @@ export default function WispsPage() {
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search wisps..."
+            placeholder="Search wisps by name or effect..."
             className="w-full pl-9 pr-3 py-1.5 bg-[#151f33] border border-[#24344d] rounded text-xs text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-amber-400 transition-colors"
           />
         </div>
-      </div>
-
-      {/* Filter Bar */}
-      <div className="flex items-center gap-1.5 bg-[#111722] border border-[#202a3c] rounded-lg p-2 text-xs">
-        <button
-          type="button"
-          onClick={() => setSelectedTier(null)}
-          className={cn(
-            "px-2.5 py-1 rounded font-bold transition-colors cursor-pointer",
-            selectedTier === null
-              ? "bg-amber-500 text-slate-950"
-              : "text-slate-300 hover:bg-[#182338]"
-          )}
-        >
-          All Tiers
-        </button>
-        {[1, 2, 3].map((tier) => (
-          <button
-            key={tier}
-            type="button"
-            onClick={() => setSelectedTier(selectedTier === tier ? null : tier)}
-            className={cn(
-              "px-2.5 py-1 rounded font-bold border transition-colors cursor-pointer",
-              selectedTier === tier
-                ? "bg-amber-500 text-slate-950 border-amber-400"
-                : "border-[#24344d] text-slate-400 hover:text-white"
-            )}
-          >
-            Tier {tier}
-          </button>
-        ))}
       </div>
 
       {/* Table view */}
@@ -91,16 +58,15 @@ export default function WispsPage() {
           <table className="w-full text-left text-xs">
             <thead className="bg-[#0d131f] border-b border-[#1c2738] text-slate-400 font-bold uppercase tracking-wider text-[11px]">
               <tr>
-                <th className="py-2.5 px-4 w-64">Wisp Spirit</th>
-                <th className="py-2.5 px-4 w-32">Origin</th>
-                <th className="py-2.5 px-4">Description</th>
-                <th className="py-2.5 px-4 w-28 text-center">Tier</th>
+                <th className="py-2.5 px-4 w-72">Wisp</th>
+                <th className="py-2.5 px-4">Tactical Effect / Description</th>
+                <th className="py-2.5 px-4 w-32 text-center">Source</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[#182233]">
               {filteredWisps.length === 0 ? (
                 <tr>
-                  <td colSpan={4} className="py-12 text-center text-slate-500 text-xs">
+                  <td colSpan={3} className="py-12 text-center text-slate-500 text-xs">
                     No wisps found matching your query.
                   </td>
                 </tr>
@@ -127,15 +93,12 @@ export default function WispsPage() {
                         </span>
                       </div>
                     </td>
-                    <td className="py-2.5 px-4 text-slate-300 font-medium text-xs">
-                      {wisp.origin || "Convergence"}
-                    </td>
                     <td className="py-2.5 px-4 text-slate-300 text-xs leading-relaxed">
                       {wisp.description}
                     </td>
                     <td className="py-2.5 px-4 text-center">
-                      <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-[#172233] border border-[#24344d] text-amber-300">
-                        Tier {wisp.tier}
+                      <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-[#172233] border border-[#24344d] text-cyan-300">
+                        Set {wisp.setId}
                       </span>
                     </td>
                   </tr>

@@ -1,9 +1,12 @@
 export interface Wisp {
   id: string;
   name: string;
-  iconUrl: string;
   description: string;
   cost?: number;
   tier?: number;
-  origin?: string;
+  iconUrl?: string;
+  setId: string;
+  patch: string;
+  source: string;
+  verified: boolean;
 }

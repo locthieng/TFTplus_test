@@ -61,7 +61,7 @@ describe("Cross-Domain Reference Parity & Integrity", () => {
       expect(pet.id).toBeTruthy();
       expect(pet.name).toBeTruthy();
       expect(pet.species).toBeTruthy();
-      expect(["Rare", "Epic", "Legendary", "Mythic"]).toContain(pet.rarity);
+      expect(["Default", "Common", "Rare", "Epic", "Legendary", "Mythic"]).toContain(pet.rarity);
     }
 
     for (const core of HEX_CORES_DATA) {

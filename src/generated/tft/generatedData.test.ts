@@ -41,6 +41,29 @@ describe("Generated Static TFT Data Quality Tests", () => {
       const uniqueIds = new Set(ids);
       expect(uniqueIds.size).toBe(champions.length);
     });
+
+    it("reports stat coverage without failing on legitimately missing non-core stats", () => {
+      const total = champions.length;
+      const hpCount = champions.filter((c) => c.health && c.health.length > 0).length;
+      const adCount = champions.filter((c) => c.attackDamage && c.attackDamage.length > 0).length;
+      const armorCount = champions.filter((c) => c.armor != null).length;
+      const mrCount = champions.filter((c) => c.magicResist != null).length;
+      const asCount = champions.filter((c) => c.attackSpeed != null).length;
+      const manaCount = champions.filter((c) => c.ability?.mana != null).length;
+      const critCount = champions.filter((c) => c.critChance != null).length;
+
+      console.log(`\n[Champion Stat Coverage] Total: ${total}`);
+      console.log(`  HP coverage:     ${hpCount} / ${total} (${Math.round((hpCount / total) * 100)}%)`);
+      console.log(`  AD coverage:     ${adCount} / ${total} (${Math.round((adCount / total) * 100)}%)`);
+      console.log(`  Armor coverage:  ${armorCount} / ${total} (${Math.round((armorCount / total) * 100)}%)`);
+      console.log(`  MR coverage:     ${mrCount} / ${total} (${Math.round((mrCount / total) * 100)}%)`);
+      console.log(`  AS coverage:     ${asCount} / ${total} (${Math.round((asCount / total) * 100)}%)`);
+      console.log(`  Mana coverage:   ${manaCount} / ${total} (${Math.round((manaCount / total) * 100)}%)`);
+      console.log(`  Crit coverage:   ${critCount} / ${total} (${Math.round((critCount / total) * 100)}%)`);
+
+      expect(hpCount).toBeGreaterThanOrEqual(40);
+      expect(adCount).toBeGreaterThanOrEqual(40);
+    });
   });
 
   describe("Traits Dataset", () => {
