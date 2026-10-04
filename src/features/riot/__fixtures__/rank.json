@@ -1,0 +1,16 @@
+[
+  {
+    "leagueId": "mock-league-id-1",
+    "queueType": "RANKED_TFT",
+    "tier": "CHALLENGER",
+    "rank": "I",
+    "puuid": "mock-puuid-faker-kr1",
+    "leaguePoints": 1250,
+    "wins": 180,
+    "losses": 120,
+    "veteran": true,
+    "inactive": false,
+    "freshBlood": false,
+    "hotStreak": true
+  }
+]

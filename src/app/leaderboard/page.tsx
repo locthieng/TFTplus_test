@@ -1,59 +1,79 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
-import { Trophy, Globe } from "lucide-react";
+import { Metadata } from "next";
+import { Trophy, Globe, ShieldAlert, ArrowRight } from "lucide-react";
 import { PlatformRegion } from "@/types/region";
-import { SearchInput } from "@/components/common/SearchInput";
+import { FEATURE_FLAGS } from "@/config/featureFlags";
+import { defaultLeaderboardService, LeaderboardEntry } from "@/features/riot/leaderboard/LeaderboardService";
 import { cn } from "@/utils/cn";
 
-interface LeaderboardEntry {
-  rank: number;
-  gameName: string;
-  tagLine: string;
-  region: PlatformRegion;
-  tier: "Challenger" | "Grandmaster" | "Master";
-  lp: number;
-  winRate: number;
-  top4Rate: number;
-  games: number;
-}
+export const dynamic = "force-dynamic";
 
-const MOCK_LEADERBOARD: LeaderboardEntry[] = [
-  // Vietnam
-  { rank: 1, gameName: "YBY1", tagLine: "VN2", region: "vn", tier: "Challenger", lp: 1650, winRate: 24.5, top4Rate: 68.2, games: 320 },
-  { rank: 2, gameName: "Em Chè", tagLine: "DDT", region: "vn", tier: "Challenger", lp: 1520, winRate: 22.1, top4Rate: 64.8, games: 410 },
-  { rank: 3, gameName: "GD Feed", tagLine: "VN1", region: "vn", tier: "Challenger", lp: 1480, winRate: 21.0, top4Rate: 62.5, games: 290 },
-  { rank: 4, gameName: "DVG Midfeed", tagLine: "6868", region: "vn", tier: "Challenger", lp: 1410, winRate: 20.4, top4Rate: 61.0, games: 380 },
-  // North America
-  { rank: 1, gameName: "Dishsoap", tagLine: "NA1", region: "na", tier: "Challenger", lp: 1680, winRate: 25.1, top4Rate: 69.4, games: 340 },
-  { rank: 2, gameName: "Setsuko", tagLine: "NA1", region: "na", tier: "Challenger", lp: 1610, winRate: 22.5, top4Rate: 63.8, games: 520 },
-  { rank: 3, gameName: "K3soju", tagLine: "NA1", region: "na", tier: "Challenger", lp: 1540, winRate: 20.8, top4Rate: 60.5, games: 580 },
-  // Korea
-  { rank: 1, gameName: "Bebe872", tagLine: "KR1", region: "kr", tier: "Challenger", lp: 1720, winRate: 26.2, top4Rate: 70.1, games: 360 },
-  { rank: 2, gameName: "DduDdu", tagLine: "KR1", region: "kr", tier: "Challenger", lp: 1590, winRate: 23.4, top4Rate: 65.2, games: 410 },
-  // Europe West
-  { rank: 1, gameName: "Voltariux", tagLine: "EUW", region: "euw", tier: "Challenger", lp: 1640, winRate: 24.0, top4Rate: 67.5, games: 390 },
-  { rank: 2, gameName: "Double61", tagLine: "EUW", region: "euw", tier: "Challenger", lp: 1560, winRate: 21.9, top4Rate: 63.1, games: 440 },
+export const metadata: Metadata = {
+  title: "TFT Challenger Leaderboard | TFTPlus",
+  description: "Current TFT Challenger rankings, LP standings, and match statistics.",
+};
+
+const SUPPORTED_LEADERBOARD_REGIONS: { id: PlatformRegion; label: string }[] = [
+  { id: "vn", label: "VN" },
+  { id: "na", label: "NA" },
+  { id: "euw", label: "EUW" },
+  { id: "kr", label: "KR" },
 ];
 
-export default function LeaderboardPage() {
-  const [selectedRegion, setSelectedRegion] = useState<PlatformRegion>("vn");
-  const [search, setSearch] = useState("");
+export default async function LeaderboardPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ region?: string }>;
+}) {
+  const { region } = await searchParams;
+  const currentRegion: PlatformRegion =
+    region && ["vn", "na", "euw", "kr"].includes(region.toLowerCase())
+      ? (region.toLowerCase() as PlatformRegion)
+      : "vn";
 
-  const regions: { id: PlatformRegion; label: string }[] = [
-    { id: "vn", label: "VN" },
-    { id: "na", label: "NA" },
-    { id: "euw", label: "EUW" },
-    { id: "kr", label: "KR" },
-  ];
+  // Check feature flag
+  if (!FEATURE_FLAGS.liveLeaderboard) {
+    return (
+      <div className="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 py-16 space-y-6 text-center">
+        <div className="w-16 h-16 mx-auto rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+          <ShieldAlert className="w-8 h-8" />
+        </div>
+        <div className="space-y-2">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-white">
+            Live TFT Leaderboard is Currently Disabled
+          </h1>
+          <p className="text-slate-400 text-sm max-w-lg mx-auto leading-relaxed">
+            Live Challenger & Grandmaster rankings are disabled pending official Riot Games API production authorization. Mock standings have been completely decommissioned.
+          </p>
+        </div>
+        <div className="flex items-center justify-center gap-3 pt-2">
+          <Link
+            href="/"
+            className="px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-colors"
+          >
+            Return Home
+          </Link>
+          <Link
+            href="/team-comps"
+            className="px-4 py-2 rounded-lg bg-[#141b2a] border border-[#212c3f] hover:bg-[#1c2738] text-slate-300 font-semibold text-xs transition-colors"
+          >
+            Browse Meta Comps
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
-  const filteredLeaderboard = MOCK_LEADERBOARD.filter((entry) => {
-    if (entry.region !== selectedRegion) return false;
-    if (search && !entry.gameName.toLowerCase().includes(search.toLowerCase()))
-      return false;
-    return true;
-  });
+  // Fetch live leaderboard
+  let entries: LeaderboardEntry[] = [];
+  let fetchError: string | null = null;
+
+  try {
+    entries = await defaultLeaderboardService.getChallengerLeaderboard(currentRegion, 25);
+  } catch (err: unknown) {
+    fetchError = err instanceof Error ? err.message : "Failed to load live leaderboard data";
+  }
 
   return (
     <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
@@ -65,126 +85,140 @@ export default function LeaderboardPage() {
             TFT Challenger Leaderboard
           </h1>
           <p className="text-xs sm:text-sm text-slate-400 mt-1">
-            Real-time Challenger & Grandmaster rankings, LP standings, win rates, and top 4 stats.
+            Current Challenger standings and verified LP rankings ({currentRegion.toUpperCase()}).
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-          <div className="w-full sm:w-56">
-            <SearchInput
-              value={search}
-              onChange={setSearch}
-              placeholder="Filter player..."
-            />
-          </div>
-          {/* Region selector */}
-          <div className="flex items-center gap-1.5 bg-[#121824] border border-[#202a3c] p-1 rounded-xl">
+        {/* Region Selector */}
+        <div className="flex items-center gap-1.5 bg-[#121824] border border-[#202a3c] p-1 rounded-xl self-start md:self-auto">
           <Globe className="w-4 h-4 text-slate-400 ml-2" />
-          {regions.map((region) => (
-            <button
-              key={region.id}
-              type="button"
-              onClick={() => setSelectedRegion(region.id)}
+          {SUPPORTED_LEADERBOARD_REGIONS.map((r) => (
+            <Link
+              key={r.id}
+              href={`/leaderboard?region=${r.id}`}
               className={cn(
                 "px-3 py-1 text-xs font-bold rounded-lg transition-colors cursor-pointer select-none",
-                selectedRegion === region.id
+                currentRegion === r.id
                   ? "bg-amber-500 text-slate-950 shadow"
                   : "text-slate-400 hover:text-white"
               )}
             >
-              {region.label}
-            </button>
+              {r.label}
+            </Link>
           ))}
-          </div>
         </div>
       </div>
 
-      {/* Leaderboard Table */}
-      <div className="bg-[#121824] border border-[#222c3d] rounded-2xl overflow-hidden shadow-xl">
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-slate-300">
-            <thead className="bg-[#0f1520] text-slate-400 uppercase text-[11px] font-semibold border-b border-[#202a3c]">
-              <tr>
-                <th className="py-3.5 px-4 w-16 text-center">Rank</th>
-                <th className="py-3.5 px-4">Player</th>
-                <th className="py-3.5 px-4">Tier</th>
-                <th className="py-3.5 px-4 text-right">LP</th>
-                <th className="py-3.5 px-4 text-center">Top 4 Rate</th>
-                <th className="py-3.5 px-4 text-center">Win Rate</th>
-                <th className="py-3.5 px-4 text-right">Games</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-[#1e2738]/60">
-              {filteredLeaderboard.map((entry) => {
-                const isTop1 = entry.rank === 1;
-                const isTop2 = entry.rank === 2;
-                const isTop3 = entry.rank === 3;
-
-                return (
-                  <tr
-                    key={`${entry.region}-${entry.rank}`}
-                    className="hover:bg-[#16202e] transition-colors"
-                  >
-                    <td className="py-3 px-4 text-center font-bold">
-                      {isTop1 ? (
-                        <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/40">
-                          1
-                        </span>
-                      ) : isTop2 ? (
-                        <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-slate-300/20 text-slate-200 border border-slate-300/40">
-                          2
-                        </span>
-                      ) : isTop3 ? (
-                        <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-700/20 text-amber-500 border border-amber-700/40">
-                          3
-                        </span>
-                      ) : (
-                        <span className="text-slate-500 font-mono">
-                          #{entry.rank}
-                        </span>
-                      )}
-                    </td>
-
-                    <td className="py-3 px-4 font-semibold text-slate-100">
-                      <Link
-                        href={`/player/${entry.region}/${encodeURIComponent(entry.gameName)}/${encodeURIComponent(entry.tagLine)}`}
-                        className="hover:text-amber-400 transition-colors flex items-center gap-1.5"
-                      >
-                        <span>{entry.gameName}</span>
-                        <span className="text-slate-500 font-normal text-[11px]">
-                          #{entry.tagLine}
-                        </span>
-                      </Link>
-                    </td>
-
-                    <td className="py-3 px-4">
-                      <span className="px-2 py-0.5 rounded text-[10px] font-extrabold uppercase bg-amber-500/15 text-amber-400 border border-amber-500/30">
-                        {entry.tier}
-                      </span>
-                    </td>
-
-                    <td className="py-3 px-4 text-right font-mono font-bold text-amber-300">
-                      {entry.lp.toLocaleString()} LP
-                    </td>
-
-                    <td className="py-3 px-4 text-center font-mono font-semibold text-emerald-400">
-                      {entry.top4Rate}%
-                    </td>
-
-                    <td className="py-3 px-4 text-center font-mono font-semibold text-sky-400">
-                      {entry.winRate}%
-                    </td>
-
-                    <td className="py-3 px-4 text-right font-mono text-slate-400">
-                      {entry.games}
+      {fetchError ? (
+        <div className="bg-[#121824] border border-rose-500/30 rounded-xl p-8 text-center space-y-2">
+          <div className="text-rose-400 font-bold text-sm">Failed to load leaderboard</div>
+          <div className="text-slate-400 text-xs">{fetchError}</div>
+        </div>
+      ) : (
+        <div className="bg-[#101624] border border-[#1d273a] rounded-xl overflow-hidden shadow-xl">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-xs">
+              <thead className="bg-[#0b101c] border-b border-[#1b2537] text-slate-400 uppercase font-bold tracking-wider text-[11px]">
+                <tr>
+                  <th className="py-3 px-4 w-16 text-center">Rank</th>
+                  <th className="py-3 px-4">Player (Riot ID)</th>
+                  <th className="py-3 px-4 w-32">Tier</th>
+                  <th className="py-3 px-4 w-28 text-right">LP</th>
+                  <th className="py-3 px-4 w-24 text-right">Wins</th>
+                  <th className="py-3 px-4 w-24 text-right">Losses</th>
+                  <th className="py-3 px-4 w-28 text-right">Total Games</th>
+                  <th className="py-3 px-4 w-20"></th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[#172133]">
+                {entries.length === 0 ? (
+                  <tr>
+                    <td colSpan={8} className="py-12 text-center text-slate-500">
+                      No Challenger players found for this region.
                     </td>
                   </tr>
-                );
-              })}
-            </tbody>
-          </table>
+                ) : (
+                  entries.map((entry) => {
+                    const isTop1 = entry.rank === 1;
+                    const isTop3 = entry.rank <= 3;
+
+                    return (
+                      <tr
+                        key={`${entry.rank}-${entry.gameName}`}
+                        className="hover:bg-[#141b2a] transition-colors"
+                      >
+                        <td className="py-3.5 px-4 text-center">
+                          <span
+                            className={cn(
+                              "inline-flex items-center justify-center w-7 h-7 rounded-lg text-xs font-black",
+                              isTop1
+                                ? "bg-amber-400 text-slate-950 shadow-sm"
+                                : isTop3
+                                ? "bg-amber-500/20 text-amber-400 border border-amber-500/30"
+                                : "text-slate-400 font-mono"
+                            )}
+                          >
+                            {entry.rank}
+                          </span>
+                        </td>
+                        <td className="py-3.5 px-4">
+                          {entry.accountResolved && entry.gameName && entry.tagLine ? (
+                            <Link
+                              href={`/player/${currentRegion}/${encodeURIComponent(
+                                entry.gameName
+                              )}/${encodeURIComponent(entry.tagLine)}`}
+                              className="font-bold text-slate-100 hover:text-amber-400 transition-colors inline-flex items-center gap-1.5"
+                            >
+                              <span>{entry.gameName}</span>
+                              <span className="text-slate-500 font-mono text-[11px]">
+                                #{entry.tagLine}
+                              </span>
+                            </Link>
+                          ) : (
+                            <span className="text-slate-500 italic text-xs">
+                              Riot ID unavailable
+                            </span>
+                          )}
+                        </td>
+                        <td className="py-3.5 px-4">
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                            {entry.tier}
+                          </span>
+                        </td>
+                        <td className="py-3.5 px-4 text-right font-mono font-bold text-amber-400">
+                          {entry.leaguePoints.toLocaleString()} LP
+                        </td>
+                        <td className="py-3.5 px-4 text-right font-mono text-emerald-400 font-semibold">
+                          {entry.wins}
+                        </td>
+                        <td className="py-3.5 px-4 text-right font-mono text-slate-400 font-semibold">
+                          {entry.losses}
+                        </td>
+                        <td className="py-3.5 px-4 text-right font-mono text-white font-bold">
+                          {entry.games}
+                        </td>
+                        <td className="py-3.5 px-4 text-right">
+                          {entry.accountResolved && entry.gameName && entry.tagLine && (
+                            <Link
+                              href={`/player/${currentRegion}/${encodeURIComponent(
+                                entry.gameName
+                              )}/${encodeURIComponent(entry.tagLine)}`}
+                              className="p-1 rounded text-slate-500 hover:text-amber-400 transition-colors inline-block"
+                              title="View Player Profile"
+                            >
+                              <ArrowRight className="w-4 h-4" />
+                            </Link>
+                          )}
+                        </td>
+                      </tr>
+                    );
+                  })
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

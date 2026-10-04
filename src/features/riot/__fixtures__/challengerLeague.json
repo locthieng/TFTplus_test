@@ -1,0 +1,32 @@
+{
+  "tier": "CHALLENGER",
+  "leagueId": "mock-challenger-league-1",
+  "queue": "RANKED_TFT",
+  "name": "Ahri's Heroes",
+  "entries": [
+    {
+      "puuid": "mock-puuid-top1",
+      "summonerId": "mock-sum-1",
+      "leaguePoints": 1650,
+      "rank": "I",
+      "wins": 210,
+      "losses": 110,
+      "veteran": true,
+      "inactive": false,
+      "freshBlood": false,
+      "hotStreak": true
+    },
+    {
+      "puuid": "mock-puuid-top2",
+      "summonerId": "mock-sum-2",
+      "leaguePoints": 1520,
+      "rank": "I",
+      "wins": 195,
+      "losses": 115,
+      "veteran": true,
+      "inactive": false,
+      "freshBlood": false,
+      "hotStreak": false
+    }
+  ]
+}

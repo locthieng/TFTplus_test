@@ -15,7 +15,7 @@ import { isCurrentSetCompatibleItem } from "../src/features/tft-data/filters/cur
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const CDRAGON_VERSION = process.env.CDRAGON_VERSION || "latest";
+const CDRAGON_VERSION = process.env.CDRAGON_VERSION || "18.3";
 const CDRAGON_URL = `https://raw.communitydragon.org/${CDRAGON_VERSION}/cdragon/tft/en_us.json`;
 const OUTPUT_DIR = path.resolve(__dirname, "../src/generated/tft");
 

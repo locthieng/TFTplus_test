@@ -1,0 +1,71 @@
+{
+  "metadata": {
+    "data_version": "5",
+    "match_id": "KR_7123456781",
+    "participants": ["mock-puuid-faker-kr1", "mock-puuid-other-1"]
+  },
+  "info": {
+    "game_datetime": 1727800000000,
+    "game_length": 1980.5,
+    "game_version": "Version 14.20.622.8465",
+    "queue_id": 1100,
+    "tft_set_number": 18,
+    "participants": [
+      {
+        "puuid": "mock-puuid-faker-kr1",
+        "placement": 1,
+        "level": 9,
+        "gold_left": 14,
+        "last_round": 36,
+        "time_eliminated": 1980.5,
+        "augments": [
+          "TFT18_Augment_SilverTicket",
+          "TFT18_Augment_TwoHealthy"
+        ],
+        "traits": [
+          {
+            "name": "TFT18_Fated",
+            "num_units": 5,
+            "style": 3,
+            "tier_current": 2,
+            "tier_total": 4
+          },
+          {
+            "name": "TFT18_Arcanist",
+            "num_units": 2,
+            "style": 1,
+            "tier_current": 1,
+            "tier_total": 4
+          }
+        ],
+        "units": [
+          {
+            "character_id": "TFT18_Ahri",
+            "itemNames": ["TFT_Item_InfinityEdge", "TFT_Item_JeweledGauntlet", "TFT_Item_BlueBuff"],
+            "name": "",
+            "rarity": 4,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT18_Thresh",
+            "itemNames": ["TFT_Item_WarmogsArmor", "TFT_Item_BrambleVest"],
+            "name": "",
+            "rarity": 3,
+            "tier": 2
+          }
+        ]
+      },
+      {
+        "puuid": "mock-puuid-other-1",
+        "placement": 2,
+        "level": 8,
+        "gold_left": 2,
+        "last_round": 36,
+        "time_eliminated": 1970.0,
+        "augments": [],
+        "traits": [],
+        "units": []
+      }
+    ]
+  }
+}

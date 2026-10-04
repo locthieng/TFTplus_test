@@ -86,3 +86,11 @@
    - Preserved cross-set compatibility warnings.
 9. **CI & Automated Verification (Phase P & Q):**
    - Test suites expanded to 23 test files covering mappers, feature flags, saved build migrations, wisp data, and pet catalog integrity.
+10. **Live Riot API Pipeline & Mock Decommissioning (Live Riot Data Phase):**
+    - Completely decommissioned `MOCK_LEADERBOARD` and mock match history from the codebase.
+    - Implemented server-only `RiotApiClient` with rate limiting, timeouts, and safe retries.
+    - Implemented `RiotAccountService`, `TftRankService`, `TftMatchService`, and `PlayerProfileService`.
+    - Added `TftStaticResolver` mapping live Riot match entities (units, items, traits, augments) to static datasets without crashing on unknown IDs.
+    - Configured multi-region Riot routing model (`VN2`/`ASIA`, `KR`/`ASIA`, `NA1`/`AMERICAS`, `EUW1`/`EUROPE`).
+    - Enforced strict `Name#Tag` validation in `PlayerSearch` using `RiotIdSchema`.
+    - Bound live features to `FEATURE_FLAGS.livePlayerData` and `FEATURE_FLAGS.liveLeaderboard` to protect production until formal Riot key provisioning.

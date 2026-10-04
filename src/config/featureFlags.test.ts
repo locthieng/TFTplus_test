@@ -11,5 +11,7 @@ describe("Production Feature Flags Tests", () => {
     expect(FEATURE_FLAGS.hexCores).toBe(false);
     expect(FEATURE_FLAGS.riotLogin).toBe(false);
     expect(FEATURE_FLAGS.liveLeaderboard).toBe(false);
+    expect(typeof FEATURE_FLAGS.livePlayerData).toBe("boolean");
+    expect(FEATURE_FLAGS.livePlayerData).toBe(false);
   });
 });
