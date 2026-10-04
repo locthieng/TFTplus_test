@@ -2,8 +2,10 @@ import "server-only";
 
 import { RiotApiClient, defaultRiotApiClient } from "../client/RiotApiClient";
 import { RiotCache, defaultRiotCache } from "../cache/RiotCache";
+import { buildRiotCacheKey } from "../cache/riotCacheKeys";
 import { RiotRegionalRoute } from "../routing/riotRouting.types";
 import { getRegionalBaseUrl } from "../routing/riotRouting";
+import { RiotLogger, defaultRiotLogger } from "../logging/RiotLogger";
 
 export interface RiotAccount {
   puuid: string;
@@ -14,7 +16,8 @@ export interface RiotAccount {
 export class RiotAccountService {
   constructor(
     private readonly client: RiotApiClient = defaultRiotApiClient,
-    private readonly cache: RiotCache = defaultRiotCache
+    private readonly cache: RiotCache = defaultRiotCache,
+    private readonly logger: RiotLogger = defaultRiotLogger
   ) {}
 
   async getAccountByRiotId(
@@ -22,12 +25,14 @@ export class RiotAccountService {
     gameName: string,
     tagLine: string
   ): Promise<RiotAccount> {
-    const cacheKey = `account:${regionalRoute.toLowerCase()}:${encodeURIComponent(
-      gameName.toLowerCase()
-    )}:${encodeURIComponent(tagLine.toLowerCase())}`;
+    const cacheKey = buildRiotCacheKey("account", regionalRoute, gameName, tagLine);
 
     const cached = await this.cache.get<RiotAccount>(cacheKey);
-    if (cached) return cached;
+    if (cached) {
+      this.logger.logCacheHit("RiotAccountService", "getAccountByRiotId", cacheKey);
+      return cached;
+    }
+    this.logger.logCacheMiss("RiotAccountService", "getAccountByRiotId", cacheKey);
 
     const baseUrl = getRegionalBaseUrl(regionalRoute);
     const url = `${baseUrl}/riot/account/v1/accounts/by-riot-id/${encodeURIComponent(
@@ -39,7 +44,8 @@ export class RiotAccountService {
     // Cache for 30 minutes (1800s)
     await this.cache.set(cacheKey, account, 1800);
     // Also cache by PUUID
-    await this.cache.set(`account_by_puuid:${regionalRoute.toLowerCase()}:${account.puuid}`, account, 1800);
+    const puuidKey = buildRiotCacheKey("account_by_puuid", regionalRoute, account.puuid);
+    await this.cache.set(puuidKey, account, 1800);
 
     return account;
   }
@@ -48,9 +54,13 @@ export class RiotAccountService {
     regionalRoute: RiotRegionalRoute,
     puuid: string
   ): Promise<RiotAccount> {
-    const cacheKey = `account_by_puuid:${regionalRoute.toLowerCase()}:${puuid}`;
+    const cacheKey = buildRiotCacheKey("account_by_puuid", regionalRoute, puuid);
     const cached = await this.cache.get<RiotAccount>(cacheKey);
-    if (cached) return cached;
+    if (cached) {
+      this.logger.logCacheHit("RiotAccountService", "getAccountByPuuid", cacheKey);
+      return cached;
+    }
+    this.logger.logCacheMiss("RiotAccountService", "getAccountByPuuid", cacheKey);
 
     const baseUrl = getRegionalBaseUrl(regionalRoute);
     const url = `${baseUrl}/riot/account/v1/accounts/by-puuid/${encodeURIComponent(puuid)}`;

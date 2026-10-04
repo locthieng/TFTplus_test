@@ -53,19 +53,25 @@ export class RedisRiotCache implements RiotCache {
   async set<T>(key: string, value: T, ttlSeconds: number): Promise<void> {
     try {
       const serialized = typeof value === "string" ? value : JSON.stringify(value);
-      await fetch(
-        `${this.baseUrl}/set/${encodeURIComponent(key)}/${encodeURIComponent(
-          serialized
-        )}?ex=${ttlSeconds}`,
+
+      const response = await fetch(
+        `${this.baseUrl}/set/${encodeURIComponent(key)}?EX=${ttlSeconds}`,
         {
+          method: "POST",
           headers: {
             Authorization: `Bearer ${this.token}`,
+            "Content-Type": "text/plain",
           },
+          body: serialized,
           cache: "no-store",
         }
       );
-    } catch (err: unknown) {
-      console.warn(`[RedisRiotCache] SET failed for key "${key}":`, err);
+
+      if (!response.ok) {
+        throw new Error(`Redis SET failed: ${response.status}`);
+      }
+    } catch (error) {
+      console.warn(`[RedisRiotCache] SET failed for "${key}"`, error);
     }
   }
 

@@ -34,20 +34,40 @@ describe("computeRiotHealthDiagnostics", () => {
     expect(diag.productionCacheStatus).toBe("Ready");
   });
 
-  it("detects In-Memory cache architecture when REDIS_URL is absent", () => {
+  it("detects Redis cache architecture when UPSTASH_REDIS_REST_URL and TOKEN are configured", () => {
     delete process.env.REDIS_URL;
+    process.env.UPSTASH_REDIS_REST_URL = "https://mock.upstash.io";
+    process.env.UPSTASH_REDIS_REST_TOKEN = "mock-token";
+    const diag = computeRiotHealthDiagnostics();
+    expect(diag.cacheType).toBe("Redis");
+    expect(diag.productionCacheStatus).toBe("Ready");
+  });
+
+  it("detects In-Memory cache architecture when no Redis variables are set", () => {
+    delete process.env.REDIS_URL;
+    delete process.env.UPSTASH_REDIS_REST_URL;
+    delete process.env.UPSTASH_REDIS_REST_TOKEN;
+    delete process.env.KV_REST_API_URL;
+    delete process.env.KV_REST_API_TOKEN;
+
     const diag = computeRiotHealthDiagnostics();
     expect(diag.cacheType).toBe("In-Memory");
     expect(diag.productionCacheStatus).toBe("Dev/Missing");
   });
 
-  it("includes unresolved static entity counters and total count", () => {
+  it("reports proactive rate limiter as Ready", () => {
+    const diag = computeRiotHealthDiagnostics();
+    expect(diag.rateLimiterStatus).toBe("Ready");
+  });
+
+  it("includes unresolved static entity counters, samples, and total count", () => {
     const diag = computeRiotHealthDiagnostics();
     expect(diag.unresolvedMetrics).toBeDefined();
     expect(Array.isArray(diag.unresolvedMetrics.champions)).toBe(true);
     expect(Array.isArray(diag.unresolvedMetrics.items)).toBe(true);
     expect(Array.isArray(diag.unresolvedMetrics.traits)).toBe(true);
     expect(Array.isArray(diag.unresolvedMetrics.augments)).toBe(true);
+    expect(Array.isArray(diag.unresolvedMetrics.sampleUnknownChampions)).toBe(true);
     expect(typeof diag.unresolvedMetrics.totalUnresolved).toBe("number");
   });
 });

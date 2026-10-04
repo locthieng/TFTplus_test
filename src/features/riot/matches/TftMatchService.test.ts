@@ -38,7 +38,7 @@ describe("TftMatchService", () => {
     expect(mockClient.get).toHaveBeenCalledWith(
       "https://asia.api.riotgames.com/tft/match/v1/matches/by-puuid/puuid-123/ids?count=2"
     );
-    expect(mockCache.set).toHaveBeenCalledWith("match_ids:asia:puuid-123:2", ["MATCH_1", "MATCH_2"], 120);
+    expect(mockCache.set).toHaveBeenCalledWith("tftplus:riot:v1:match_ids:asia:puuid-123:2", ["MATCH_1", "MATCH_2"], 120);
   });
 
   it("returns cached match IDs when available", async () => {
@@ -59,7 +59,7 @@ describe("TftMatchService", () => {
     expect(mockClient.get).toHaveBeenCalledWith(
       "https://asia.api.riotgames.com/tft/match/v1/matches/KR_7123456781"
     );
-    expect(mockCache.set).toHaveBeenCalledWith("match_detail:asia:kr_7123456781", matchDetailFixture, 1800);
+    expect(mockCache.set).toHaveBeenCalledWith("tftplus:riot:v1:match_detail:asia:kr_7123456781", matchDetailFixture, 1800);
   });
 
   it("preserves failed match IDs when getting player matches", async () => {

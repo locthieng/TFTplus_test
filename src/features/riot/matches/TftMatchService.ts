@@ -2,10 +2,12 @@ import "server-only";
 
 import { RiotApiClient, defaultRiotApiClient } from "../client/RiotApiClient";
 import { RiotCache, defaultRiotCache } from "../cache/RiotCache";
+import { buildRiotCacheKey } from "../cache/riotCacheKeys";
 import { RiotAccountService, defaultRiotAccountService } from "../account/RiotAccountService";
 import { RiotRegionalRoute } from "../routing/riotRouting.types";
 import { getRegionalBaseUrl, getRegionRouting } from "../routing/riotRouting";
 import { RiotApiError } from "../client/RiotApiError";
+import { RiotLogger, defaultRiotLogger } from "../logging/RiotLogger";
 import {
   RawMatchDto,
   PlayerMatchSummary,
@@ -24,7 +26,8 @@ export class TftMatchService {
   constructor(
     private readonly client: RiotApiClient = defaultRiotApiClient,
     private readonly cache: RiotCache = defaultRiotCache,
-    private readonly accountService: RiotAccountService = defaultRiotAccountService
+    private readonly accountService: RiotAccountService = defaultRiotAccountService,
+    private readonly logger: RiotLogger = defaultRiotLogger
   ) {}
 
   async getMatchIds(
@@ -32,9 +35,13 @@ export class TftMatchService {
     puuid: string,
     count = 10
   ): Promise<string[]> {
-    const cacheKey = `match_ids:${regionalRoute.toLowerCase()}:${puuid}:${count}`;
+    const cacheKey = buildRiotCacheKey("match_ids", regionalRoute, puuid, count);
     const cached = await this.cache.get<string[]>(cacheKey);
-    if (cached) return cached;
+    if (cached) {
+      this.logger.logCacheHit("TftMatchService", "getMatchIds", cacheKey);
+      return cached;
+    }
+    this.logger.logCacheMiss("TftMatchService", "getMatchIds", cacheKey);
 
     const baseUrl = getRegionalBaseUrl(regionalRoute);
     const url = `${baseUrl}/tft/match/v1/matches/by-puuid/${encodeURIComponent(
@@ -50,9 +57,13 @@ export class TftMatchService {
     regionalRoute: RiotRegionalRoute,
     matchId: string
   ): Promise<RawMatchDto> {
-    const cacheKey = `match_detail:${regionalRoute.toLowerCase()}:${matchId.toLowerCase()}`;
+    const cacheKey = buildRiotCacheKey("match_detail", regionalRoute, matchId);
     const cached = await this.cache.get<RawMatchDto>(cacheKey);
-    if (cached) return cached;
+    if (cached) {
+      this.logger.logCacheHit("TftMatchService", "getMatchDetail", cacheKey);
+      return cached;
+    }
+    this.logger.logCacheMiss("TftMatchService", "getMatchDetail", cacheKey);
 
     const baseUrl = getRegionalBaseUrl(regionalRoute);
     const url = `${baseUrl}/tft/match/v1/matches/${encodeURIComponent(matchId)}`;

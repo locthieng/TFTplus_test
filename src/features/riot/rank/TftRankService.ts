@@ -2,8 +2,10 @@ import "server-only";
 
 import { RiotApiClient, defaultRiotApiClient } from "../client/RiotApiClient";
 import { RiotCache, defaultRiotCache } from "../cache/RiotCache";
+import { buildRiotCacheKey } from "../cache/riotCacheKeys";
 import { RiotPlatformRoute } from "../routing/riotRouting.types";
 import { getPlatformBaseUrl } from "../routing/riotRouting";
+import { RiotLogger, defaultRiotLogger } from "../logging/RiotLogger";
 
 export interface RawLeagueEntry {
   leagueId?: string;
@@ -33,18 +35,21 @@ export interface TftRank {
 export class TftRankService {
   constructor(
     private readonly client: RiotApiClient = defaultRiotApiClient,
-    private readonly cache: RiotCache = defaultRiotCache
+    private readonly cache: RiotCache = defaultRiotCache,
+    private readonly logger: RiotLogger = defaultRiotLogger
   ) {}
 
   async getPlayerRank(
     platformRoute: RiotPlatformRoute,
     puuid: string
   ): Promise<TftRank | undefined> {
-    const cacheKey = `rank:${platformRoute.toLowerCase()}:${puuid}`;
+    const cacheKey = buildRiotCacheKey("rank", platformRoute, puuid);
     const cached = await this.cache.get<TftRank | "UNRANKED">(cacheKey);
     if (cached) {
+      this.logger.logCacheHit("TftRankService", "getPlayerRank", cacheKey);
       return cached === "UNRANKED" ? undefined : cached;
     }
+    this.logger.logCacheMiss("TftRankService", "getPlayerRank", cacheKey);
 
     const baseUrl = getPlatformBaseUrl(platformRoute);
     const url = `${baseUrl}/tft/league/v1/by-puuid/${encodeURIComponent(puuid)}`;

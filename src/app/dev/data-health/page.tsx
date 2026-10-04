@@ -146,7 +146,7 @@ export default async function DataHealthPage() {
               {hpCoverage} / {totalChamps}
             </span>
             <span className="text-[10px] text-slate-500 block">
-              {Math.round((hpCoverage / totalChamps) * 100)}% verified
+              {championStats.percentages.hp}% verified
             </span>
           </div>
 
@@ -156,7 +156,7 @@ export default async function DataHealthPage() {
               {adCoverage} / {totalChamps}
             </span>
             <span className="text-[10px] text-slate-500 block">
-              {Math.round((adCoverage / totalChamps) * 100)}% verified
+              {championStats.percentages.ad}% verified
             </span>
           </div>
 
@@ -166,7 +166,7 @@ export default async function DataHealthPage() {
               {armorCoverage} / {totalChamps}
             </span>
             <span className="text-[10px] text-slate-500 block">
-              {Math.round((armorCoverage / totalChamps) * 100)}% verified
+              {championStats.percentages.armor}% verified
             </span>
           </div>
 
@@ -176,7 +176,7 @@ export default async function DataHealthPage() {
               {mrCoverage} / {totalChamps}
             </span>
             <span className="text-[10px] text-slate-500 block">
-              {Math.round((mrCoverage / totalChamps) * 100)}% verified
+              {championStats.percentages.mr}% verified
             </span>
           </div>
 
@@ -186,7 +186,7 @@ export default async function DataHealthPage() {
               {asCoverage} / {totalChamps}
             </span>
             <span className="text-[10px] text-slate-500 block">
-              {Math.round((asCoverage / totalChamps) * 100)}% verified
+              {championStats.percentages.as}% verified
             </span>
           </div>
 
@@ -196,7 +196,7 @@ export default async function DataHealthPage() {
               {manaCoverage} / {totalChamps}
             </span>
             <span className="text-[10px] text-slate-500 block">
-              {Math.round((manaCoverage / totalChamps) * 100)}% verified
+              {championStats.percentages.mana}% verified
             </span>
           </div>
 
@@ -289,7 +289,7 @@ export default async function DataHealthPage() {
           </span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-xs">
           <div className="p-3 rounded bg-[#141b2a] border border-[#1f2b3e] space-y-1">
             <span className="text-slate-400 text-[11px] block">Live Player Data Flag</span>
             <div className="flex items-center gap-2">
@@ -344,6 +344,22 @@ export default async function DataHealthPage() {
                 }`}
               >
                 {riotHealth.productionCacheStatus === "Ready" ? "Prod Ready" : "Dev Fallback"}
+              </span>
+            </div>
+          </div>
+
+          <div className="p-3 rounded bg-[#141b2a] border border-[#1f2b3e] space-y-1">
+            <span className="text-slate-400 text-[11px] block">Proactive Rate Limiter</span>
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-white">{riotHealth.rateLimiterStatus}</span>
+              <span
+                className={`text-[10px] font-bold px-1.5 py-0.5 rounded border uppercase ${
+                  riotHealth.rateLimiterStatus === "Ready"
+                    ? "text-emerald-400 bg-emerald-950/30 border-emerald-500/40"
+                    : "text-rose-400 bg-rose-950/30 border-rose-500/40"
+                }`}
+              >
+                Adaptive
               </span>
             </div>
           </div>

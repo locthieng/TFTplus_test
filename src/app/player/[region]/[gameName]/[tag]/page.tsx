@@ -9,6 +9,7 @@ import { defaultTftStaticResolver } from "@/features/riot/mappers/TftStaticResol
 import { RiotApiError } from "@/features/riot/client/RiotApiError";
 import { GameImage } from "@/components/common/GameImage";
 import { cn } from "@/utils/cn";
+import { getQueueName } from "@/features/riot/matches/tftMatch.types";
 
 export const dynamic = "force-dynamic";
 
@@ -283,7 +284,7 @@ export default async function PlayerProfilePage({ params }: PageProps) {
         <div className="flex items-center justify-between border-b border-[#20293b] pb-3">
           <h2 className="text-lg font-bold text-white flex items-center gap-2">
             <Clock className="w-5 h-5 text-amber-400" />
-            Recent Match History
+            Recent TFT Matches
           </h2>
           <span className="text-xs text-slate-400 font-mono">
             {recentMatches.length} Matches Loaded
@@ -314,7 +315,7 @@ export default async function PlayerProfilePage({ params }: PageProps) {
                   )}
                 >
                   {/* Left: Placement & Meta */}
-                  <div className="flex items-center gap-4 min-w-[160px]">
+                  <div className="flex items-center gap-4 min-w-[180px]">
                     <div
                       className={cn(
                         "w-12 h-12 rounded-xl flex items-center justify-center font-black text-lg shadow-sm flex-shrink-0",
@@ -328,9 +329,14 @@ export default async function PlayerProfilePage({ params }: PageProps) {
                       #{m.placement}
                     </div>
 
-                    <div className="text-xs space-y-0.5">
-                      <div className="font-bold text-slate-200">
-                        {isTop1 ? "Victory" : isTop4 ? "Top 4" : "Defeat"}
+                    <div className="text-xs space-y-1">
+                      <div className="flex items-center gap-2">
+                        <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-[#141b2a] border border-[#212c3f] text-amber-400">
+                          {getQueueName(m.queueId)}
+                        </span>
+                        <span className="font-bold text-slate-200">
+                          {isTop1 ? "Victory" : isTop4 ? "Top 4" : "Defeat"}
+                        </span>
                       </div>
                       <div className="text-slate-400 flex items-center gap-1.5">
                         <span>{formatDuration(m.gameLengthSeconds)}</span>
@@ -419,10 +425,10 @@ export default async function PlayerProfilePage({ params }: PageProps) {
                       </div>
                     )}
                     <Link
-                      href={`/match/${normRegion}/${m.matchId}?puuid=${encodeURIComponent(profile.account.puuid)}`}
-                      className="inline-flex items-center gap-1 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors group mt-1"
+                      href={`/match/${normRegion}/${m.matchId}?player=${encodeURIComponent(profile.account.puuid)}`}
+                      className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#141b2a] border border-cyan-500/30 hover:border-cyan-400 hover:bg-cyan-950/20 text-cyan-400 hover:text-cyan-300 font-bold text-xs transition-colors group mt-1 shadow-xs"
                     >
-                      <span>Match Details</span>
+                      <span>View Match</span>
                       <span className="transition-transform group-hover:translate-x-0.5">→</span>
                     </Link>
                   </div>

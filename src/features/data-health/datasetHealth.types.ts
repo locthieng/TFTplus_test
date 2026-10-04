@@ -26,6 +26,15 @@ export interface ChampionStatCoverage {
   as: number;
   mana: number;
   crit: number;
+  percentages: {
+    hp: number;
+    ad: number;
+    armor: number;
+    mr: number;
+    as: number;
+    mana: number;
+    crit: number;
+  };
 }
 
 export interface SystemDataHealthReport {

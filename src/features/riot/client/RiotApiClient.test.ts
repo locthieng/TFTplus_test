@@ -1,6 +1,8 @@
 import { describe, it, expect, vi } from "vitest";
 import { RiotApiClient } from "./RiotApiClient";
 import { RiotApiError } from "./RiotApiError";
+import { RiotRateLimiter } from "../rate-limit/RiotRateLimiter";
+import { RiotLogger } from "../logging/RiotLogger";
 
 describe("RiotApiClient", () => {
   it("throws UNAUTHORIZED if API key is not configured", async () => {
@@ -85,5 +87,59 @@ describe("RiotApiClient", () => {
       expect(riotErr.code).toBe("RATE_LIMITED");
       expect(riotErr.retryAfterSeconds).toBe(10);
     }
+  });
+
+  it("calls rate limiter beforeRequest and recordResponse during request lifecycle", async () => {
+    const mockRateLimiter: RiotRateLimiter = {
+      beforeRequest: vi.fn().mockResolvedValue(undefined),
+      recordResponse: vi.fn(),
+      getSnapshot: vi.fn().mockReturnValue(null),
+      reset: vi.fn(),
+    };
+
+    const headers = new Headers({ "x-app-rate-limit": "20:1" });
+    const mockFetch = vi.fn().mockResolvedValue({
+      ok: true,
+      status: 200,
+      headers,
+      json: async () => ({ ok: true }),
+    });
+
+    const client = new RiotApiClient({
+      apiKey: "RGAPI-test",
+      fetchFn: mockFetch as unknown as typeof fetch,
+      rateLimiter: mockRateLimiter,
+    });
+
+    await client.get("https://asia.api.riotgames.com/tft/match/v1/test");
+
+    expect(mockRateLimiter.beforeRequest).toHaveBeenCalledTimes(1);
+    expect(mockRateLimiter.recordResponse).toHaveBeenCalledTimes(1);
+    expect(mockRateLimiter.recordResponse).toHaveBeenCalledWith(
+      expect.any(String),
+      headers,
+      200
+    );
+  });
+
+  it("logger redacts any secret keys if passed accidentally", () => {
+    const logger = new RiotLogger();
+    const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
+
+    logger.log({
+      service: "TestService",
+      operation: "TestOp",
+      status: "error",
+      message: "Exposing RGAPI-12345-secret-key",
+    });
+
+    expect(warnSpy).toHaveBeenCalledWith(
+      expect.stringContaining("[REDACTED_SECRET_EVENT]")
+    );
+    expect(warnSpy).not.toHaveBeenCalledWith(
+      expect.stringContaining("RGAPI-12345-secret-key")
+    );
+
+    warnSpy.mockRestore();
   });
 });

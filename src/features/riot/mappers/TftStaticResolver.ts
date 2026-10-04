@@ -5,6 +5,11 @@ import traitsData from "@/generated/tft/traits.json";
 import itemsData from "@/generated/tft/items.json";
 import augmentsData from "@/generated/tft/augments.json";
 import { Champion, Trait, Item, Augment } from "@/types/tft";
+import {
+  StaticResolutionDiagnostics,
+  defaultStaticResolutionDiagnostics,
+  ResolutionMisses,
+} from "./StaticResolutionDiagnostics";
 
 export interface ResolveResult<T> {
   resolved: boolean;
@@ -13,12 +18,7 @@ export interface ResolveResult<T> {
   displayName: string;
 }
 
-export interface UnresolvedMetrics {
-  champions: string[];
-  items: string[];
-  traits: string[];
-  augments: string[];
-}
+export type UnresolvedMetrics = ResolutionMisses;
 
 function cleanRawKey(raw: string): string {
   return raw
@@ -43,12 +43,12 @@ export class TftStaticResolver {
   private augmentsByExactId = new Map<string, Augment>();
   private augmentsByCleanKey = new Map<string, Augment>();
 
-  private unresolvedChampions = new Set<string>();
-  private unresolvedItems = new Set<string>();
-  private unresolvedTraits = new Set<string>();
-  private unresolvedAugments = new Set<string>();
+  private readonly diagnostics: StaticResolutionDiagnostics;
 
-  constructor() {
+  constructor(
+    diagnostics: StaticResolutionDiagnostics = defaultStaticResolutionDiagnostics
+  ) {
+    this.diagnostics = diagnostics;
     this.indexChampions(championsData as unknown as Champion[]);
     this.indexTraits(traitsData as unknown as Trait[]);
     this.indexItems(itemsData as unknown as Item[]);
@@ -116,7 +116,7 @@ export class TftStaticResolver {
       return { resolved: true, entity: byClean, rawId: characterId, displayName: byClean.name };
     }
 
-    this.unresolvedChampions.add(characterId);
+    this.diagnostics.recordUnknownChampion(characterId);
     const fallbackName = characterId
       .replace(/^TFT\d*_?/i, "")
       .replace(/^DA_\d*_?/i, "")
@@ -143,7 +143,7 @@ export class TftStaticResolver {
       return { resolved: true, entity: byClean, rawId: itemApiName, displayName: byClean.name };
     }
 
-    this.unresolvedItems.add(itemApiName);
+    this.diagnostics.recordUnknownItem(itemApiName);
     const fallbackName = itemApiName
       .replace(/^TFT_Item_/i, "")
       .replace(/([A-Z])/g, " $1")
@@ -169,7 +169,7 @@ export class TftStaticResolver {
       return { resolved: true, entity: byClean, rawId: traitApiName, displayName: byClean.name };
     }
 
-    this.unresolvedTraits.add(traitApiName);
+    this.diagnostics.recordUnknownTrait(traitApiName);
     const fallbackName = traitApiName
       .replace(/^TFT\d*_?/i, "")
       .replace(/^DA_\d*_?/i, "")
@@ -196,7 +196,7 @@ export class TftStaticResolver {
       return { resolved: true, entity: byClean, rawId: augmentApiName, displayName: byClean.name };
     }
 
-    this.unresolvedAugments.add(augmentApiName);
+    this.diagnostics.recordUnknownAugment(augmentApiName);
     const fallbackName = augmentApiName
       .replace(/^TFT\d*_Augment_/i, "")
       .replace(/([A-Z])/g, " $1")
@@ -210,12 +210,11 @@ export class TftStaticResolver {
   }
 
   getUnresolvedMetrics(): UnresolvedMetrics {
-    return {
-      champions: Array.from(this.unresolvedChampions),
-      items: Array.from(this.unresolvedItems),
-      traits: Array.from(this.unresolvedTraits),
-      augments: Array.from(this.unresolvedAugments),
-    };
+    return this.diagnostics.getMisses();
+  }
+
+  getDiagnostics(): StaticResolutionDiagnostics {
+    return this.diagnostics;
   }
 }
 

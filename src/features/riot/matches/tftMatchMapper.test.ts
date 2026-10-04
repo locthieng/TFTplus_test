@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { mapRawMatchToPlayerSummary } from "./tftMatchMapper";
 import matchDetailFixture from "../__fixtures__/matchDetail.json";
-import { RawMatchDto } from "./tftMatch.types";
+import { RawMatchDto, getQueueName } from "./tftMatch.types";
 
 describe("tftMatchMapper", () => {
   it("maps participant detail into PlayerMatchSummary accurately", () => {
@@ -28,5 +28,20 @@ describe("tftMatchMapper", () => {
       "unknown-puuid"
     );
     expect(summary).toBeNull();
+  });
+
+  describe("getQueueName", () => {
+    it("maps recognized queue IDs to user-friendly names", () => {
+      expect(getQueueName(1100)).toBe("Ranked TFT");
+      expect(getQueueName(1090)).toBe("Normal TFT");
+      expect(getQueueName(1130)).toBe("Hyper Roll");
+      expect(getQueueName(1160)).toBe("Double Up");
+      expect(getQueueName(1170)).toBe("Fortune's Favor");
+    });
+
+    it("handles fallback and unknown queue IDs", () => {
+      expect(getQueueName(undefined)).toBe("Standard TFT");
+      expect(getQueueName(9999)).toBe("Queue 9999");
+    });
   });
 });

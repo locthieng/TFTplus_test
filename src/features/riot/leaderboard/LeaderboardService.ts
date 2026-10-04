@@ -3,8 +3,10 @@ import "server-only";
 import { PlatformRegion } from "@/types/region";
 import { RiotApiClient, defaultRiotApiClient } from "../client/RiotApiClient";
 import { RiotCache, defaultRiotCache } from "../cache/RiotCache";
+import { buildRiotCacheKey } from "../cache/riotCacheKeys";
 import { RiotAccountService, defaultRiotAccountService } from "../account/RiotAccountService";
 import { getRegionRouting, getPlatformBaseUrl } from "../routing/riotRouting";
+import { RiotLogger, defaultRiotLogger } from "../logging/RiotLogger";
 
 export interface RawLeagueListDto {
   tier: string;
@@ -43,7 +45,8 @@ export class LeaderboardService {
   constructor(
     private readonly client: RiotApiClient = defaultRiotApiClient,
     private readonly cache: RiotCache = defaultRiotCache,
-    private readonly accountService: RiotAccountService = defaultRiotAccountService
+    private readonly accountService: RiotAccountService = defaultRiotAccountService,
+    private readonly logger: RiotLogger = defaultRiotLogger
   ) {}
 
   async getChallengerLeaderboard(
@@ -55,9 +58,13 @@ export class LeaderboardService {
       throw new Error(`Unsupported region for leaderboard: ${region}`);
     }
 
-    const cacheKey = `leaderboard:${region.toLowerCase()}:${limit}`;
+    const cacheKey = buildRiotCacheKey("leaderboard", region, limit);
     const cached = await this.cache.get<LeaderboardEntry[]>(cacheKey);
-    if (cached) return cached;
+    if (cached) {
+      this.logger.logCacheHit("LeaderboardService", "getChallengerLeaderboard", cacheKey);
+      return cached;
+    }
+    this.logger.logCacheMiss("LeaderboardService", "getChallengerLeaderboard", cacheKey);
 
     const baseUrl = getPlatformBaseUrl(routing.platformRoute);
     const url = `${baseUrl}/tft/league/v1/challenger?queue=RANKED_TFT`;

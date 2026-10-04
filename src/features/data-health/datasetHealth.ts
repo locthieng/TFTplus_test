@@ -86,6 +86,15 @@ export function computeSystemDataHealth({
     as,
     mana,
     crit,
+    percentages: {
+      hp: totalChamps > 0 ? Math.round((hp / totalChamps) * 100) : 0,
+      ad: totalChamps > 0 ? Math.round((ad / totalChamps) * 100) : 0,
+      armor: totalChamps > 0 ? Math.round((armor / totalChamps) * 100) : 0,
+      mr: totalChamps > 0 ? Math.round((mr / totalChamps) * 100) : 0,
+      as: totalChamps > 0 ? Math.round((as / totalChamps) * 100) : 0,
+      mana: totalChamps > 0 ? Math.round((mana / totalChamps) * 100) : 0,
+      crit: totalChamps > 0 ? Math.round((crit / totalChamps) * 100) : 0,
+    },
   };
 
   const datasets: DatasetHealth[] = [];

@@ -23,7 +23,7 @@ export const dynamic = "force-dynamic";
 
 interface PageProps {
   params: Promise<{ region: string; matchId: string }>;
-  searchParams: Promise<{ puuid?: string }>;
+  searchParams: Promise<{ puuid?: string; player?: string }>;
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -58,7 +58,8 @@ function formatRelativeTime(timestamp: number): string {
 
 export default async function MatchDetailPage({ params, searchParams }: PageProps) {
   const { region, matchId } = await params;
-  const { puuid: selectedPuuid } = await searchParams;
+  const { puuid: puuidParam, player: playerParam } = await searchParams;
+  const selectedPuuid = (playerParam || puuidParam)?.trim().toLowerCase();
   const decodedMatchId = decodeURIComponent(matchId);
   const normRegion = region.toLowerCase();
 
@@ -219,7 +220,7 @@ export default async function MatchDetailPage({ params, searchParams }: PageProp
           {match.participants.map((p) => {
             const isTop1 = p.placement === 1;
             const isTop4 = p.placement <= 4;
-            const isSelected = selectedPuuid && p.puuid === selectedPuuid;
+            const isSelected = selectedPuuid && p.puuid.toLowerCase() === selectedPuuid;
 
             return (
               <div
