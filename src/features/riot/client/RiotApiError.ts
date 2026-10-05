@@ -4,6 +4,7 @@ export type RiotApiErrorCode =
   | "FORBIDDEN"
   | "NOT_FOUND"
   | "RATE_LIMITED"
+  | "LOCAL_RATE_LIMITED"
   | "SERVICE_UNAVAILABLE"
   | "TIMEOUT"
   | "UNKNOWN";
@@ -64,6 +65,16 @@ export class RiotApiError extends Error {
       message,
       code,
       statusCode: status,
+      retryAfterSeconds,
+      endpoint,
+    });
+  }
+
+  static localRateLimited(endpoint?: string, retryAfterSeconds?: number): RiotApiError {
+    return new RiotApiError({
+      message: "Live Riot data is temporarily busy. Please retry shortly.",
+      code: "LOCAL_RATE_LIMITED",
+      statusCode: 429,
       retryAfterSeconds,
       endpoint,
     });

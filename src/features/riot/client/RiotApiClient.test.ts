@@ -116,7 +116,9 @@ describe("RiotApiClient", () => {
     expect(mockRateLimiter.beforeRequest).toHaveBeenCalledTimes(1);
     expect(mockRateLimiter.recordResponse).toHaveBeenCalledTimes(1);
     expect(mockRateLimiter.recordResponse).toHaveBeenCalledWith(
-      expect.any(String),
+      expect.objectContaining({
+        appScope: "asia.api.riotgames.com",
+      }),
       headers,
       200
     );

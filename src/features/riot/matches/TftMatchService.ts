@@ -38,10 +38,18 @@ export class TftMatchService {
     const cacheKey = buildRiotCacheKey("match_ids", regionalRoute, puuid, count);
     const cached = await this.cache.get<string[]>(cacheKey);
     if (cached) {
-      this.logger.logCacheHit("TftMatchService", "getMatchIds", cacheKey);
+      this.logger.logCacheHit("TftMatchService", "getMatchIds", {
+        namespace: "match_ids",
+        region: regionalRoute,
+        identifierTruncated: this.logger.truncatePuuid(puuid),
+      });
       return cached;
     }
-    this.logger.logCacheMiss("TftMatchService", "getMatchIds", cacheKey);
+    this.logger.logCacheMiss("TftMatchService", "getMatchIds", {
+      namespace: "match_ids",
+      region: regionalRoute,
+      identifierTruncated: this.logger.truncatePuuid(puuid),
+    });
 
     const baseUrl = getRegionalBaseUrl(regionalRoute);
     const url = `${baseUrl}/tft/match/v1/matches/by-puuid/${encodeURIComponent(
@@ -60,10 +68,18 @@ export class TftMatchService {
     const cacheKey = buildRiotCacheKey("match_detail", regionalRoute, matchId);
     const cached = await this.cache.get<RawMatchDto>(cacheKey);
     if (cached) {
-      this.logger.logCacheHit("TftMatchService", "getMatchDetail", cacheKey);
+      this.logger.logCacheHit("TftMatchService", "getMatchDetail", {
+        namespace: "match_detail",
+        region: regionalRoute,
+        identifierTruncated: this.logger.truncateIdentifier(matchId),
+      });
       return cached;
     }
-    this.logger.logCacheMiss("TftMatchService", "getMatchDetail", cacheKey);
+    this.logger.logCacheMiss("TftMatchService", "getMatchDetail", {
+      namespace: "match_detail",
+      region: regionalRoute,
+      identifierTruncated: this.logger.truncateIdentifier(matchId),
+    });
 
     const baseUrl = getRegionalBaseUrl(regionalRoute);
     const url = `${baseUrl}/tft/match/v1/matches/${encodeURIComponent(matchId)}`;

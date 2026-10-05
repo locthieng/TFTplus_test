@@ -11,12 +11,17 @@ import { mapRawAugmentToDomain } from "../src/features/tft-data/mappers/augmentM
 import { shouldIncludeTftItem } from "../src/features/tft-data/filters/itemFilter";
 import { shouldIncludeAugment } from "../src/features/tft-data/filters/augmentFilter";
 import { isCurrentSetCompatibleItem } from "../src/features/tft-data/filters/currentSetItemFilter";
+import {
+  validateImporterCounts,
+  resolveCdragonSourceVersion,
+  buildManifestData,
+} from "../src/features/tft-data/importer/importerSanity";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const CDRAGON_VERSION = process.env.CDRAGON_VERSION || "18.3";
-const CDRAGON_URL = `https://raw.communitydragon.org/${CDRAGON_VERSION}/cdragon/tft/en_us.json`;
+const CDRAGON_SOURCE_VERSION = resolveCdragonSourceVersion(process.env);
+const CDRAGON_URL = `https://raw.communitydragon.org/${CDRAGON_SOURCE_VERSION}/cdragon/tft/en_us.json`;
 const OUTPUT_DIR = path.resolve(__dirname, "../src/generated/tft");
 
 const SET_NUMBER = 18;
@@ -157,7 +162,7 @@ async function runImporter() {
   // Structured logging (Phase L)
   console.log(`\n========================================`);
   console.log(`Set ${SET_NUMBER} — ${SET_NAME}`);
-  console.log(`Patch: ${SET_PATCH} (${CDRAGON_VERSION})`);
+  console.log(`Patch: ${SET_PATCH} (Source Version: ${CDRAGON_SOURCE_VERSION})`);
   console.log(`----------------------------------------`);
   console.log(`Champions: ${champions.length}`);
   console.log(`Traits:    ${traits.length}`);
@@ -176,20 +181,20 @@ async function runImporter() {
   console.log(`========================================\n`);
 
   // 6. Sanity Checks
-  if (champions.length < 40) {
-    throw new Error(`Sanity check failed: Champion count too low (${champions.length} < 40)`);
-  }
-  if (traits.length < 20) {
-    throw new Error(`Sanity check failed: Trait count too low (${traits.length} < 20)`);
-  }
-  if (items.length < 40 || items.length > 400) {
-    throw new Error(`Sanity check failed: Item count out of expected range (${items.length})`);
-  }
-  if (augments.length < 40 || augments.length > 400) {
-    throw new Error(`Sanity check failed: Augment count out of expected range (${augments.length})`);
+  const validation = validateImporterCounts({
+    championCount: champions.length,
+    traitCount: traits.length,
+    itemCount: items.length,
+    augmentCount: augments.length,
+  });
+
+  if (!validation.valid) {
+    throw new Error(
+      `Importer sanity validation failed:\n  - ${validation.errors.join("\n  - ")}`
+    );
   }
 
-  // 7. Write output files
+  // 7. Write output files (Atomic write only after validation passes)
   if (!fs.existsSync(OUTPUT_DIR)) {
     fs.mkdirSync(OUTPUT_DIR, { recursive: true });
   }
@@ -215,18 +220,18 @@ async function runImporter() {
     "utf-8"
   );
 
-  const manifest = {
-    set: String(SET_NUMBER),
-    name: SET_NAME,
+  const manifest = buildManifestData({
+    setNumber: SET_NUMBER,
+    setName: SET_NAME,
     patch: SET_PATCH,
-    championCount: champions.length,
-    traitCount: traits.length,
-    itemCount: items.length,
-    augmentCount: augments.length,
-    generatedAt: new Date().toISOString(),
-    source: "communitydragon",
-    sourceVersion: CDRAGON_VERSION,
-  };
+    sourceVersion: CDRAGON_SOURCE_VERSION,
+    counts: {
+      championCount: champions.length,
+      traitCount: traits.length,
+      itemCount: items.length,
+      augmentCount: augments.length,
+    },
+  });
 
   fs.writeFileSync(
     path.join(OUTPUT_DIR, "manifest.json"),

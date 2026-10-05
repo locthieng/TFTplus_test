@@ -5,10 +5,15 @@ import { defaultRateLimitState } from "../rate-limit/RiotRateLimitState";
 import {
   RiotRateLimiter,
   defaultRiotRateLimiter,
+  getRiotRateLimitScopes,
+  RiotRateLimitScopes,
 } from "../rate-limit/RiotRateLimiter";
 import { RiotLogger, defaultRiotLogger } from "../logging/RiotLogger";
 
-export type { RiotRateLimitSnapshot } from "../rate-limit/RiotRateLimiter";
+export type {
+  RiotRateLimitSnapshot,
+  RiotRateLimitScopes,
+} from "../rate-limit/RiotRateLimiter";
 
 export interface RiotApiClientConfig {
   apiKey?: string;
@@ -46,18 +51,8 @@ export class RiotApiClient {
     return Boolean(this.apiKey && this.apiKey.trim().length > 0);
   }
 
-  private extractScope(url: string): string {
-    try {
-      const parsed = new URL(url);
-      const pathParts = parsed.pathname
-        .split("/")
-        .filter(Boolean)
-        .slice(0, 3)
-        .join("/");
-      return `${parsed.host}/${pathParts}`;
-    } catch {
-      return "global";
-    }
+  private extractScopes(url: string): RiotRateLimitScopes {
+    return getRiotRateLimitScopes(url);
   }
 
   async get<T>(url: string, attempt = 1): Promise<T> {
@@ -70,18 +65,19 @@ export class RiotApiClient {
       });
     }
 
-    const scope = this.extractScope(url);
+    const scopes = this.extractScopes(url);
+    const operation = scopes.methodScope;
     const startTime = Date.now();
 
-    // 1. Proactive Rate Limiting
+    // 1. Proactive Rate Limiting (Dual Scope: App + Method)
     if (this.rateLimiter) {
-      await this.rateLimiter.beforeRequest(scope);
+      await this.rateLimiter.beforeRequest(scopes);
     }
 
     if (attempt === 1) {
       this.logger.logRequestStart({
         service: "RiotApiClient",
-        operation: scope,
+        operation,
       });
     }
 
@@ -101,9 +97,9 @@ export class RiotApiClient {
       clearTimeout(timeoutId);
       const durationMs = Date.now() - startTime;
 
-      // 2. Track rate limit response headers
+      // 2. Track rate limit response headers (Dual Scope)
       if (this.rateLimiter && response.headers) {
-        this.rateLimiter.recordResponse(scope, response.headers, response.status);
+        this.rateLimiter.recordResponse(scopes, response.headers, response.status);
       }
 
       if (response.headers && typeof response.headers.get === "function") {
@@ -114,7 +110,7 @@ export class RiotApiClient {
       if (response.ok) {
         this.logger.logRequestSuccess({
           service: "RiotApiClient",
-          operation: scope,
+          operation,
           status: response.status,
           durationMs,
           retryCount: attempt - 1,
@@ -134,7 +130,7 @@ export class RiotApiClient {
       if (status === 429) {
         this.logger.logRateLimited({
           service: "RiotApiClient",
-          operation: scope,
+          operation,
           status: 429,
           retryAfterSeconds: retryAfter,
         });
@@ -142,7 +138,7 @@ export class RiotApiClient {
         if (attempt === 1 && retryAfter != null && retryAfter <= 2) {
           this.logger.logRetry({
             service: "RiotApiClient",
-            operation: scope,
+            operation,
             status: 429,
             retryCount: attempt,
             message: `Retrying after 429 backoff (${retryAfter}s)`,
@@ -157,7 +153,7 @@ export class RiotApiClient {
       if ((status === 500 || status === 503) && attempt <= 2) {
         this.logger.logRetry({
           service: "RiotApiClient",
-          operation: scope,
+          operation,
           status,
           retryCount: attempt,
           message: `Retrying after server error ${status}`,
@@ -183,7 +179,7 @@ export class RiotApiClient {
 
       this.logger.logRequestError({
         service: "RiotApiClient",
-        operation: scope,
+        operation,
         status,
         durationMs,
         message: errorDetail || `HTTP ${status}`,
@@ -205,7 +201,7 @@ export class RiotApiClient {
       ) {
         this.logger.logTimeout({
           service: "RiotApiClient",
-          operation: scope,
+          operation,
           durationMs,
         });
         throw RiotApiError.timeout(url, this.timeoutMs);
@@ -213,7 +209,7 @@ export class RiotApiClient {
 
       this.logger.logRequestError({
         service: "RiotApiClient",
-        operation: scope,
+        operation,
         durationMs,
         message:
           error instanceof Error

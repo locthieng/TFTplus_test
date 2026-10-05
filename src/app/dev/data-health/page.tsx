@@ -68,6 +68,37 @@ export default async function DataHealthPage() {
         </span>
       </div>
 
+      {/* TFT Release & Source Provenance Identity */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-[#111724] border border-[#1e2a3f] rounded-lg p-3.5 text-xs">
+        <div className="flex items-center justify-between border-b sm:border-b-0 sm:border-r border-[#1e2a3f] pb-2 sm:pb-0 sm:pr-4">
+          <div className="space-y-0.5">
+            <span className="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">
+              TFT Active Release
+            </span>
+            <span className="font-extrabold text-white text-sm">
+              Set {riotHealth.tftRelease.setId} ({riotHealth.tftRelease.setName})
+            </span>
+          </div>
+          <span className="px-2 py-0.5 rounded border border-amber-500/40 bg-amber-950/30 text-amber-300 font-mono font-bold text-[11px]">
+            Patch {riotHealth.tftRelease.patch}
+          </span>
+        </div>
+
+        <div className="flex items-center justify-between sm:pl-4 pt-1 sm:pt-0">
+          <div className="space-y-0.5">
+            <span className="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">
+              Static Data Source
+            </span>
+            <span className="font-extrabold text-white text-sm capitalize">
+              {riotHealth.staticSource.provider}
+            </span>
+          </div>
+          <span className="px-2 py-0.5 rounded border border-cyan-500/40 bg-cyan-950/30 text-cyan-300 font-mono font-bold text-[11px]">
+            v{riotHealth.staticSource.version}
+          </span>
+        </div>
+      </div>
+
       {/* Dataset Health & Verification Grid */}
       <div className="space-y-3">
         <h2 className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
@@ -335,7 +366,7 @@ export default async function DataHealthPage() {
           <div className="p-3 rounded bg-[#141b2a] border border-[#1f2b3e] space-y-1">
             <span className="text-slate-400 text-[11px] block">Cache Architecture</span>
             <div className="flex items-center justify-between">
-              <span className="font-bold text-white">{riotHealth.cacheType}</span>
+              <span className="font-bold text-white">{riotHealth.cacheProvider}</span>
               <span
                 className={`text-[10px] font-bold px-1.5 py-0.5 rounded border uppercase ${
                   riotHealth.productionCacheStatus === "Ready"
@@ -366,7 +397,15 @@ export default async function DataHealthPage() {
         </div>
 
         {/* Services Status Sub-Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs border-t border-[#1a2335] pt-3">
+        <div className="grid grid-cols-2 sm:grid-cols-6 gap-3 text-xs border-t border-[#1a2335] pt-3">
+          <div className="space-y-0.5">
+            <span className="text-[10px] text-slate-400 block uppercase">App Scope</span>
+            <span className="font-semibold text-emerald-400">{riotHealth.rateLimiterAppScopeStatus}</span>
+          </div>
+          <div className="space-y-0.5">
+            <span className="text-[10px] text-slate-400 block uppercase">Method Scope</span>
+            <span className="font-semibold text-emerald-400">{riotHealth.rateLimiterMethodScopeStatus}</span>
+          </div>
           <div className="space-y-0.5">
             <span className="text-[10px] text-slate-400 block uppercase">Account Service</span>
             <span className="font-semibold text-slate-200">{riotHealth.accountServiceStatus}</span>
@@ -380,7 +419,7 @@ export default async function DataHealthPage() {
             <span className="font-semibold text-slate-200">{riotHealth.matchServiceStatus}</span>
           </div>
           <div className="space-y-0.5">
-            <span className="text-[10px] text-slate-400 block uppercase">Leaderboard Service</span>
+            <span className="text-[10px] text-slate-400 block uppercase">Leaderboard</span>
             <span className="font-semibold text-slate-200">{riotHealth.leaderboardServiceStatus}</span>
           </div>
         </div>

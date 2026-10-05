@@ -29,10 +29,16 @@ export class RiotAccountService {
 
     const cached = await this.cache.get<RiotAccount>(cacheKey);
     if (cached) {
-      this.logger.logCacheHit("RiotAccountService", "getAccountByRiotId", cacheKey);
+      this.logger.logCacheHit("RiotAccountService", "getAccountByRiotId", {
+        namespace: "account",
+        region: regionalRoute,
+      });
       return cached;
     }
-    this.logger.logCacheMiss("RiotAccountService", "getAccountByRiotId", cacheKey);
+    this.logger.logCacheMiss("RiotAccountService", "getAccountByRiotId", {
+      namespace: "account",
+      region: regionalRoute,
+    });
 
     const baseUrl = getRegionalBaseUrl(regionalRoute);
     const url = `${baseUrl}/riot/account/v1/accounts/by-riot-id/${encodeURIComponent(
@@ -57,10 +63,18 @@ export class RiotAccountService {
     const cacheKey = buildRiotCacheKey("account_by_puuid", regionalRoute, puuid);
     const cached = await this.cache.get<RiotAccount>(cacheKey);
     if (cached) {
-      this.logger.logCacheHit("RiotAccountService", "getAccountByPuuid", cacheKey);
+      this.logger.logCacheHit("RiotAccountService", "getAccountByPuuid", {
+        namespace: "account_by_puuid",
+        region: regionalRoute,
+        identifierTruncated: this.logger.truncatePuuid(puuid),
+      });
       return cached;
     }
-    this.logger.logCacheMiss("RiotAccountService", "getAccountByPuuid", cacheKey);
+    this.logger.logCacheMiss("RiotAccountService", "getAccountByPuuid", {
+      namespace: "account_by_puuid",
+      region: regionalRoute,
+      identifierTruncated: this.logger.truncatePuuid(puuid),
+    });
 
     const baseUrl = getRegionalBaseUrl(regionalRoute);
     const url = `${baseUrl}/riot/account/v1/accounts/by-puuid/${encodeURIComponent(puuid)}`;

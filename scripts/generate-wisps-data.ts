@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { cleanTftDescription, resolveCdragonImageUrl } from "../src/features/tft-data/mappers/mapperUtils";
+import { resolveCdragonSourceVersion } from "../src/features/tft-data/importer/importerSanity";
 import { Wisp } from "../src/features/wisps/types/wisp";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -21,8 +22,9 @@ interface RawSetPayload {
 }
 
 async function generateWispsData() {
-  console.log("Fetching CommunityDragon data...");
-  const res = await fetch("https://raw.communitydragon.org/latest/cdragon/tft/en_us.json");
+  const sourceVersion = resolveCdragonSourceVersion(process.env);
+  console.log(`Fetching CommunityDragon data from version ${sourceVersion}...`);
+  const res = await fetch(`https://raw.communitydragon.org/${sourceVersion}/cdragon/tft/en_us.json`);
   if (!res.ok) throw new Error(`HTTP error ${res.status}`);
 
   const d = await res.json();

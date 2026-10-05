@@ -61,10 +61,16 @@ export class LeaderboardService {
     const cacheKey = buildRiotCacheKey("leaderboard", region, limit);
     const cached = await this.cache.get<LeaderboardEntry[]>(cacheKey);
     if (cached) {
-      this.logger.logCacheHit("LeaderboardService", "getChallengerLeaderboard", cacheKey);
+      this.logger.logCacheHit("LeaderboardService", "getChallengerLeaderboard", {
+        namespace: "leaderboard",
+        region,
+      });
       return cached;
     }
-    this.logger.logCacheMiss("LeaderboardService", "getChallengerLeaderboard", cacheKey);
+    this.logger.logCacheMiss("LeaderboardService", "getChallengerLeaderboard", {
+      namespace: "leaderboard",
+      region,
+    });
 
     const baseUrl = getPlatformBaseUrl(routing.platformRoute);
     const url = `${baseUrl}/tft/league/v1/challenger?queue=RANKED_TFT`;

@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { resolveCdragonSourceVersion } from "../src/features/tft-data/importer/importerSanity";
 import { PetSpecies, PetVariant } from "../src/features/pets/types/pet";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -15,17 +16,18 @@ interface RawCompanionPayload {
   rarity?: string;
 }
 
-function resolveCompanionImageUrl(path?: string): string | undefined {
+function resolveCompanionImageUrl(path?: string, sourceVersion = "16.19"): string | undefined {
   if (!path) return undefined;
   if (path.startsWith("http://") || path.startsWith("https://")) return path;
   const clean = path.replace(/^\/lol-game-data\/assets\//i, "").toLowerCase();
-  return `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/${clean}`;
+  return `https://raw.communitydragon.org/${sourceVersion}/plugins/rcp-be-lol-game-data/global/default/${clean}`;
 }
 
 async function generatePetsData() {
-  console.log("Fetching CommunityDragon companion data...");
+  const sourceVersion = resolveCdragonSourceVersion(process.env);
+  console.log(`Fetching CommunityDragon companion data from version ${sourceVersion}...`);
   const res = await fetch(
-    "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/companions.json"
+    `https://raw.communitydragon.org/${sourceVersion}/plugins/rcp-be-lol-game-data/global/default/v1/companions.json`
   );
   if (!res.ok) throw new Error(`HTTP error ${res.status}`);
 

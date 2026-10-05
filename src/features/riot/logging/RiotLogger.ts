@@ -10,6 +10,12 @@ export type RiotLogEventType =
   | "cache_hit"
   | "cache_miss";
 
+export interface SafeCacheLogMeta {
+  namespace?: string;
+  region?: string;
+  identifierTruncated?: string;
+}
+
 export interface RiotLogEvent {
   service: string;
   operation: string;
@@ -42,7 +48,10 @@ export class RiotLogger {
 
     // Sanitize any potential accidental keys or tokens
     const serialized = JSON.stringify(safePayload);
-    if (/RGAPI-[a-zA-Z0-9-]+/i.test(serialized) || /Bearer\s+[a-zA-Z0-9-_]+/i.test(serialized)) {
+    if (
+      /RGAPI-[a-zA-Z0-9-]+/i.test(serialized) ||
+      /Bearer\s+[a-zA-Z0-9-_]+/i.test(serialized)
+    ) {
       console.warn(`[RiotLogger] ${timestamp} [REDACTED_SECRET_EVENT]`);
       return;
     }
@@ -52,7 +61,8 @@ export class RiotLogger {
       entry.status === "rate_limited" ||
       (typeof entry.status === "number" && entry.status >= 400) ||
       entry.event === "request_error" ||
-      entry.event === "rate_limited";
+      entry.event === "rate_limited" ||
+      entry.event === "retry";
 
     if (isWarning) {
       console.warn(`[RiotLogger] ${serialized}`);
@@ -163,29 +173,60 @@ export class RiotLogger {
     });
   }
 
-  logCacheHit(service: string, operation: string, key?: string): void {
+  logCacheHit(
+    service: string,
+    operation: string,
+    meta?: SafeCacheLogMeta | string
+  ): void {
+    const resolved = typeof meta === "string" ? this.sanitizeRawKeyToMeta(meta) : meta;
     this.log({
       service,
       operation,
       event: "cache_hit",
       cacheHit: true,
-      message: key ? `Key: ${key}` : undefined,
+      region: resolved?.region,
+      message: resolved?.namespace ? `Namespace: ${resolved.namespace}` : undefined,
+      puuidTruncated: resolved?.identifierTruncated,
     });
   }
 
-  logCacheMiss(service: string, operation: string, key?: string): void {
+  logCacheMiss(
+    service: string,
+    operation: string,
+    meta?: SafeCacheLogMeta | string
+  ): void {
+    const resolved = typeof meta === "string" ? this.sanitizeRawKeyToMeta(meta) : meta;
     this.log({
       service,
       operation,
       event: "cache_miss",
       cacheHit: false,
-      message: key ? `Key: ${key}` : undefined,
+      region: resolved?.region,
+      message: resolved?.namespace ? `Namespace: ${resolved.namespace}` : undefined,
+      puuidTruncated: resolved?.identifierTruncated,
     });
   }
 
+  truncateIdentifier(id?: string): string | undefined {
+    if (!id) return undefined;
+    return id.length > 8 ? `${id.slice(0, 4)}...${id.slice(-4)}` : id;
+  }
+
   truncatePuuid(puuid?: string): string | undefined {
-    if (!puuid) return undefined;
-    return puuid.length > 8 ? `${puuid.slice(0, 4)}...${puuid.slice(-4)}` : puuid;
+    return this.truncateIdentifier(puuid);
+  }
+
+  private sanitizeRawKeyToMeta(rawKey: string): SafeCacheLogMeta {
+    const parts = rawKey.split(":");
+    if (parts.length >= 4 && parts[0] === "tftplus") {
+      const namespace = parts[3];
+      const region = parts[4];
+      return {
+        namespace,
+        region,
+      };
+    }
+    return {};
   }
 }
 

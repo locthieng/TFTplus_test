@@ -79,7 +79,7 @@ describe("RiotLogger", () => {
       retryCount: 1,
     });
 
-    expect(logSpy).toHaveBeenCalledWith(
+    expect(warnSpy).toHaveBeenCalledWith(
       expect.stringContaining('"event":"retry"')
     );
 
@@ -94,21 +94,53 @@ describe("RiotLogger", () => {
     );
   });
 
-  it("logs cache hits and misses", () => {
-    logger.logCacheHit("TftRankService", "getPlayerRank", "test:key");
+  it("logs cache hits and misses with safe metadata and does not leak full cache keys or identifiers", () => {
+    const rawPuuid = "01234567-89ab-cdef-0123-456789abcdef";
+    const rawRiotId = "SecretPlayer#VN1";
+
+    logger.logCacheHit("RiotAccountService", "getAccountByPuuid", {
+      namespace: "account_by_puuid",
+      region: "asia",
+      identifierTruncated: logger.truncatePuuid(rawPuuid),
+    });
+
     expect(logSpy).toHaveBeenCalledWith(
       expect.stringContaining('"event":"cache_hit"')
     );
+    expect(logSpy).toHaveBeenCalledWith(
+      expect.stringContaining('"puuidTruncated":"0123...cdef"')
+    );
 
-    logger.logCacheMiss("TftRankService", "getPlayerRank", "test:key");
+    const callPayload = logSpy.mock.calls[0][0];
+    expect(callPayload).not.toContain(rawPuuid);
+    expect(callPayload).not.toContain(rawRiotId);
+    expect(callPayload).not.toContain("tftplus:riot:v1:");
+
+    logger.logCacheMiss("TftRankService", "getPlayerRank", {
+      namespace: "rank",
+      region: "vn2",
+    });
     expect(logSpy).toHaveBeenCalledWith(
       expect.stringContaining('"event":"cache_miss"')
     );
   });
 
-  it("truncates puuid safely", () => {
-    expect(logger.truncatePuuid(undefined)).toBeUndefined();
-    expect(logger.truncatePuuid("1234")).toBe("1234");
+  it("sanitizes legacy full cache keys passed as strings", () => {
+    const fullPuuid = "sensitive-puuid-abcdef123456";
+    const legacyKey = `tftplus:riot:v1:account_by_puuid:asia:${fullPuuid}`;
+
+    logger.logCacheHit("LegacyService", "getOp", legacyKey);
+
+    const loggedOutput = logSpy.mock.calls[0][0];
+    expect(loggedOutput).not.toContain(fullPuuid);
+    expect(loggedOutput).not.toContain(legacyKey);
+    expect(loggedOutput).toContain('"message":"Namespace: account_by_puuid"');
+  });
+
+  it("truncates identifiers and puuids safely", () => {
+    expect(logger.truncateIdentifier(undefined)).toBeUndefined();
+    expect(logger.truncateIdentifier("1234")).toBe("1234");
+    expect(logger.truncateIdentifier("1234567890abcdef")).toBe("1234...cdef");
     expect(logger.truncatePuuid("1234567890abcdef")).toBe("1234...cdef");
   });
 });

@@ -1,4 +1,5 @@
 import { RedisRiotCache } from "./RedisRiotCache";
+import { getRiotCacheConfig } from "./riotCacheConfig";
 
 export interface RiotCache {
   get<T>(key: string): Promise<T | null>;
@@ -63,11 +64,16 @@ export class InMemoryRiotCache implements RiotCache {
 }
 
 export function createRiotCache(): RiotCache {
-  const redisUrl = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
-  const redisToken = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
+  const config = getRiotCacheConfig();
 
-  if (redisUrl && redisToken) {
-    return new RedisRiotCache({ url: redisUrl, token: redisToken });
+  if (
+    config.provider === "upstash-rest" ||
+    config.provider === "vercel-kv-rest"
+  ) {
+    return new RedisRiotCache({
+      url: config.url!,
+      token: config.token!,
+    });
   }
 
   return new InMemoryRiotCache();

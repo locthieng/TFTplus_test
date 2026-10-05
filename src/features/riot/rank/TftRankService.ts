@@ -46,10 +46,18 @@ export class TftRankService {
     const cacheKey = buildRiotCacheKey("rank", platformRoute, puuid);
     const cached = await this.cache.get<TftRank | "UNRANKED">(cacheKey);
     if (cached) {
-      this.logger.logCacheHit("TftRankService", "getPlayerRank", cacheKey);
+      this.logger.logCacheHit("TftRankService", "getPlayerRank", {
+        namespace: "rank",
+        region: platformRoute,
+        identifierTruncated: this.logger.truncatePuuid(puuid),
+      });
       return cached === "UNRANKED" ? undefined : cached;
     }
-    this.logger.logCacheMiss("TftRankService", "getPlayerRank", cacheKey);
+    this.logger.logCacheMiss("TftRankService", "getPlayerRank", {
+      namespace: "rank",
+      region: platformRoute,
+      identifierTruncated: this.logger.truncatePuuid(puuid),
+    });
 
     const baseUrl = getPlatformBaseUrl(platformRoute);
     const url = `${baseUrl}/tft/league/v1/by-puuid/${encodeURIComponent(puuid)}`;
