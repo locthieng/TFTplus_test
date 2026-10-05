@@ -24,7 +24,10 @@ function resolveCompanionImageUrl(path?: string, sourceVersion = "16.19"): strin
 }
 
 async function generatePetsData() {
-  const sourceVersion = resolveCdragonSourceVersion(process.env);
+  const sourceVersion = resolveCdragonSourceVersion({
+    CDRAGON_SOURCE_VERSION: process.env.CDRAGON_SOURCE_VERSION,
+    CDRAGON_VERSION: process.env.CDRAGON_VERSION,
+  });
   console.log(`Fetching CommunityDragon companion data from version ${sourceVersion}...`);
   const res = await fetch(
     `https://raw.communitydragon.org/${sourceVersion}/plugins/rcp-be-lol-game-data/global/default/v1/companions.json`

@@ -43,10 +43,12 @@ export function validateImporterCounts(counts: ImporterCounts): {
   };
 }
 
-export function resolveCdragonSourceVersion(env: {
+export interface CDragonVersionEnv {
   CDRAGON_SOURCE_VERSION?: string;
   CDRAGON_VERSION?: string;
-}): string {
+}
+
+export function resolveCdragonSourceVersion(env: CDragonVersionEnv): string {
   return env.CDRAGON_SOURCE_VERSION || env.CDRAGON_VERSION || "16.19";
 }
 

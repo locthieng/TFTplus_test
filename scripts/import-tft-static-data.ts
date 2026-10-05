@@ -20,7 +20,10 @@ import {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const CDRAGON_SOURCE_VERSION = resolveCdragonSourceVersion(process.env);
+const CDRAGON_SOURCE_VERSION = resolveCdragonSourceVersion({
+  CDRAGON_SOURCE_VERSION: process.env.CDRAGON_SOURCE_VERSION,
+  CDRAGON_VERSION: process.env.CDRAGON_VERSION,
+});
 const CDRAGON_URL = `https://raw.communitydragon.org/${CDRAGON_SOURCE_VERSION}/cdragon/tft/en_us.json`;
 const OUTPUT_DIR = path.resolve(__dirname, "../src/generated/tft");
 

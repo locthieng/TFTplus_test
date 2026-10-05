@@ -22,7 +22,10 @@ interface RawSetPayload {
 }
 
 async function generateWispsData() {
-  const sourceVersion = resolveCdragonSourceVersion(process.env);
+  const sourceVersion = resolveCdragonSourceVersion({
+    CDRAGON_SOURCE_VERSION: process.env.CDRAGON_SOURCE_VERSION,
+    CDRAGON_VERSION: process.env.CDRAGON_VERSION,
+  });
   console.log(`Fetching CommunityDragon data from version ${sourceVersion}...`);
   const res = await fetch(`https://raw.communitydragon.org/${sourceVersion}/cdragon/tft/en_us.json`);
   if (!res.ok) throw new Error(`HTTP error ${res.status}`);
